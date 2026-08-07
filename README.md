@@ -376,13 +376,15 @@ This allows Microsoft to track how many Cosmos DB requests originate from Intent
 
 ```bash
 # Clone into your project
-git clone https://github.com/AzureCosmosDB/cosmos-intent-sdk.git .cosmos-intent-sdk
+git clone https://github.com/AzureCosmosDB/cosmosdb-intent-sdk.git .cosmos-intent-sdk
 
 # Add to your Copilot instructions
 echo 'Use prompt templates from .cosmos-intent-sdk/prompts/ for all Cosmos DB work' >> .github/copilot-instructions.md
 ```
 
 ### NPM (Multi-Editor CLI)
+
+After the package is published to npm:
 
 ```bash
 # Interactive — choose which editors to install for
@@ -403,6 +405,21 @@ npx cosmos-intent-sdk update --all
 # List available prompts
 npx cosmos-intent-sdk list
 ```
+
+To test an unpublished checkout exactly as an npm consumer would, build a tarball and install it in a separate project:
+
+```bash
+# In this repository
+cd cli
+npm pack
+
+# In a separate project
+npm install /path/to/cosmos-intent-sdk-0.2.0.tgz
+npx cosmos-intent-sdk list
+npx cosmos-intent-sdk init --integration copilot --with-agent-kit
+```
+
+The tarball is the release boundary: testing it catches missing package files that running the CLI directly from this repository can hide.
 
 **Supported integrations:**
 
@@ -445,13 +462,33 @@ That's it. The prompt encodes the expertise. You declare the intent.
 
 ## Testing Determinism
 
-Each prompt is tested for structural consistency:
+Each prompt is tested for structural consistency. The retained comparisons and live-emulator evidence are under [`testing/results/`](testing/results/).
+
+The harness accepts an OpenAI-compatible endpoint and a structured YAML or JSON test template:
 
 ```bash
-python testing/harness/run-iterations.py --prompt cosmos.repository --iterations 10
+python testing/harness/run-iterations.py \
+    --template path/to/test-template.yaml \
+    --variables '{"entity":"orders"}' \
+    --iterations 10 \
+    --model gpt-4o
 ```
 
 We don't test for exact string match. We test for **contract conformance**: same fields, same patterns, same architectural decisions across N runs.
+
+### CLI consumer smoke test
+
+Before publishing the CLI, install the tarball in a clean project and verify:
+
+1. `npx cosmos-intent-sdk list` reports all 52 prompts.
+2. `init --integration copilot --with-agent-kit` creates 52 agent files and 52 prompt files.
+3. `.vscode/settings.json` enables `github.copilot.chat.promptFiles`.
+4. Agent Kit instructions are installed in both Copilot instruction locations.
+5. Running the same `init` command again produces no content changes or duplicate Agent Kit section.
+
+This flow was verified on Windows against the local `cosmos-intent-sdk-0.2.0.tgz` package. VS Code command discovery remains a manual UI check: open or reload the consumer project and confirm the installed `/cosmos.*` commands appear in Copilot Chat.
+
+Generated applications and result reports are retained as test evidence. Virtual environments, Python bytecode caches, and runtime logs are excluded; recreate dependencies from each generated app's manifest when rerunning an E2E test.
 
 ## /cosmos.vibe and Agent Kit
 

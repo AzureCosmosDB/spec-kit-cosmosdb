@@ -5,7 +5,11 @@
   "bin": {
     "cosmos-intent-sdk": "./bin/cosmos-intent-sdk.js"
   },
+  "scripts": {
+    "prepack": "node scripts/prepack.js"
+  },
   "files": [
+    "agent-kit-rules.md",
     "bin/",
     "integrations/",
     "lib/",

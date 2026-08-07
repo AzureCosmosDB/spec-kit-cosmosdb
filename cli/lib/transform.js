@@ -3,13 +3,19 @@
 const fs = require('fs');
 const path = require('path');
 
-const PROMPTS_DIR = path.resolve(__dirname, '../../prompts');
+const PACKAGED_PROMPTS_DIR = path.resolve(__dirname, '../templates/prompts');
+const REPOSITORY_PROMPTS_DIR = path.resolve(__dirname, '../../prompts');
+
+function getPromptsDir() {
+  return fs.existsSync(PACKAGED_PROMPTS_DIR) ? PACKAGED_PROMPTS_DIR : REPOSITORY_PROMPTS_DIR;
+}
 
 function loadPrompts() {
   const prompts = [];
+  const promptsDir = getPromptsDir();
   const categories = ['micro', 'component', 'scaffold', 'meta'];
   for (const cat of categories) {
-    const dir = path.join(PROMPTS_DIR, cat);
+    const dir = path.join(promptsDir, cat);
     if (!fs.existsSync(dir)) continue;
     for (const file of fs.readdirSync(dir).filter(f => f.endsWith('.md'))) {
       const content = fs.readFileSync(path.join(dir, file), 'utf8');

@@ -39,7 +39,7 @@ python testing/harness/run-iterations.py \
   --iterations 5 \
   --model gpt-4o
 
-# Output: testing/reports/design-container-<timestamp>.json
+# Output: a JSON report at the path supplied with --output
 ```
 
 ## Directory Structure
@@ -50,10 +50,11 @@ testing/
 ├── harness/
 │   └── run-iterations.py  # Test runner
 ├── scenarios/
-│   ├── README.md          # Scenario documentation
-│   └── *.scenario.json    # Individual test scenarios
-└── reports/               # Generated reports (gitignored)
+│   └── README.md          # Scenario format documentation
+└── results/               # Retained comparisons, generated source, and E2E evidence
 ```
+
+Do not commit local execution residue under `results/`. Virtual environments, `__pycache__` directories, bytecode, and runtime logs are reproducible and ignored by Git. Keep generated source, dependency manifests, test scripts, and concise result reports when they provide evidence for a compatibility or determinism claim.
 
 ## Interpreting Results
 
