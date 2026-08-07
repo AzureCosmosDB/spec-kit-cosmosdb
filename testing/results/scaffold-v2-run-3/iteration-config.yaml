@@ -1,0 +1,22 @@
+# iteration-config.yaml — controls iterative refinement of this scaffold
+version: 1
+scaffold:
+  prompt: cosmos.scaffold
+  language: "python"
+  generated_at: "2026-07-26T21:32:00Z"
+
+validation:
+  - name: app-starts
+    command: "uvicorn main:app --host 0.0.0.0 --port 8000"
+    expect: "listening on"
+    timeout: 15s
+  - name: health-check
+    command: "curl -sf http://localhost:8000/api/health"
+    expect: '{"status":"healthy"}'
+  - name: crud-cycle
+    script: tests/smoke.sh
+
+iteration:
+  max_rounds: 3
+  on_failure: fix-and-retry
+  on_success: commit

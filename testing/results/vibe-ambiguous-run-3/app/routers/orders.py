@@ -1,0 +1,6 @@
+from fastapi import APIRouter, Request
+router = APIRouter()
+@router.get("/")
+async def list_orders(request: Request): ...
+@router.post("/", status_code=201)
+async def create_order(request: Request): ...

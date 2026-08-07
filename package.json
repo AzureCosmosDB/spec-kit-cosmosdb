@@ -1,0 +1,29 @@
+{
+  "name": "cosmos-intent-sdk",
+  "version": "0.1.0",
+  "description": "Natural language intent SDK for Azure Cosmos DB — prescriptive prompt templates for GitHub Copilot",
+  "main": "index.js",
+  "bin": {
+    "cosmos-intent-sdk": "./cli/bin/cosmos-intent-sdk.js"
+  },
+  "workspaces": ["cli"],
+  "scripts": {
+    "test": "python testing/harness/run-iterations.py --all --iterations 5",
+    "test:full": "python testing/harness/run-iterations.py --all --iterations 20"
+  },
+  "keywords": [
+    "cosmos-db",
+    "azure",
+    "copilot",
+    "prompts",
+    "intent-sdk",
+    "ai",
+    "code-generation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cosmos-intent-sdk/cosmos-intent-sdk"
+  }
+}

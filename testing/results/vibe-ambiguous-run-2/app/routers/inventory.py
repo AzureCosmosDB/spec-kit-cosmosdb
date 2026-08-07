@@ -1,0 +1,6 @@
+from fastapi import APIRouter, Request
+router = APIRouter()
+@router.get("/")
+async def list_inventory(request: Request): ...
+@router.put("/{item_id}")
+async def update_stock(item_id: str, request: Request): ...
