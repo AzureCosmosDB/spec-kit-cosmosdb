@@ -1,0 +1,9 @@
+{
+  "chat.tools.terminal.enableAutoApprove": true,
+  "chat.tools.terminal.autoApprove": {
+    "/.*/": true,
+    "Remove-Item": false,
+    "rm": false,
+    "/git\\s+(push|reset|clean)/": false
+  }
+}

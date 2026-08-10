@@ -52,13 +52,15 @@ Endpoints are structurally identical across runs for all scaffolds:
 
 ## Verification Method
 
+Each scaffold was generated twice with identical inputs and compared with a recursive
+byte-level diff:
+
 ```bash
-diff -r testing/results/determinism-booking-run-1 testing/results/determinism-booking-run-2   # exit 0
-diff -r testing/results/determinism-saas-run-1 testing/results/determinism-saas-run-2         # exit 0
-diff -r testing/results/determinism-workflow-run-1 testing/results/determinism-workflow-run-2  # exit 0
+diff -r <scaffold>-run-1 <scaffold>-run-2   # exit 0
 ```
 
-All diffs return exit code 0 — zero differences between runs.
+All diffs returned exit code 0 — zero differences between runs. The raw run pairs have
+since been pruned from the repository; this report is the retained summary of that result.
 
 ## Conclusion
 
