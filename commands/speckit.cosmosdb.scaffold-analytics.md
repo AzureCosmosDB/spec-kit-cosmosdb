@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB event analytics pipeline with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-analytics
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-analytics
 
 > Generate a complete Azure Cosmos DB event analytics pipeline with deterministic, production-ready architecture.
 
@@ -143,7 +145,7 @@ GET    /api/users/{userId}                                → 200 + user profile
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-analytics
+  prompt: speckit.cosmosdb.scaffold-analytics
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -298,3 +300,7 @@ await processor.StartAsync();
 - [ ] Proper client lifecycle
 - [ ] Parameterized queries
 - [ ] Error mapping
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

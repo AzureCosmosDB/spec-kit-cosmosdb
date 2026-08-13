@@ -2,7 +2,9 @@
 description: "Generate a CQRS pattern with Cosmos DB: write model + read views materialized via change feed."
 ---
 
-# /cosmos.cqrs
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.cqrs
 
 > Generate a CQRS pattern with Cosmos DB: write model + read views materialized via change feed.
 

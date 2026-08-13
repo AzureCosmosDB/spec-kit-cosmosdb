@@ -2,7 +2,9 @@
 description: "Generate a transactional batch operation within a single partition."
 ---
 
-# /cosmos.transaction
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.transaction
 
 > Generate a transactional batch operation within a single partition.
 

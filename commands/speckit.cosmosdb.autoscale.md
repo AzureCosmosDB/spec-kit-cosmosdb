@@ -2,7 +2,9 @@
 description: "Configure autoscale throughput for variable workloads."
 ---
 
-# /cosmos.autoscale
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.autoscale
 
 > Configure autoscale throughput for variable workloads.
 

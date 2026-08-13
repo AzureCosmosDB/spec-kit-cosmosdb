@@ -2,7 +2,9 @@
 description: "Add SDK diagnostics logging for troubleshooting latency and errors."
 ---
 
-# /cosmos.diagnostics
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.diagnostics
 
 > Add SDK diagnostics logging for troubleshooting latency and errors.
 

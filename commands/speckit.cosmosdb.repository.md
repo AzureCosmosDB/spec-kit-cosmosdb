@@ -2,7 +2,9 @@
 description: "Generate a data access layer (repository) for a Cosmos DB container."
 ---
 
-# /cosmos.repository
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.repository
 
 > Generate a data access layer (repository) for a Cosmos DB container.
 

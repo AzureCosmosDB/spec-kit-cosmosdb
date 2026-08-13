@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB multi-tenant SaaS platform with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-saas
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-saas
 
 > Generate a complete Azure Cosmos DB multi-tenant SaaS platform with deterministic, production-ready architecture.
 
@@ -146,7 +148,7 @@ Rules:
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-saas
+  prompt: speckit.cosmosdb.scaffold-saas
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -316,3 +318,7 @@ const { resource } = await container.item(id, pk).read();
 - [ ] Proper client lifecycle
 - [ ] Parameterized queries
 - [ ] Error mapping
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

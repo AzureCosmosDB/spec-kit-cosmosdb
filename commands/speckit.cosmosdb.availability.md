@@ -2,7 +2,9 @@
 description: "Configure availability strategy and circuit breaker for resilient Cosmos DB access."
 ---
 
-# /cosmos.availability
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.availability
 
 > Configure availability strategy and circuit breaker for resilient Cosmos DB access.
 

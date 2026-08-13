@@ -2,7 +2,9 @@
 description: "Generate a point read operation (the cheapest possible Cosmos DB read at 1 RU)."
 ---
 
-# /cosmos.point-read
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.point-read
 
 > Generate a point read operation (the cheapest possible Cosmos DB read at 1 RU).
 

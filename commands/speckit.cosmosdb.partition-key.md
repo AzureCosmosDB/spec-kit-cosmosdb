@@ -2,7 +2,9 @@
 description: "Recommend an optimal partition key for a container based on access patterns."
 ---
 
-# /cosmos.partition-key
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.partition-key
 
 > Recommend an optimal partition key for a container based on access patterns.
 

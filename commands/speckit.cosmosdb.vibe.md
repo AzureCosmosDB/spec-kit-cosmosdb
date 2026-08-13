@@ -2,7 +2,9 @@
 description: "Tell me what you want to build. I'll figure out exactly which command to run."
 ---
 
-# /cosmos.vibe
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.vibe
 
 > Tell me what you want to build. I'll figure out exactly which command to run.
 
@@ -38,18 +40,18 @@ Match to the closest scaffold from this list:
 
 | Scaffold | Triggers (keywords / patterns) |
 |----------|-------------------------------|
-| `cosmos.scaffold-ecommerce` | shop, store, orders, cart, checkout, products, catalog, payments |
-| `cosmos.scaffold-iot` | sensors, devices, telemetry, IoT, readings, monitoring, edge |
-| `cosmos.scaffold-chat` | chat, messages, conversations, real-time, messaging |
-| `cosmos.scaffold-cms` | content, articles, blog, pages, publishing, editorial |
-| `cosmos.scaffold-saas` | SaaS, tenants, subscriptions, multi-tenant, billing |
-| `cosmos.scaffold-social` | social, posts, followers, feed, likes, comments, profiles |
-| `cosmos.scaffold-inventory` | inventory, stock, warehouse, SKU, supply chain |
-| `cosmos.scaffold-booking` | booking, reservations, appointments, scheduling, calendar |
-| `cosmos.scaffold-analytics` | analytics, dashboards, metrics, reporting, aggregation |
-| `cosmos.scaffold-workflow` | workflow, tasks, pipeline, approvals, state machine |
-| `cosmos.scaffold-rag` | RAG, search, embeddings, vector, knowledge base, Q&A |
-| `cosmos.scaffold` | (generic fallback — use when nothing else fits) |
+| `speckit.cosmosdb.scaffold-ecommerce` | shop, store, orders, cart, checkout, products, catalog, payments |
+| `speckit.cosmosdb.scaffold-iot` | sensors, devices, telemetry, IoT, readings, monitoring, edge |
+| `speckit.cosmosdb.scaffold-chat` | chat, messages, conversations, real-time, messaging |
+| `speckit.cosmosdb.scaffold-cms` | content, articles, blog, pages, publishing, editorial |
+| `speckit.cosmosdb.scaffold-saas` | SaaS, tenants, subscriptions, multi-tenant, billing |
+| `speckit.cosmosdb.scaffold-social` | social, posts, followers, feed, likes, comments, profiles |
+| `speckit.cosmosdb.scaffold-inventory` | inventory, stock, warehouse, SKU, supply chain |
+| `speckit.cosmosdb.scaffold-booking` | booking, reservations, appointments, scheduling, calendar |
+| `speckit.cosmosdb.scaffold-analytics` | analytics, dashboards, metrics, reporting, aggregation |
+| `speckit.cosmosdb.scaffold-workflow` | workflow, tasks, pipeline, approvals, state machine |
+| `speckit.cosmosdb.scaffold-rag` | RAG, search, embeddings, vector, knowledge base, Q&A |
+| `speckit.cosmosdb.scaffold` | (generic fallback — use when nothing else fits) |
 
 If multiple scaffolds could apply, pick the **primary** one and note the secondary influence.
 
@@ -92,7 +94,7 @@ Output this exact format:
 ```
 ## Intent Analysis
 
-- **Matched scaffold:** cosmos.scaffold-{type}
+- **Matched scaffold:** speckit.cosmosdb.scaffold-{type}
 - **Inferred language:** {Language} ({Framework})
 - **Inferred scale:** ~{X} users, {Y} documents
 - **Generated query patterns:**
@@ -118,7 +120,7 @@ After showing the Intent Analysis, output the exact command the user should run,
 ```
 ## Recommended Command
 
-/cosmos.scaffold-{type}
+/speckit.cosmosdb.scaffold-{type}
 language: {inferred_language}
 framework: {inferred_framework}
 primary_queries:
@@ -143,13 +145,13 @@ After the recommended command, include this footer (customized to the matched sc
 ---
 
 💡 **Learn More — Related Commands:**
-- `/cosmos.scaffold-{matched}` — Full {type} app scaffold with all options
-- `/cosmos.model` — Design your data model with explicit access patterns
-- `/cosmos.partition-key` — Deep-dive on partition key selection
-- `/cosmos.repository` — Generate data access layer for a specific entity
-- `/cosmos.singleton` — Just the client setup
+- `/speckit.cosmosdb.scaffold-{matched}` — Full {type} app scaffold with all options
+- `/speckit.cosmosdb.model` — Design your data model with explicit access patterns
+- `/speckit.cosmosdb.partition-key` — Deep-dive on partition key selection
+- `/speckit.cosmosdb.repository` — Generate data access layer for a specific entity
+- `/speckit.cosmosdb.singleton` — Just the client setup
 
-You used `/cosmos.vibe` — the guided entry point.
+You used `/speckit.cosmosdb.vibe` — the guided entry point.
 These commands give you fine-grained control over every architectural decision.
 ```
 

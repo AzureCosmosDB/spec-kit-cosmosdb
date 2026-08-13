@@ -2,7 +2,9 @@
 description: "Generate an API endpoint backed by Cosmos DB with proper error mapping."
 ---
 
-# /cosmos.endpoint
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.endpoint
 
 > Generate an API endpoint backed by Cosmos DB with proper error mapping.
 

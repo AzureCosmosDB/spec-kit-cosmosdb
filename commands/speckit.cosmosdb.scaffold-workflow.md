@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB workflow/task management application with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-workflow
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-workflow
 
 > Generate a complete Azure Cosmos DB workflow/task management application with deterministic, production-ready architecture.
 
@@ -144,7 +146,7 @@ GET    /api/projects/{projectId}/activity?from=&to=                → 200 + rec
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-workflow
+  prompt: speckit.cosmosdb.scaffold-workflow
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -305,3 +307,7 @@ def validate_transition(current: str, target: str) -> bool:
 - [ ] Proper client lifecycle
 - [ ] Parameterized queries
 - [ ] Error mapping
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

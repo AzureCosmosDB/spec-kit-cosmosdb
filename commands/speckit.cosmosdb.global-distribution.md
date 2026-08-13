@@ -2,7 +2,9 @@
 description: "Configure multi-region writes, conflict resolution, and preferred regions."
 ---
 
-# /cosmos.global-distribution
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.global-distribution
 
 > Configure multi-region writes, conflict resolution, and preferred regions.
 

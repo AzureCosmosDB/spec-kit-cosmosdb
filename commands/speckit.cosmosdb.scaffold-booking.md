@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB appointment/reservation system with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-booking
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-booking
 
 > Generate a complete Azure Cosmos DB appointment/reservation system with deterministic, production-ready architecture.
 
@@ -138,7 +140,7 @@ POST   /api/providers/{providerId}/slots/generate                  → 201 + gen
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-booking
+  prompt: speckit.cosmosdb.scaffold-booking
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -307,3 +309,7 @@ if (!response.IsSuccessStatusCode) { /* conflict handling */ }
 - [ ] Proper client lifecycle
 - [ ] Parameterized queries
 - [ ] Error mapping
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

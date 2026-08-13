@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB warehouse inventory management application with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-inventory
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-inventory
 
 > Generate a complete Azure Cosmos DB warehouse inventory management application with deterministic, production-ready architecture.
 
@@ -132,7 +134,7 @@ GET    /api/products/{productId}/stock                            → 200 + stoc
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-inventory
+  prompt: speckit.cosmosdb.scaffold-inventory
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -283,3 +285,7 @@ var response = await batch.ExecuteAsync();
 - [ ] Proper client lifecycle
 - [ ] Parameterized queries
 - [ ] Error mapping
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

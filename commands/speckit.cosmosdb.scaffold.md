@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB application with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold
 
 > Generate a complete Azure Cosmos DB application with deterministic, production-ready architecture.
 
@@ -114,7 +116,7 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 # iteration-config.yaml — controls iterative refinement of this scaffold
 version: 1
 scaffold:
-  prompt: cosmos.scaffold
+  prompt: speckit.cosmosdb.scaffold
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 

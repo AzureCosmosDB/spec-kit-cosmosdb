@@ -2,7 +2,9 @@
 description: "Generate a session/cache storage pattern with Cosmos DB and TTL-based expiration."
 ---
 
-# /cosmos.session-state
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.session-state
 
 > Generate a session/cache storage pattern with Cosmos DB and TTL-based expiration.
 

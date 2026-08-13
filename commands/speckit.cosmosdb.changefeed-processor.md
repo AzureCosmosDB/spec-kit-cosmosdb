@@ -2,7 +2,9 @@
 description: "Generate a complete change feed processor with lease management, error handling, and checkpointing."
 ---
 
-# /cosmos.changefeed-processor
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.changefeed-processor
 
 > Generate a complete change feed processor with lease management, error handling, and checkpointing.
 

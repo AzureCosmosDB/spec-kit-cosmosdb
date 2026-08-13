@@ -2,7 +2,9 @@
 description: "Scaffold a complete RAG (Retrieval-Augmented Generation) application with Cosmos DB vector search."
 ---
 
-# /cosmos.rag
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.rag
 
 > Scaffold a complete RAG (Retrieval-Augmented Generation) application with Cosmos DB vector search.
 

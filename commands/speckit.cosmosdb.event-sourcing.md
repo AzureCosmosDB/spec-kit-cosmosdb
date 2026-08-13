@@ -2,7 +2,9 @@
 description: "Generate an event sourcing implementation with Cosmos DB: append-only events, snapshots, and projections."
 ---
 
-# /cosmos.event-sourcing
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.event-sourcing
 
 > Generate an event sourcing implementation with Cosmos DB: append-only events, snapshots, and projections.
 

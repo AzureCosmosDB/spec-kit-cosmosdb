@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB real-time chat application with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-chat
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-chat
 
 > Generate a complete Azure Cosmos DB real-time chat application with deterministic, production-ready architecture.
 
@@ -129,7 +131,7 @@ Rules:
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-chat
+  prompt: speckit.cosmosdb.scaffold-chat
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -306,3 +308,7 @@ const { resources, continuationToken } = await container.items.query(
 - [ ] Proper client lifecycle
 - [ ] Parameterized queries
 - [ ] Error mapping
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

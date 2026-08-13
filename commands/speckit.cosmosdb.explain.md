@@ -2,13 +2,15 @@
 description: "Learn Cosmos DB concepts with best practices and Intent SDK context."
 ---
 
-# /cosmos.explain
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.explain
 
 > Learn Cosmos DB concepts with best practices and Intent SDK context.
 
 ## Intent
 
-Explain a Cosmos DB concept in plain language with practical examples, common mistakes, and references to relevant `/cosmos.*` commands for hands-on application.
+Explain a Cosmos DB concept in plain language with practical examples, common mistakes, and references to relevant `/speckit.cosmosdb.*` commands for hands-on application.
 
 ## Required Inputs
 
@@ -55,9 +57,9 @@ You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{co
 | {scenario} | {option} | {what you give up} |
 
 ## Try It With Intent SDK
-{Map to specific /cosmos.* commands:}
-- `/cosmos.{command}` — {how it relates to this concept}
-- `/cosmos.{command}` — {how it relates to this concept}
+{Map to specific /speckit.cosmosdb.* commands:}
+- `/speckit.cosmosdb.{command}` — {how it relates to this concept}
+- `/speckit.cosmosdb.{command}` — {how it relates to this concept}
 ```
 
 ### Concept-Specific Guidance
@@ -66,8 +68,8 @@ You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{co
 - Explain the physical partition → logical partition → partition key relationship
 - Show how query patterns determine the right key (link to `/cosmos.partition-key`)
 - Demonstrate hot partition problems with numbers
-- Cover hierarchical partition keys for multi-tenant scenarios (link to `/cosmos.hierarchical-pk`)
-- **Key commands:** `/cosmos.partition-key`, `/cosmos.hierarchical-pk`, `/cosmos.model`
+- Cover hierarchical partition keys for multi-tenant scenarios (link to `/speckit.cosmosdb.hierarchical-pk`)
+- **Key commands:** `/cosmos.partition-key`, `/speckit.cosmosdb.hierarchical-pk`, `/cosmos.model`
 
 #### For "consistency levels"
 - Explain all 5 levels: Strong → Bounded Staleness → Session → Consistent Prefix → Eventual
@@ -96,7 +98,7 @@ You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{co
 
 #### For any other concept
 - Follow the general output format above
-- Map to the most relevant `/cosmos.*` commands
+- Map to the most relevant `/speckit.cosmosdb.*` commands
 - Always include at least one Good ✅ and one Bad ❌ example
 
 ## Anti-Patterns to REJECT
@@ -105,4 +107,4 @@ You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{co
 - ❌ Linking to external documentation without explaining the concept first
 - ❌ Theoretical explanations without practical code
 - ❌ Skipping the "Common Mistakes" section
-- ❌ Not referencing relevant `/cosmos.*` commands
+- ❌ Not referencing relevant `/speckit.cosmosdb.*` commands

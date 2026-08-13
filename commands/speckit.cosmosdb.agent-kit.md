@@ -2,6 +2,8 @@
 description: "Apply Cosmos DB best-practice rules for the current session"
 ---
 
+<!-- User arguments: $ARGUMENTS -->
+
 # /speckit.cosmosdb.agent-kit
 
 > Load Cosmos DB best-practice rules into the current AI coding session.

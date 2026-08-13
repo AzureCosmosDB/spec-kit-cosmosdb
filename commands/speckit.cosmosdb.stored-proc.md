@@ -2,7 +2,9 @@
 description: "Create stored procedures for atomic transactional operations within a partition."
 ---
 
-# /cosmos.stored-proc
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.stored-proc
 
 > Create stored procedures for atomic transactional operations within a partition.
 

@@ -2,7 +2,9 @@
 description: "Generate 429 (TooManyRequests) handling with exponential backoff."
 ---
 
-# /cosmos.retry
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.retry
 
 > Generate 429 (TooManyRequests) handling with exponential backoff.
 

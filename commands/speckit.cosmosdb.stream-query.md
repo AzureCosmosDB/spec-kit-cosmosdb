@@ -2,7 +2,9 @@
 description: "Generate an efficient streaming query for large result sets."
 ---
 
-# /cosmos.stream-query
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.stream-query
 
 > Generate an efficient streaming query for large result sets.
 

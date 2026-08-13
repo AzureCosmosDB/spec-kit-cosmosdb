@@ -2,7 +2,9 @@
 description: "Generate Cosmos DB container configuration with throughput, indexing, and partition strategy."
 ---
 
-# /cosmos.container
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.container
 
 > Generate Cosmos DB container configuration with throughput, indexing, and partition strategy.
 

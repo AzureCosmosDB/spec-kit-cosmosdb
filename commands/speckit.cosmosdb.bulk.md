@@ -2,7 +2,9 @@
 description: "Generate bulk operation code for high-throughput writes to Cosmos DB."
 ---
 
-# /cosmos.bulk
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.bulk
 
 > Generate bulk operation code for high-throughput writes to Cosmos DB.
 

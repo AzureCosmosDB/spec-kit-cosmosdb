@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB e-commerce order API with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-ecommerce
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-ecommerce
 
 > Generate a complete Azure Cosmos DB e-commerce order API with deterministic, production-ready architecture.
 
@@ -159,7 +161,7 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 # iteration-config.yaml — controls iterative refinement of this scaffold
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-ecommerce
+  prompt: speckit.cosmosdb.scaffold-ecommerce
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 

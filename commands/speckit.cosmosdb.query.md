@@ -2,7 +2,9 @@
 description: "Generate an optimized Cosmos DB SQL query with RU estimation."
 ---
 
-# /cosmos.query
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.query
 
 > Generate an optimized Cosmos DB SQL query with RU estimation.
 

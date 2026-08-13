@@ -2,7 +2,9 @@
 description: "Generate a change feed processor for event-driven processing."
 ---
 
-# /cosmos.changefeed
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.changefeed
 
 > Generate a change feed processor for event-driven processing.
 

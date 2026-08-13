@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB social feed/timeline application with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-social
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-social
 
 > Generate a complete Azure Cosmos DB social feed/timeline application with deterministic, production-ready architecture.
 
@@ -142,7 +144,7 @@ POST   /api/users/{userId}/notifications/read                    → 200 (mark a
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-social
+  prompt: speckit.cosmosdb.scaffold-social
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -287,3 +289,7 @@ aiohttp>=3.9.0
 - [ ] Proper client lifecycle
 - [ ] Parameterized queries
 - [ ] Error mapping
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

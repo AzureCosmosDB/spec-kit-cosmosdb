@@ -2,7 +2,9 @@
 description: "Generate a custom indexing policy optimized for specific query patterns."
 ---
 
-# /cosmos.index-policy
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.index-policy
 
 > Generate a custom indexing policy optimized for specific query patterns.
 

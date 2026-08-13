@@ -2,7 +2,9 @@
 description: "Generate atomic patch operations for partial document updates."
 ---
 
-# /cosmos.patch
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.patch
 
 > Generate atomic patch operations for partial document updates.
 

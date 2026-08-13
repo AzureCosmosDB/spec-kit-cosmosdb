@@ -2,7 +2,9 @@
 description: "Design hierarchical (sub-partitioned) partition keys for multi-tenant and high-cardinality scenarios."
 ---
 
-# /cosmos.hierarchical-pk
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.hierarchical-pk
 
 > Design hierarchical (sub-partitioned) partition keys for multi-tenant and high-cardinality scenarios.
 

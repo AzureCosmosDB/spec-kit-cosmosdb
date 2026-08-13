@@ -2,7 +2,9 @@
 description: "Generate a Cosmos DB document model with intentional partition key strategy."
 ---
 
-# /cosmos.model
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.model
 
 > Generate a Cosmos DB document model with intentional partition key strategy.
 

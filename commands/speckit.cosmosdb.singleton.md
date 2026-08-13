@@ -2,7 +2,9 @@
 description: "Generate a CosmosClient singleton pattern for dependency injection."
 ---
 
-# /cosmos.singleton
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.singleton
 
 > Generate a CosmosClient singleton pattern for dependency injection.
 

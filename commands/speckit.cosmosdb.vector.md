@@ -2,7 +2,9 @@
 description: "Generate vector search configuration and query code for Cosmos DB."
 ---
 
-# /cosmos.vector
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.vector
 
 > Generate vector search configuration and query code for Cosmos DB.
 

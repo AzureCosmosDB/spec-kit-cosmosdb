@@ -2,7 +2,9 @@
 description: "Configure JSON serialization for correct property naming, enum handling, and custom converters."
 ---
 
-# /cosmos.serialization
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.serialization
 
 > Configure JSON serialization for correct property naming, enum handling, and custom converters.
 

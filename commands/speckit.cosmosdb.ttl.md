@@ -2,7 +2,9 @@
 description: "Configure Time-to-Live policies for automatic data expiration."
 ---
 
-# /cosmos.ttl
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.ttl
 
 > Configure Time-to-Live policies for automatic data expiration.
 

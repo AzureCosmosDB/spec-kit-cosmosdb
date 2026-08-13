@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB IoT device telemetry application with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-iot
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-iot
 
 > Generate a complete Azure Cosmos DB IoT device telemetry application with deterministic, production-ready architecture.
 
@@ -146,7 +148,7 @@ For each entity:
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-iot
+  prompt: speckit.cosmosdb.scaffold-iot
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -357,3 +359,7 @@ await container.items.bulk(operations);
 - [ ] Error mapping
 
 Generate the complete application following ALL constraints above.
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

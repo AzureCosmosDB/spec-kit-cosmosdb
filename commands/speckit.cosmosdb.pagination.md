@@ -2,7 +2,9 @@
 description: "Generate continuation-token-based pagination for Cosmos DB queries."
 ---
 
-# /cosmos.pagination
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.pagination
 
 > Generate continuation-token-based pagination for Cosmos DB queries.
 

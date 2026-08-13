@@ -2,7 +2,9 @@
 description: "Generate a complete Azure Cosmos DB content management system with deterministic, production-ready architecture."
 ---
 
-# /cosmos.scaffold-cms
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.scaffold-cms
 
 > Generate a complete Azure Cosmos DB content management system with deterministic, production-ready architecture.
 
@@ -139,7 +141,7 @@ GET    /api/articles/search?q=keyword                                → 200 + m
 ```yaml
 version: 1
 scaffold:
-  prompt: cosmos.scaffold-cms
+  prompt: speckit.cosmosdb.scaffold-cms
   language: "{{language}}"
   generated_at: "{{ISO_8601_TIMESTAMP}}"
 
@@ -298,3 +300,7 @@ items = container.query_items(query=query, parameters=parameters, partition_key=
 - [ ] Proper client lifecycle
 - [ ] Parameterized queries
 - [ ] Error mapping
+
+## Telemetry
+
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.

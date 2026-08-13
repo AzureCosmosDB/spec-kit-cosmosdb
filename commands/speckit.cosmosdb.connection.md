@@ -2,7 +2,9 @@
 description: "Generate connection configuration for emulator and production environments."
 ---
 
-# /cosmos.connection
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.connection
 
 > Generate connection configuration for emulator and production environments.
 

@@ -2,7 +2,9 @@
 description: "Generate a cross-partition query with explicit cost awareness and guards."
 ---
 
-# /cosmos.cross-partition
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.cross-partition
 
 > Generate a cross-partition query with explicit cost awareness and guards.
 

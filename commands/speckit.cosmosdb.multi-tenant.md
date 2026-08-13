@@ -2,7 +2,9 @@
 description: "Generate multi-tenant data isolation patterns for Cosmos DB."
 ---
 
-# /cosmos.multi-tenant
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.multi-tenant
 
 > Generate multi-tenant data isolation patterns for Cosmos DB.
 

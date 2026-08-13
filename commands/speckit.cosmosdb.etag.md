@@ -2,7 +2,9 @@
 description: "Generate optimistic concurrency control using ETags."
 ---
 
-# /cosmos.etag
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.etag
 
 > Generate optimistic concurrency control using ETags.
 

@@ -2,7 +2,9 @@
 description: "Generate a conditional create that rejects duplicates using ifNoneMatch ETag."
 ---
 
-# /cosmos.conditional-create
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.conditional-create
 
 > Generate a conditional create that rejects duplicates using ifNoneMatch ETag.
 

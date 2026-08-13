@@ -2,13 +2,15 @@
 description: "Audit your Cosmos DB code against Intent SDK best practices."
 ---
 
-# /cosmos.review
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.review
 
 > Audit your Cosmos DB code against Intent SDK best practices.
 
 ## Intent
 
-Review existing Cosmos DB code for anti-patterns, misconfigurations, and missed optimizations. Produce a scored report with actionable fixes referencing specific `/cosmos.*` commands.
+Review existing Cosmos DB code for anti-patterns, misconfigurations, and missed optimizations. Produce a scored report with actionable fixes referencing specific `/speckit.cosmosdb.*` commands.
 
 ## Required Inputs
 
@@ -37,14 +39,14 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 - [ ] Connection mode is set (Direct for production, Gateway for emulator)
 - [ ] User-agent suffix is set (`cosmos-intent-sdk/0.1.0` or custom)
 
-**Fix command:** `/cosmos.singleton`
+**Fix command:** `/speckit.cosmosdb.singleton`
 
 #### 2. Connection & Configuration
 - [ ] Connection string/endpoint is from environment variables (not hardcoded)
 - [ ] No secrets in source code
 - [ ] Separate config for emulator vs. production
 
-**Fix command:** `/cosmos.connection`
+**Fix command:** `/speckit.cosmosdb.connection`
 
 #### 3. Partition Key Strategy
 - [ ] Partition key aligns with primary query patterns
@@ -52,7 +54,7 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 - [ ] High-cardinality field selected
 - [ ] Partition key justification documented
 
-**Fix command:** `/cosmos.partition-key`, `/cosmos.model`
+**Fix command:** `/speckit.cosmosdb.partition-key`, `/speckit.cosmosdb.model`
 
 #### 4. Query Patterns
 - [ ] Queries include partition key in WHERE clause
@@ -60,7 +62,7 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 - [ ] Parameterized queries used (no string concatenation)
 - [ ] Pagination implemented for list queries
 
-**Fix command:** `/cosmos.query`, `/cosmos.cross-partition`, `/cosmos.pagination`
+**Fix command:** `/speckit.cosmosdb.query`, `/speckit.cosmosdb.cross-partition`, `/speckit.cosmosdb.pagination`
 
 #### 5. Error Handling & Resilience
 - [ ] 429 (throttling) handled with retry logic
@@ -68,7 +70,7 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 - [ ] 404 handled gracefully (not as exception crash)
 - [ ] 409 (conflict) handled for concurrent writes
 
-**Fix command:** `/cosmos.retry`, `/cosmos.etag`
+**Fix command:** `/speckit.cosmosdb.retry`, `/speckit.cosmosdb.etag`
 
 #### 6. Data Modeling
 - [ ] Documents include `id`, `type`, `createdAt`, `updatedAt`
@@ -76,14 +78,14 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 - [ ] No deeply nested structures used as partition keys
 - [ ] Null values omitted rather than stored
 
-**Fix command:** `/cosmos.model`
+**Fix command:** `/speckit.cosmosdb.model`
 
 #### 7. Architecture
 - [ ] Proper layering (routes → services → repository → SDK)
 - [ ] No direct SDK calls from route handlers
 - [ ] Repository pattern or equivalent data access abstraction
 
-**Fix command:** `/cosmos.repository`, `/cosmos.endpoint`
+**Fix command:** `/speckit.cosmosdb.repository`, `/speckit.cosmosdb.endpoint`
 
 #### 8. Performance
 - [ ] Point reads used where possible (id + partition key)
@@ -91,7 +93,7 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 - [ ] Indexing policy customized (not default index-everything)
 - [ ] TTL configured for transient data
 
-**Fix command:** `/cosmos.point-read`, `/cosmos.bulk`, `/cosmos.index-policy`, `/cosmos.ttl`
+**Fix command:** `/speckit.cosmosdb.point-read`, `/speckit.cosmosdb.bulk`, `/speckit.cosmosdb.index-policy`, `/speckit.cosmosdb.ttl`
 
 ### Output Format
 
@@ -122,7 +124,7 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 **Category:** {category}
 **Line(s):** {line numbers if applicable}
 **Problem:** {description}
-**Fix:** Run `/cosmos.{command}` with your parameters, or apply this change:
+**Fix:** Run `/speckit.cosmosdb.{command}` with your parameters, or apply this change:
 ```{language}
 // before
 {problematic code}
@@ -132,7 +134,7 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 ```
 
 ## Recommendations
-{Prioritized list of improvements with /cosmos.* commands to run}
+{Prioritized list of improvements with /speckit.cosmosdb.* commands to run}
 ```
 
 ### Scoring Rules

@@ -2,7 +2,9 @@
 description: "Generate a migration plan and code to move from another database to Azure Cosmos DB."
 ---
 
-# /cosmos.migrate
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.migrate
 
 > Generate a migration plan and code to move from another database to Azure Cosmos DB.
 

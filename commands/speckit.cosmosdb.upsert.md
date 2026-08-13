@@ -2,7 +2,9 @@
 description: "Generate an upsert operation with conflict handling."
 ---
 
-# /cosmos.upsert
+<!-- User arguments: $ARGUMENTS -->
+
+# /speckit.cosmosdb.upsert
 
 > Generate an upsert operation with conflict handling.
 
