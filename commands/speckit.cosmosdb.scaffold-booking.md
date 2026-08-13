@@ -73,7 +73,7 @@ For customer booking history: maintain a denormalized `customerBookings` contain
 # Cross-partition required for: customer booking history (use denormalized container).
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 ```
 GET    /api/{resource}           → 200 + array
@@ -117,10 +117,10 @@ POST   /api/providers/{providerId}/slots/generate                  → 201 + gen
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys
 - ❌ Cross-partition queries without explicit comment
@@ -200,7 +200,7 @@ aiohttp>=3.9.0
 └── README.md
 ```
 
-### SDK Method Reference — Etag Concurrency
+### SDK Method Reference - Etag Concurrency
 ```python
 # Read slot with etag
 slot = await container.read_item(item=slot_id, partition_key=provider_id)
@@ -217,7 +217,7 @@ await container.replace_item(
 ```
 
 ### NEVER use these
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
 - ❌ `ConnectionMode.Direct`
 
 ---
@@ -244,7 +244,7 @@ await container.replace_item(
 └── README.md
 ```
 
-### SDK Patterns — Transactional Batch
+### SDK Patterns - Transactional Batch
 ```csharp
 var batch = container.CreateTransactionalBatch(new PartitionKey(providerId));
 batch.ReplaceItem(slot.Id, bookedSlot, new TransactionalBatchItemRequestOptions { IfMatchEtag = etag });

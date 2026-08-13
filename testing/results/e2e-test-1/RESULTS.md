@@ -1,4 +1,4 @@
-# E2E Test Results — cosmos.scaffold.md
+# E2E Test Results - cosmos.scaffold.md
 
 **Date:** 2026-07-26  
 **Emulator:** Cosmos DB vnext emulator (HTTP mode, localhost:8081)  
@@ -7,7 +7,7 @@
 
 ## Did the app start successfully?
 
-**YES** — after fixing 2 bugs (see below).
+**YES** - after fixing 2 bugs (see below).
 
 ## Endpoint Results
 
@@ -28,7 +28,7 @@ All CRUD operations verified against live Cosmos DB emulator.
 ## Bugs Found (required fixes before app would start)
 
 ### Bug 1: `azure-cosmos` SDK version incompatibility
-- **Problem:** The prompt's architecture suggests `client.ReadAccountAsync()` (C# style). The Python equivalent in `azure-cosmos==4.5.1` was `client.read_account()` but that doesn't exist — it's `client.get_database_account()` in 4.9.0.
+- **Problem:** The prompt's architecture suggests `client.ReadAccountAsync()` (C# style). The Python equivalent in `azure-cosmos==4.5.1` was `client.read_account()` but that doesn't exist - it's `client.get_database_account()` in 4.9.0.
 - **Fix:** Changed health check to `client.get_database_account()`.
 - **Prompt gap:** The scaffold prompt is language-agnostic but uses C#-style method names. It should specify the correct SDK method per language.
 
@@ -44,13 +44,13 @@ All CRUD operations verified against live Cosmos DB emulator.
 
 ## Cosmos DB Errors
 
-- **400 "Invalid path or method"** — double-slash issue with older SDK + vnext emulator (Bug 3)
+- **400 "Invalid path or method"** - double-slash issue with older SDK + vnext emulator (Bug 3)
 - No RU/throttling errors, no partition key errors, no other Cosmos-specific issues.
 
 ## Recommendations for Prompt Improvement
 
-1. **Add language-specific SDK method references** — The health check guidance uses C# method names. Add a note: "For Python: `client.get_database_account()`"
-2. **Address partition key bootstrapping** — When partition key = auto-generated ID, the model needs a default value or a factory pattern. The prompt should include a note about this pattern.
-3. **Specify minimum SDK versions** — Add: "Use `azure-cosmos>=4.7.0` for Python" to avoid emulator compatibility bugs.
-4. **Add a "common pitfalls" section per language** — Pydantic v2 validation-on-construction is a Python-specific gotcha that the prompt doesn't address.
-5. **The `offer_throughput` parameter** — Works on the emulator but may need `ThroughputProperties` for serverless accounts. Prompt should note this.
+1. **Add language-specific SDK method references** - The health check guidance uses C# method names. Add a note: "For Python: `client.get_database_account()`"
+2. **Address partition key bootstrapping** - When partition key = auto-generated ID, the model needs a default value or a factory pattern. The prompt should include a note about this pattern.
+3. **Specify minimum SDK versions** - Add: "Use `azure-cosmos>=4.7.0` for Python" to avoid emulator compatibility bugs.
+4. **Add a "common pitfalls" section per language** - Pydantic v2 validation-on-construction is a Python-specific gotcha that the prompt doesn't address.
+5. **The `offer_throughput` parameter** - Works on the emulator but may need `ThroughputProperties` for serverless accounts. Prompt should note this.

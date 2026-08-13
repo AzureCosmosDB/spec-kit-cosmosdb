@@ -37,16 +37,16 @@ Generate a CosmosClient singleton. Follow these constraints exactly:
 - Settings class MUST be named `CosmosSettings`
 - Health check function MUST be named `check_cosmos_health`
 - MUST include type hints on ALL functions and return types
-- Disposal MUST use FastAPI lifespan context manager (Python) / `IHostApplicationLifetime` (C#) — NOT `atexit`
+- Disposal MUST use FastAPI lifespan context manager (Python) / `IHostApplicationLifetime` (C#) - NOT `atexit`
 
 ### Rules
 
-1. **ONE instance per application** — registered as singleton in DI
+1. **ONE instance per application** - registered as singleton in DI
 2. **Configuration via environment variables**:
-   - `COSMOS_ENDPOINT` — account endpoint URL
-   - `COSMOS_KEY` — primary key (if connection string auth)
-   - `COSMOS_DATABASE` — default database name
-   - `COSMOS_CONNECTION_STRING` — full connection string (alternative)
+   - `COSMOS_ENDPOINT` - account endpoint URL
+   - `COSMOS_KEY` - primary key (if connection string auth)
+   - `COSMOS_DATABASE` - default database name
+   - `COSMOS_CONNECTION_STRING` - full connection string (alternative)
 3. **Client options**:
    ```
    ConnectionMode = Direct (production) / Gateway (emulator)
@@ -55,8 +55,8 @@ Generate a CosmosClient singleton. Follow these constraints exactly:
    MaxRetryWaitTimeOnRateLimitedRequests = 30s
    CosmosClientTelemetryOptions.DisableDistributedTracing = false
    ```
-4. **Dispose on shutdown** — register disposal with application lifetime via lifespan
-5. **Health check** — expose `ReadAccountAsync()` as health probe
+4. **Dispose on shutdown** - register disposal with application lifetime via lifespan
+5. **Health check** - expose `ReadAccountAsync()` as health probe
 
 ### Output
 

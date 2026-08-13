@@ -45,7 +45,7 @@ Scaffold a full event analytics application that uses Azure Cosmos DB as its pri
 - Events container MUST have TTL enabled. Default `defaultTtl: 7776000` (90 days).
 - Bulk ingestion endpoint accepts arrays of up to 500 events per request.
 - Use `AllowBulkExecution = true` (.NET) or equivalent for batch writes.
-- Events are append-only — no updates or deletes on raw events.
+- Events are append-only - no updates or deletes on raw events.
 
 ### Session Reconstruction
 
@@ -79,7 +79,7 @@ For `{{scale}}` > 10K RPS: Use hierarchical partition key `/sessionId/eventType`
 # sessionId distributes writes evenly across partitions for high-volume ingestion.
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 ```
 GET    /api/{resource}           → 200 + array
@@ -116,16 +116,16 @@ GET    /api/users/{userId}                                → 200 + user profile
 - `Event`: `id`, `sessionId` (PK), `userId`, `type` (pageView/click/custom), `name`, `properties` (object), `timestamp` (ISO 8601), `ttl` (optional override)
 - `Session`: `id`, `userId` (PK), `startTime`, `endTime`, `eventCount`, `pageViews`, `duration` (seconds), `createdAt`
 - `User`: `id`, `firstSeenAt`, `lastSeenAt`, `totalSessions`, `createdAt`
-- `Aggregation`: `id`, `granularity` (PK — "hourly" or "daily"), `date` (YYYY-MM-DD), `hour` (nullable, 0-23), `eventType`, `count`, `uniqueUsers`, `avgSessionDuration`, `computedAt`
+- `Aggregation`: `id`, `granularity` (PK - "hourly" or "daily"), `date` (YYYY-MM-DD), `hour` (nullable, 0-23), `eventType`, `count`, `uniqueUsers`, `avgSessionDuration`, `computedAt`
 
 ## Connection & Resilience
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys
 - ❌ Cross-partition queries without explicit comment
@@ -206,7 +206,7 @@ aiohttp>=3.9.0
 ```
 
 ### NEVER use these
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
 - ❌ `ConnectionMode.Direct`
 
 ---
@@ -234,7 +234,7 @@ aiohttp>=3.9.0
 └── README.md
 ```
 
-### SDK Patterns — Change Feed Processor
+### SDK Patterns - Change Feed Processor
 ```csharp
 var processor = container.GetChangeFeedProcessorBuilder<Event>("sessionBuilder", HandleChangesAsync)
     .WithInstanceName("instance-1")

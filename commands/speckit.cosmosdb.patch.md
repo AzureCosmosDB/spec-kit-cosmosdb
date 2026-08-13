@@ -33,12 +33,12 @@ Generate patch operations. Follow these constraints:
 
 ### Patch Operation Types
 
-- `Add` — set field (creates if not exists)
-- `Set` — set field (same as Add in most cases)
-- `Replace` — replace existing field (fails if not exists)
-- `Remove` — delete field
-- `Increment` — atomic increment numeric field
-- `Move` — move field value to another path
+- `Add` - set field (creates if not exists)
+- `Set` - set field (same as Add in most cases)
+- `Replace` - replace existing field (fails if not exists)
+- `Remove` - delete field
+- `Increment` - atomic increment numeric field
+- `Move` - move field value to another path
 
 ### Implementation
 

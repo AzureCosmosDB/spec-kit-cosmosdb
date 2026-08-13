@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Scaffold a full IoT telemetry ingestion and query application that uses Azure Cosmos DB as its primary data store. The output must be structurally identical across runs given the same inputs — partition keys, file structure, API paths, and SDK usage are all locked down by this prompt.
+Scaffold a full IoT telemetry ingestion and query application that uses Azure Cosmos DB as its primary data store. The output must be structurally identical across runs given the same inputs - partition keys, file structure, API paths, and SDK usage are all locked down by this prompt.
 
 ## Required Inputs
 
@@ -71,7 +71,7 @@ Output a justification comment at the top of every data model file:
 # time-range queries, active alerts). Hot device mitigation via hierarchical key at scale.
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 ```
 GET    /api/{resource}           → 200 + array
@@ -124,11 +124,11 @@ For each entity:
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 - Application name set in client options
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys in source code
 - ❌ Cross-partition queries without explicit `# CROSS-PARTITION: reason` comment
@@ -194,7 +194,7 @@ python-dotenv>=1.0.0
 aiohttp>=3.9.0
 ```
 
-### File Structure (MANDATORY — generate ALL files)
+### File Structure (MANDATORY - generate ALL files)
 ```
 {{app_name}}/
 ├── main.py
@@ -227,8 +227,8 @@ await client.close()
 ```
 
 ### NEVER use these (deprecated/wrong in Python SDK)
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
-- ❌ `ConnectionMode.Direct` — Python async client only supports Gateway mode
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
+- ❌ `ConnectionMode.Direct` - Python async client only supports Gateway mode
 - ❌ `offer_throughput` on serverless accounts
 
 ---
@@ -273,7 +273,7 @@ var options = new CosmosClientOptions { AllowBulkExecution = true };
 var tasks = readings.Select(r => container.CreateItemAsync(r, new PartitionKey(r.DeviceId)));
 await Task.WhenAll(tasks);
 
-// TTL — set on container creation
+// TTL - set on container creation
 var containerProperties = new ContainerProperties(id, "/deviceId") { DefaultTimeToLive = 2592000 };
 ```
 

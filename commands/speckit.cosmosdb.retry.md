@@ -55,7 +55,7 @@ This is sufficient for most workloads. The SDK reads `x-ms-retry-after-ms` heade
 
 For scenarios beyond SDK retry (e.g., bulk operations, custom HTTP calls):
 
-1. **Respect `Retry-After` header** — never retry before the indicated time
+1. **Respect `Retry-After` header** - never retry before the indicated time
 2. **Exponential backoff**: base delay × 2^attempt + `random.uniform(0, 1.0)` jitter
 3. **Max attempts**: 3 (default, configurable)
 4. **Circuit breaker**: if > 50% of requests are 429 in a 10s window, pause all operations for `Retry-After` period

@@ -46,7 +46,7 @@ Generate paginated query. Follow these constraints:
 2. Return continuation token from response headers for next page
 3. Accept continuation token to resume from previous position
 4. Always scope to a single partition key when possible
-5. Never use `OFFSET n LIMIT m` — it re-reads skipped rows and costs O(n) RU
+5. Never use `OFFSET n LIMIT m` - it re-reads skipped rows and costs O(n) RU
 
 ### Output
 

@@ -148,8 +148,8 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 ### Anti-Patterns to REJECT
 
 - ❌ Storing embeddings without a vector index (full scan = expensive)
-- ❌ Chunks too large (> 2000 tokens) — embeddings lose specificity
-- ❌ Chunks too small (< 100 tokens) — lack context
+- ❌ Chunks too large (> 2000 tokens) - embeddings lose specificity
+- ❌ Chunks too small (< 100 tokens) - lack context
 - ❌ No overlap between chunks (misses context at boundaries)
 - ❌ Ignoring token limits (stuffing too many results into prompt)
 - ❌ Not persisting chat history (loses conversational context)

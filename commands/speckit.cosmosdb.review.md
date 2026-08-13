@@ -145,9 +145,9 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 
 ### Scoring Rules
 
-- **❌ Fail** — Any of: hardcoded connection strings, per-request client creation, `/id` as partition key without justification, no retry logic, no error handling for 429s
-- **⚠️ Warn** — Any of: missing user-agent, default indexing policy, no pagination, missing timestamps, no health check
-- **✅ Pass** — Meets the criteria for the category
+- **❌ Fail** - Any of: hardcoded connection strings, per-request client creation, `/id` as partition key without justification, no retry logic, no error handling for 429s
+- **⚠️ Warn** - Any of: missing user-agent, default indexing policy, no pagination, missing timestamps, no health check
+- **✅ Pass** - Meets the criteria for the category
 
 ## Anti-Patterns to Flag
 

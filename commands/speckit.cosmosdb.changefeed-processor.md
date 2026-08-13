@@ -53,7 +53,7 @@ For `{{processing_logic}}`:
 1. **Idempotency**: Every change MUST be processed idempotently
    - Use `_lsn` + document `id` as deduplication key
    - Store last processed LSN per partition in checkpoint store
-2. **Filtering**: Not every document in the feed is relevant — filter early
+2. **Filtering**: Not every document in the feed is relevant - filter early
 3. **Batch processing**: Process entire batch before acknowledging
 4. **Error handling**:
    - Transient errors: Throw to retry entire batch (automatic re-delivery)
@@ -65,7 +65,7 @@ For `{{processing_logic}}`:
 1. **Automatic**: SDK checkpoints after handler returns successfully
 2. **Manual checkpoint**: NOT needed unless doing partial batch processing
 3. **Checkpoint frequency**: Per-batch (default SDK behavior)
-4. **Recovery**: On restart, resumes from last checkpoint — expect some re-delivery
+4. **Recovery**: On restart, resumes from last checkpoint - expect some re-delivery
 
 ### Scaling
 

@@ -43,11 +43,11 @@ CosmosClientOptions:
 
 ### Implementation Pattern
 
-1. **Create all tasks concurrently** — don't await individually
-2. **Group by partition key** — SDK batches same-partition operations automatically
-3. **Use `Task.WhenAll` / `Promise.all`** — let SDK handle internal batching
-4. **Stream from source** — don't load all {{estimated_count}} items into memory
-5. **Limit concurrency** — process in windows of 500-1000 concurrent operations
+1. **Create all tasks concurrently** - don't await individually
+2. **Group by partition key** - SDK batches same-partition operations automatically
+3. **Use `Task.WhenAll` / `Promise.all`** - let SDK handle internal batching
+4. **Stream from source** - don't load all {{estimated_count}} items into memory
+5. **Limit concurrency** - process in windows of 500-1000 concurrent operations
 
 ### Progress & Error Handling
 

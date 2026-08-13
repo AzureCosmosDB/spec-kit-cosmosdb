@@ -58,10 +58,10 @@ Scaffold a full real-time chat application that uses Azure Cosmos DB as its prim
 ```
 # PARTITION KEY: /conversationId
 # JUSTIFICATION: Messages are always queried within a conversation context.
-# Cross-partition required for: global message search (not supported — search within conversation only).
+# Cross-partition required for: global message search (not supported - search within conversation only).
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 ```
 GET    /api/{resource}           → 200 + array
@@ -109,10 +109,10 @@ Rules:
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys
 - ❌ Cross-partition queries without explicit comment
@@ -205,7 +205,7 @@ new_token = items.continuation_token
 ```
 
 ### NEVER use these (deprecated/wrong in Python SDK)
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
 - ❌ `ConnectionMode.Direct`
 
 ---

@@ -58,7 +58,7 @@
 | Health check | `client.read_account()` | `client.read_account()` | `cosmos.client.read_account()` |
 | Shutdown cleanup | ✅ `client.close()` | ❌ Missing | ✅ `cosmos.close()` |
 
-**Verdict: CRITICAL FINDING.** The prompt specifies `ConnectionMode = Direct` and retry config, but the Python SDK equivalent (`connection_policy`) was NOT correctly implemented in ANY run. Run 1 uses a made-up parameter. Run 2 skips it entirely. Run 3 defines config values but never passes them. This is a **prompt gap** — the prescriptive instructions are C#-centric and don't translate to Python SDK.
+**Verdict: CRITICAL FINDING.** The prompt specifies `ConnectionMode = Direct` and retry config, but the Python SDK equivalent (`connection_policy`) was NOT correctly implemented in ANY run. Run 1 uses a made-up parameter. Run 2 skips it entirely. Run 3 defines config values but never passes them. This is a **prompt gap** - the prescriptive instructions are C#-centric and don't translate to Python SDK.
 
 ---
 
@@ -89,17 +89,17 @@
 ## 7. Bugs & Anti-Patterns
 
 ### Run 1
-- ⚠️ `connection_retry_policy` is not a valid parameter for the async CosmosClient — will cause TypeError
-- ⚠️ `weekly_reset()` loads ALL players (up to 10K) and updates one-by-one — O(n) writes, no batching
+- ⚠️ `connection_retry_policy` is not a valid parameter for the async CosmosClient - will cause TypeError
+- ⚠️ `weekly_reset()` loads ALL players (up to 10K) and updates one-by-one - O(n) writes, no batching
 - ⚠️ Missing `from fastapi.responses import JSONResponse` in main.py (used in health fallback)
 
 ### Run 2
-- ⚠️ No retry configuration at all — violates prompt requirements
-- ⚠️ f-string in query (`SELECT TOP {limit}`) — SQL injection risk (Cosmos parameterizes differently than SQL but still poor practice)
+- ⚠️ No retry configuration at all - violates prompt requirements
+- ⚠️ f-string in query (`SELECT TOP {limit}`) - SQL injection risk (Cosmos parameterizes differently than SQL but still poor practice)
 - ⚠️ No client shutdown/cleanup
 
 ### Run 3
-- ⚠️ `global_rankings` container assumes change feed processor exists but doesn't implement it — data would be empty
+- ⚠️ `global_rankings` container assumes change feed processor exists but doesn't implement it - data would be empty
 - ⚠️ Retry/connection mode config defined but never wired to CosmosClient constructor
 - ✅ Best partition key strategy of the three (regional+weekly avoids cross-partition for the hottest query)
 
@@ -107,12 +107,12 @@
 
 ## Summary & Prompt Improvement Recommendations
 
-1. **Partition key guidance is too vague** — the prompt says "align with most common query pattern" but different interpretations produce radically different architectures. Add explicit examples for common use cases or require the model to state the primary query pattern before choosing.
+1. **Partition key guidance is too vague** - the prompt says "align with most common query pattern" but different interpretations produce radically different architectures. Add explicit examples for common use cases or require the model to state the primary query pattern before choosing.
 
-2. **Language-specific SDK details are missing** — retry config instructions are C#-specific (`MaxRetryAttemptsOnRateLimitedRequests`). Python SDK uses different parameters. The prompt needs per-language SDK appendices.
+2. **Language-specific SDK details are missing** - retry config instructions are C#-specific (`MaxRetryAttemptsOnRateLimitedRequests`). Python SDK uses different parameters. The prompt needs per-language SDK appendices.
 
-3. **Output compliance is weak** — infrastructure files, tests, and README were specified but never generated. The prompt should either enforce "generate ALL listed files" more strongly or reduce the required output set.
+3. **Output compliance is weak** - infrastructure files, tests, and README were specified but never generated. The prompt should either enforce "generate ALL listed files" more strongly or reduce the required output set.
 
-4. **Weekly reset pattern is under-specified** — each run invented a different (suboptimal) approach. The prompt should prescribe change feed or scheduled bulk operations for this scale.
+4. **Weekly reset pattern is under-specified** - each run invented a different (suboptimal) approach. The prompt should prescribe change feed or scheduled bulk operations for this scale.
 
 5. **Consistency score**: ~40% structural consistency across runs. The prompt produces valid-looking code each time but with fundamentally different architectural decisions that would be incompatible in production.

@@ -57,14 +57,14 @@ function procedureName(param1, param2) {
 
 ### Bounded Execution Rules
 
-1. **Check return value of every async call** — `collection.createDocument()`, `collection.replaceDocument()`, `collection.queryDocuments()` return `false` if request is not accepted (timeout approaching)
+1. **Check return value of every async call** - `collection.createDocument()`, `collection.replaceDocument()`, `collection.queryDocuments()` return `false` if request is not accepted (timeout approaching)
 2. **Implement continuation**: If `false` is returned, set response with continuation token and re-invoke from client
-3. **Max execution time**: 5 seconds — design for early exit
-4. **Max request body**: 2MB — limit batch sizes
+3. **Max execution time**: 5 seconds - design for early exit
+4. **Max request body**: 2MB - limit batch sizes
 
 ### Error Handling
 
-1. **Throw on business rule violation**: `throw new Error("Insufficient balance")` — this aborts the transaction
+1. **Throw on business rule violation**: `throw new Error("Insufficient balance")` - this aborts the transaction
 2. **All writes are atomic**: If the proc throws, ALL writes in that execution are rolled back
 3. **Return meaningful errors**: Set response body with error code before throwing
 4. **Handle "not accepted"**: When `collection.createDocument()` returns `false`, respond with partial progress

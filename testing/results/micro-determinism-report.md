@@ -88,9 +88,9 @@
 
 | Prompt | Consistency Score | Verdict |
 |--------|------------------|---------|
-| cosmos.singleton | 80% | Good — naming variance only |
-| cosmos.point-read | 87.5% | Strong — core pattern very stable |
-| cosmos.retry | 78% | Moderate — structural choices vary |
+| cosmos.singleton | 80% | Good - naming variance only |
+| cosmos.point-read | 87.5% | Strong - core pattern very stable |
+| cosmos.retry | 78% | Moderate - structural choices vary |
 
 ---
 
@@ -116,6 +116,6 @@
 
 ## Key Insight
 
-**Structural patterns are highly deterministic; naming and implementation detail choices are not.** The prompts successfully constrain the *architecture* (singleton via DI, point-read vs query, exponential backoff) but leave *surface-level choices* (class names, decorator vs class, type annotation style) underspecified. These are the cheapest fixes — just add one line of constraint per variable feature.
+**Structural patterns are highly deterministic; naming and implementation detail choices are not.** The prompts successfully constrain the *architecture* (singleton via DI, point-read vs query, exponential backoff) but leave *surface-level choices* (class names, decorator vs class, type annotation style) underspecified. These are the cheapest fixes - just add one line of constraint per variable feature.
 
-**The prompts' anti-pattern lists are highly effective** — no run produced any of the listed anti-patterns, confirming that explicit "REJECT" sections drive consistent avoidance behavior.
+**The prompts' anti-pattern lists are highly effective** - no run produced any of the listed anti-patterns, confirming that explicit "REJECT" sections drive consistent avoidance behavior.

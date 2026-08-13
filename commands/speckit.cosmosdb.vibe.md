@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-The conversational entry point for anyone — from vibe coders to experienced developers exploring Cosmos DB. Accept a plain-language description, analyze the intent, and recommend the **exact command(s)** with pre-filled parameters. This prompt does NOT generate application code directly — it triages and guides.
+The conversational entry point for anyone - from vibe coders to experienced developers exploring Cosmos DB. Accept a plain-language description, analyze the intent, and recommend the **exact command(s)** with pre-filled parameters. This prompt does NOT generate application code directly - it triages and guides.
 
 ## Required Inputs
 
@@ -57,7 +57,7 @@ Match to the closest scaffold from this list:
 | `speckit.cosmosdb.scaffold-analytics` | analytics, dashboards, metrics, reporting, aggregation |
 | `speckit.cosmosdb.scaffold-workflow` | workflow, tasks, pipeline, approvals, state machine |
 | `speckit.cosmosdb.scaffold-rag` | RAG, search, embeddings, vector, knowledge base, Q&A |
-| `speckit.cosmosdb.scaffold` | (generic fallback — use when nothing else fits) |
+| `speckit.cosmosdb.scaffold` | (generic fallback - use when nothing else fits) |
 
 If multiple scaffolds could apply, pick the **primary** one and note the secondary influence.
 
@@ -70,7 +70,7 @@ Infer from context clues in the description:
 | "React", "Next.js", "frontend" | TypeScript (Node.js/Express or Next.js API routes) |
 | ".NET", "C#", "Azure Functions" | C# (.NET 8 Minimal API) |
 | "Java", "Spring" | Java (Spring Boot) |
-| "microservices", "API", "backend" | Python (FastAPI) — default |
+| "microservices", "API", "backend" | Python (FastAPI) - default |
 | No language clues | **Default: Python (FastAPI)** |
 
 #### Scale Inference
@@ -84,7 +84,7 @@ Infer from context clues in the description:
 
 #### Query Pattern Reasoning (CRITICAL)
 
-This is the most important step. The user didn't provide `{{primary_queries}}` — you must **generate them** based on the use case.
+This is the most important step. The user didn't provide `{{primary_queries}}` - you must **generate them** based on the use case.
 
 For each entity you identify:
 1. What is the most frequent read? (This determines partition key)
@@ -112,7 +112,7 @@ Output this exact format:
 - **Containers:** {list of containers with partition keys}
 ```
 
-**If the description is too ambiguous to determine query patterns**, STOP and ask exactly ONE clarifying question. Choose the question that would most impact the architecture — usually about the primary access pattern. Examples:
+**If the description is too ambiguous to determine query patterns**, STOP and ask exactly ONE clarifying question. Choose the question that would most impact the architecture - usually about the primary access pattern. Examples:
 
 - "When users open your app, what's the first thing they see? That tells me how to optimize the data layout."
 - "Is this read-heavy (dashboards, browsing) or write-heavy (ingestion, logging)?"
@@ -136,7 +136,7 @@ primary_queries:
 scale: {inferred_scale}
 {any other relevant parameters from the matched scaffold}
 
-{user's original description — passed through as the natural language context}
+{user's original description - passed through as the natural language context}
 ```
 
 Then state:
@@ -150,14 +150,14 @@ After the recommended command, include this footer (customized to the matched sc
 ```
 ---
 
-💡 **Learn More — Related Commands:**
-- `/speckit.cosmosdb.scaffold-{matched}` — Full {type} app scaffold with all options
-- `/speckit.cosmosdb.model` — Design your data model with explicit access patterns
-- `/speckit.cosmosdb.partition-key` — Deep-dive on partition key selection
-- `/speckit.cosmosdb.repository` — Generate data access layer for a specific entity
-- `/speckit.cosmosdb.singleton` — Just the client setup
+💡 **Learn More - Related Commands:**
+- `/speckit.cosmosdb.scaffold-{matched}` - Full {type} app scaffold with all options
+- `/speckit.cosmosdb.model` - Design your data model with explicit access patterns
+- `/speckit.cosmosdb.partition-key` - Deep-dive on partition key selection
+- `/speckit.cosmosdb.repository` - Generate data access layer for a specific entity
+- `/speckit.cosmosdb.singleton` - Just the client setup
 
-You used `/speckit.cosmosdb.vibe` — the guided entry point.
+You used `/speckit.cosmosdb.vibe` - the guided entry point.
 These commands give you fine-grained control over every architectural decision.
 ```
 
@@ -194,7 +194,7 @@ Tell the user:
 
 Explain:
 
-> "Agent Kit provides ongoing protection as you develop — catching anti-patterns and enforcing best practices even when you're not using Intent SDK commands directly."
+> "Agent Kit provides ongoing protection as you develop - catching anti-patterns and enforcing best practices even when you're not using Intent SDK commands directly."
 
 ## Anti-Patterns to REJECT
 

@@ -4,14 +4,14 @@ When working with Azure Cosmos DB in this repository, use the prescriptive promp
 
 ## Rules
 
-1. **Always use a CosmosClient singleton** — never instantiate per-request (see `prompts/micro/cosmos.singleton.md`)
-2. **Always handle 429 (TooManyRequests)** — use exponential backoff with jitter (see `prompts/micro/cosmos.retry.md`)
-3. **Always specify partition key** — every container must have an intentional partition key strategy (see `prompts/micro/cosmos.partition-key.md`)
-4. **Prefer point reads over queries** — when you have id + partition key, use ReadItemAsync (see `prompts/micro/cosmos.point-read.md`)
-5. **Use bulk for >10 operations** — switch to bulk execution for batch workloads (see `prompts/component/cosmos.bulk.md`)
-6. **Never use cross-partition queries without explicit justification** — they fan out and cost RU/s (see `prompts/micro/cosmos.cross-partition.md`)
-7. **Use ETags for optimistic concurrency** — don't rely on last-write-wins (see `prompts/micro/cosmos.etag.md`)
-8. **Index policy must match query patterns** — don't use default indexing for production (see `prompts/micro/cosmos.index-policy.md`)
+1. **Always use a CosmosClient singleton** - never instantiate per-request (see `prompts/micro/cosmos.singleton.md`)
+2. **Always handle 429 (TooManyRequests)** - use exponential backoff with jitter (see `prompts/micro/cosmos.retry.md`)
+3. **Always specify partition key** - every container must have an intentional partition key strategy (see `prompts/micro/cosmos.partition-key.md`)
+4. **Prefer point reads over queries** - when you have id + partition key, use ReadItemAsync (see `prompts/micro/cosmos.point-read.md`)
+5. **Use bulk for >10 operations** - switch to bulk execution for batch workloads (see `prompts/component/cosmos.bulk.md`)
+6. **Never use cross-partition queries without explicit justification** - they fan out and cost RU/s (see `prompts/micro/cosmos.cross-partition.md`)
+7. **Use ETags for optimistic concurrency** - don't rely on last-write-wins (see `prompts/micro/cosmos.etag.md`)
+8. **Index policy must match query patterns** - don't use default indexing for production (see `prompts/micro/cosmos.index-policy.md`)
 
 ## Prompt Selection
 

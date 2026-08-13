@@ -34,7 +34,7 @@ Generate multi-region configuration for regions: {{regions}} with {{consistency_
 ### Multi-Region Architecture
 
 1. **Single-write region** (default): One write region, reads from closest replica
-2. **Multi-write regions**: All regions accept writes — enables lower write latency but requires conflict resolution
+2. **Multi-write regions**: All regions accept writes - enables lower write latency but requires conflict resolution
 3. **Choose multi-write ONLY if**: write latency SLA < 10ms AND geo-distributed writers exist
 
 ### Region Configuration

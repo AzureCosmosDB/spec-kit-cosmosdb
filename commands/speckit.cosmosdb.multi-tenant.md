@@ -49,7 +49,7 @@ Generate multi-tenant isolation for {{tenant_count}} tenants with {{isolation_le
 2. **Document schema**: ALL documents MUST include `tenantId` at root level
 3. **Query isolation**: EVERY query MUST include `WHERE c.tenantId = @tenantId`
 4. **Throughput**: Shared autoscale; monitor per-tenant consumption via diagnostics
-5. **Cross-tenant protection**: Application layer enforces tenant scope — never rely on Cosmos alone
+5. **Cross-tenant protection**: Application layer enforces tenant scope - never rely on Cosmos alone
 
 ### Strategy: Container-per-Tenant
 
@@ -71,7 +71,7 @@ Generate multi-tenant isolation for {{tenant_count}} tenants with {{isolation_le
 
 ### Cross-Cutting Concerns
 
-1. **Tenant context**: Inject tenant ID from auth token — NEVER from request body
+1. **Tenant context**: Inject tenant ID from auth token - NEVER from request body
 2. **Row-level security**: Middleware validates every DB response belongs to requesting tenant
 3. **Noisy neighbor**: Monitor RU consumption per tenant; implement per-tenant rate limiting
 4. **Backup/restore**: Per-tenant point-in-time restore requires container-per-tenant; shared = all-or-nothing

@@ -36,7 +36,7 @@ Generate a point read. Follow these constraints:
 - Function MUST be named `get_{entity_snake_case}_by_id()` (Python) / `get{Entity}ById()` (TS) / `Get{Entity}ByIdAsync()` (C#)
   - Example: entity "UserProfile" → `get_user_profile_by_id()`
 - Return type MUST be `Optional[dict]` (Python) / `T | null` (TS) / `T?` (C#)
-- MUST handle 404 by returning `None`/`null` — NEVER raise/throw for not-found
+- MUST handle 404 by returning `None`/`null` - NEVER raise/throw for not-found
 - `partition_key` MUST be an explicit function parameter (not inferred or hardcoded)
 - Entity model MUST use pydantic `BaseModel` (Python) / interface (TS) / record (C#)
 - MUST use `Optional[T]` annotation style (not `T | None` union syntax)
@@ -44,7 +44,7 @@ Generate a point read. Follow these constraints:
 
 ### What is a Point Read?
 
-- `ReadItemAsync(id, partitionKey)` — NOT a query
+- `ReadItemAsync(id, partitionKey)` - NOT a query
 - Cost: 1 RU for < 1KB document (scales linearly with size)
 - Requires BOTH `id` AND `partition key` value
 - Returns single document or 404
@@ -74,7 +74,7 @@ try {
 ### Output
 
 1. Point read function named `get_{entity_snake_case}_by_id()` with `partition_key` as explicit parameter
-2. 404 handling (return `None` — never throw for not-found)
+2. 404 handling (return `None` - never throw for not-found)
 3. RU charge logging via standard `logging`
 4. Comparison comment showing equivalent query (and why it's worse)
 

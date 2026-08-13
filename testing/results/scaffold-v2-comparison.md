@@ -25,19 +25,19 @@
 
 ## Detailed Analysis
 
-### 1. Partition Key Choice — ✅ IDENTICAL (3/3)
+### 1. Partition Key Choice - ✅ IDENTICAL (3/3)
 All three runs chose `/region` with the same justification logic:
 - Regional top 100 is the most performance-critical targeted read query
 - Global top 100 is inherently cross-partition regardless of pk choice
 - Player lookups are cross-partition but lower frequency
 
-### 2. Data Model — ✅ IDENTICAL (3/3)
+### 2. Data Model - ✅ IDENTICAL (3/3)
 Single container `scores` with fields:
 - `id` (UUID), `type` ("score"), `playerId`, `playerName`, `region`, `score`, `week`, `createdAt`, `updatedAt`
 - Same Pydantic v2 patterns: `model_config`, `Field(alias=...)`, `populate_by_name`
 - Same model classes: `ScoreDocument`, `ScoreSubmission`, `PlayerScoreResponse`
 
-### 3. API Paths — ✅ IDENTICAL (3/3)
+### 3. API Paths - ✅ IDENTICAL (3/3)
 ```
 GET  /api/health
 GET  /api/scores
@@ -46,22 +46,22 @@ GET  /api/scores/players/{player_id}
 POST /api/scores
 ```
 
-### 4. File Structure — ✅ IDENTICAL (3/3)
+### 4. File Structure - ✅ IDENTICAL (3/3)
 ```
 main.py, config.py, models.py, repository.py, service.py,
 requirements.txt, .env.example, iteration-config.yaml, README.md
 ```
 Matches the MANDATORY file structure from the prompt exactly.
 
-### 5. SDK Patterns — ✅ IDENTICAL (3/3)
+### 5. SDK Patterns - ✅ IDENTICAL (3/3)
 - CosmosClient created once in lifespan (singleton)
 - `await client.close()` on shutdown
-- Gateway mode (Python async only supports Gateway — correctly NOT using Direct)
+- Gateway mode (Python async only supports Gateway - correctly NOT using Direct)
 - Parameterized queries everywhere (no f-strings)
 - `enable_cross_partition_query=True` with CROSS-PARTITION comments
 - `get_database_account()` for health check
 
-### 6. Code Logic — ✅ IDENTICAL (3/3)
+### 6. Code Logic - ✅ IDENTICAL (3/3)
 - Same repository methods: `get_global_top`, `get_regional_top`, `get_player_score`, `create_score`, `get_player_rank`
 - Same service methods with identical logic flow
 - Same error mapping (409→409, 429→429 with Retry-After)
@@ -73,16 +73,16 @@ Matches the MANDATORY file structure from the prompt exactly.
 
 | Aspect | Variation Type | Impact |
 |--------|---------------|--------|
-| Docstrings | Minor wording differences | None — cosmetic |
-| Module-level docstring | Different phrasing | None — cosmetic |
-| PK justification comment | Different sentence structure, same reasoning | None — cosmetic |
-| README intro sentence | Minor word choice | None — cosmetic |
+| Docstrings | Minor wording differences | None - cosmetic |
+| Module-level docstring | Different phrasing | None - cosmetic |
+| PK justification comment | Different sentence structure, same reasoning | None - cosmetic |
+| README intro sentence | Minor word choice | None - cosmetic |
 
 ---
 
 ## Overall Structural Consistency
 
-**~95%** — All architectural decisions, file structure, API paths, data model, SDK usage, and code logic are identical across all 3 runs. The only differences are in natural-language text (docstrings, comments, README phrasing) which do not affect functionality.
+**~95%** - All architectural decisions, file structure, API paths, data model, SDK usage, and code logic are identical across all 3 runs. The only differences are in natural-language text (docstrings, comments, README phrasing) which do not affect functionality.
 
 ### Comparison to Previous (v1) Result
 

@@ -23,20 +23,20 @@
 | Composite indexes | Yes (documents) | Yes (documents, users) | Yes (documents, users) |
 
 ### Key Divergence: Document Partition Key
-- Run 1 & 3: `/userId` — optimizes for "query docs by user" (primary pattern)
-- Run 2: `/orgId` — optimizes for "query docs by org"
+- Run 1 & 3: `/userId` - optimizes for "query docs by user" (primary pattern)
+- Run 2: `/orgId` - optimizes for "query docs by org"
 - The prompt's description says "queried by user AND by org" without prioritizing. This ambiguity causes the main architectural divergence.
 
 ### Bugs / Anti-Patterns Found
 - **Run 1**: Python `datetime.utcnow().isoformat()` missing "Z" suffix (inconsistent with JSON examples that include it)
-- **Run 2**: `excludedPaths` includes `{"path": "/blobUrl/?"}` AND `{"path": "/*"}` — the wildcard already covers blobUrl, so the specific exclude is redundant
+- **Run 2**: `excludedPaths` includes `{"path": "/blobUrl/?"}` AND `{"path": "/*"}` - the wildcard already covers blobUrl, so the specific exclude is redundant
 - **All runs**: Using `datetime.utcnow()` which is deprecated in Python 3.12+
 
 ### Recommendations for Tightening the Prompt
-1. **Add `access_patterns` as required input** — the cosmos.model prompt expects it but the test description doesn't explicitly rank query frequency. Add: "Primary access pattern: [most frequent query]"
+1. **Add `access_patterns` as required input** - the cosmos.model prompt expects it but the test description doesn't explicitly rank query frequency. Add: "Primary access pattern: [most frequent query]"
 2. **Mandate partition key for each entity explicitly** or require a decision matrix showing access patterns → partition key selection
-3. **Specify Python naming convention** — prompt doesn't say whether JSON output should be camelCase or snake_case, causing mismatch between dataclass fields and example JSON
-4. **Add datetime guidance** — specify `datetime.now(timezone.utc)` vs `utcnow()` and whether "Z" suffix is required
+3. **Specify Python naming convention** - prompt doesn't say whether JSON output should be camelCase or snake_case, causing mismatch between dataclass fields and example JSON
+4. **Add datetime guidance** - specify `datetime.now(timezone.utc)` vs `utcnow()` and whether "Z" suffix is required
 
 ---
 
@@ -67,18 +67,18 @@
 | Unit tests included | No | No | No |
 
 ### Bugs / Anti-Patterns Found
-- **Run 1 & 2**: Continuation token handling is fake — returns `None` always. The Python SDK uses iterator-based pagination, not explicit token returns in `query_items()`
-- **Run 1**: `list_by_customer` redundantly includes `WHERE c.customerId = @customerId` when already scoped by `partition_key=customer_id` — not wrong but query filter is duplicative
-- **All runs**: `match_condition="IfMatch"` — the Python SDK actually uses `match_condition` as a kwarg but the type is `MatchConditions` enum, not a string
+- **Run 1 & 2**: Continuation token handling is fake - returns `None` always. The Python SDK uses iterator-based pagination, not explicit token returns in `query_items()`
+- **Run 1**: `list_by_customer` redundantly includes `WHERE c.customerId = @customerId` when already scoped by `partition_key=customer_id` - not wrong but query filter is duplicative
+- **All runs**: `match_condition="IfMatch"` - the Python SDK actually uses `match_condition` as a kwarg but the type is `MatchConditions` enum, not a string
 - **No run includes unit tests** despite the prompt requiring them
 
 ### Recommendations for Tightening the Prompt
-1. **Specify method naming convention** — `create` vs `create_order` vs `create_item`
-2. **Clarify pagination strategy for Python** — SDK-specific (Python uses paged iterator, not continuation tokens in the same way as .NET)
-3. **Enforce unit test generation** — prompt says "Unit test file with mocked container" but none produced one. Make it a separate output section with explicit test structure
-4. **Specify return types precisely** — `dict` vs typed dataclass vs TypedDict
-5. **Add SDK version note** — `match_condition` API differs between SDK versions; prompt should specify `azure-cosmos>=4.x` patterns
-6. **Add type discriminator filter requirement** — Run 3 correctly adds `c.type = @type` to prevent reading non-order docs from shared containers
+1. **Specify method naming convention** - `create` vs `create_order` vs `create_item`
+2. **Clarify pagination strategy for Python** - SDK-specific (Python uses paged iterator, not continuation tokens in the same way as .NET)
+3. **Enforce unit test generation** - prompt says "Unit test file with mocked container" but none produced one. Make it a separate output section with explicit test structure
+4. **Specify return types precisely** - `dict` vs typed dataclass vs TypedDict
+5. **Add SDK version note** - `match_condition` API differs between SDK versions; prompt should specify `azure-cosmos>=4.x` patterns
+6. **Add type discriminator filter requirement** - Run 3 correctly adds `c.type = @type` to prevent reading non-order docs from shared containers
 
 ---
 
@@ -104,16 +104,16 @@
 | Module docstring detail | Minimal | Detailed | Moderate |
 
 ### Bugs / Anti-Patterns Found
-- **Run 1 & 2**: Include `/customerId/?` in indexing policy `includedPaths` — unnecessary since the partition key is always indexed automatically
-- **Run 1 & 2**: Include `/orderId/?`, `/status/?`, `/total/?` in included paths — these are in SELECT projection, not WHERE/ORDER BY, so indexing them provides no query benefit
-- **All runs**: Using both `OFFSET 0 LIMIT 10` AND `max_item_count=10` is redundant — LIMIT in SQL already bounds results; `max_item_count` controls page size of the iterator
+- **Run 1 & 2**: Include `/customerId/?` in indexing policy `includedPaths` - unnecessary since the partition key is always indexed automatically
+- **Run 1 & 2**: Include `/orderId/?`, `/status/?`, `/total/?` in included paths - these are in SELECT projection, not WHERE/ORDER BY, so indexing them provides no query benefit
+- **All runs**: Using both `OFFSET 0 LIMIT 10` AND `max_item_count=10` is redundant - LIMIT in SQL already bounds results; `max_item_count` controls page size of the iterator
 
 ### Recommendations for Tightening the Prompt
-1. **Clarify indexing guidance** — distinguish between "fields that need indexing for WHERE/ORDER BY" vs "fields in SELECT projection" (projections don't need indexes)
-2. **Specify that partition key is auto-indexed** — don't include it in custom indexing policy
-3. **Choose one pagination mechanism** — either OFFSET/LIMIT in SQL or SDK-level `max_item_count` + continuation, not both
-4. **Add a note about `max_item_count` semantics** — it's a page size hint, not a hard limit; the SQL LIMIT is the actual bound
-5. **Query was highly consistent** — this is the most deterministic prompt of the three, likely because the input is very specific and the output is a single query (not a full architecture)
+1. **Clarify indexing guidance** - distinguish between "fields that need indexing for WHERE/ORDER BY" vs "fields in SELECT projection" (projections don't need indexes)
+2. **Specify that partition key is auto-indexed** - don't include it in custom indexing policy
+3. **Choose one pagination mechanism** - either OFFSET/LIMIT in SQL or SDK-level `max_item_count` + continuation, not both
+4. **Add a note about `max_item_count` semantics** - it's a page size hint, not a hard limit; the SQL LIMIT is the actual bound
+5. **Query was highly consistent** - this is the most deterministic prompt of the three, likely because the input is very specific and the output is a single query (not a full architecture)
 
 ---
 
@@ -128,7 +128,7 @@
 ### Pattern: Specificity → Determinism
 - cosmos.query has the most specific inputs (single intent, single output) → most consistent
 - cosmos.model has the most ambiguous inputs (multi-entity, competing access patterns) → most variation
-- cosmos.repository is in between — structure is prescribed but SDK details drift
+- cosmos.repository is in between - structure is prescribed but SDK details drift
 
 ### Top Recommendations Across All Prompts
 1. **Add language-specific SDK guidance** (Python `azure-cosmos` 4.x patterns, correct types)

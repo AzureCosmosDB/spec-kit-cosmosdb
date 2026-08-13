@@ -6,7 +6,7 @@ LLM outputs are non-deterministic. When a prompt asks "design a container for an
 
 ## Approach
 
-Run each prompt template **N times** with identical inputs. Compare outputs not for exact text match, but for **structural consistency** — the invariants that matter for correctness.
+Run each prompt template **N times** with identical inputs. Compare outputs not for exact text match, but for **structural consistency** - the invariants that matter for correctness.
 
 ## What We Measure
 

@@ -1,4 +1,4 @@
-# Cosmos DB — Spec Kit Extension
+# Cosmos DB - Spec Kit Extension
 
 Prescriptive prompt templates for Azure Cosmos DB that produce deterministic, best-practice code with any AI coding agent.
 
@@ -13,7 +13,7 @@ specify extension add cosmosdb --from https://github.com/TheovanKraay/spec-kit-c
 ## Two Paths: Vibe Coding vs. Explicit Commands
 
 ### 🎨 Vibe Path
-Describe what you want in plain language — the SDK figures out the right commands:
+Describe what you want in plain language - the SDK figures out the right commands:
 
 ```
 /speckit.cosmosdb.vibe "I want to build a real-time chat app with message history"
@@ -98,7 +98,7 @@ Call specific commands directly when you know exactly what you need:
 
 | Command | Description |
 |---------|-------------|
-| `speckit.cosmosdb.vibe` | Conversational entry point — describe what you want, get the right command |
+| `speckit.cosmosdb.vibe` | Conversational entry point - describe what you want, get the right command |
 | `speckit.cosmosdb.review` | Review generated code against Cosmos DB best practices |
 | `speckit.cosmosdb.explain` | Explain Cosmos DB concepts in context |
 | `speckit.cosmosdb.agent-kit` | Load best-practice rules for the session |
@@ -126,4 +126,4 @@ See [COMPATIBILITY.md](COMPATIBILITY.md) for supported languages, frameworks, an
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).

@@ -46,7 +46,7 @@ Generate diagnostics configuration for {{language}} with {{framework}}. Follow t
 
 ### SDK-Specific Implementation
 
-**C#**: Access `response.Diagnostics.ToString()` — contains full trace
+**C#**: Access `response.Diagnostics.ToString()` - contains full trace
 **Java**: `response.getDiagnostics().toString()`
 **Python**: `response.get_response_headers()` for charge/activity-id
 **TypeScript/JavaScript**: `response.diagnostics` object

@@ -35,7 +35,7 @@ Generate a conditional create. Follow these constraints:
 - Function MUST be named `create_{entity_snake_case}_if_not_exists()` (Python) / `create{Entity}IfNotExists()` (TS) / `Create{Entity}IfNotExistsAsync()` (C#)
 - File MUST be named `create_{entity_snake_case}.py`
 - `partition_key` MUST be an explicit function parameter
-- Return type MUST be `Tuple[dict, bool]` — (document, created) where `created=False` means already existed
+- Return type MUST be `Tuple[dict, bool]` - (document, created) where `created=False` means already existed
 - MUST use `if_none_match_etag="*"` to reject if any version exists
 - MUST handle `CosmosHttpResponseError` with status 409 (Conflict) → return existing doc
 - MUST log RU charge using standard `logging`
@@ -46,7 +46,7 @@ Generate a conditional create. Follow these constraints:
 2. This causes server-side rejection if document id already exists in that partition
 3. On 409 Conflict: fetch existing document via point read and return `(existing, False)`
 4. On success: return `(created_doc, True)`
-5. This is idempotent — safe to retry without creating duplicates
+5. This is idempotent - safe to retry without creating duplicates
 
 ### Output
 

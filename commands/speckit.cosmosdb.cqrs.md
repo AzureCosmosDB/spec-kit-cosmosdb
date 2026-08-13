@@ -34,18 +34,18 @@ Generate a CQRS implementation. Follow these constraints:
 
 1. **Container name**: `commands` or domain-specific (e.g., `orders`)
 2. **Partition key**: Natural entity key (e.g., `/customerId` for orders)
-3. **Schema**: Full normalized {{write_model}} — optimized for writes, not reads
-4. **Operations**: Upsert/patch only — no reads from command container in query path
+3. **Schema**: Full normalized {{write_model}} - optimized for writes, not reads
+4. **Operations**: Upsert/patch only - no reads from command container in query path
 5. **Validation**: All business rules enforced BEFORE write (not in materializer)
 
 ### Read Side (View Containers)
 
 For each view in {{read_models}}:
 
-1. **Separate container** per read model — optimized for specific query patterns
+1. **Separate container** per read model - optimized for specific query patterns
 2. **Partition key**: Chosen for the read access pattern (e.g., `/customerId` for "my orders" view)
-3. **Denormalized**: Duplicate data freely — consistency via change feed
-4. **Schema**: Exactly what the UI/API needs — no joins, no extra fields
+3. **Denormalized**: Duplicate data freely - consistency via change feed
+4. **Schema**: Exactly what the UI/API needs - no joins, no extra fields
 
 ### Materialization (Change Feed Processor)
 
@@ -65,9 +65,9 @@ For each view in {{read_models}}:
 ### Output
 
 1. Write model container setup and document schema
-2. Read model container(s) setup — one per view
+2. Read model container(s) setup - one per view
 3. Command handler (write path) with validation
-4. Change feed processor(s) — one per read model materializer
+4. Change feed processor(s) - one per read model materializer
 5. Query handlers (read path) from view containers
 6. Staleness documentation for API consumers
 

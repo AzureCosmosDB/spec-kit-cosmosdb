@@ -4,9 +4,9 @@
 
 A scenario is a reproducible test case consisting of:
 
-1. **A prompt template** — which template to execute
-2. **Fixed input variables** — deterministic inputs that don't change between runs
-3. **Expected structural invariants** — what must remain consistent across N runs
+1. **A prompt template** - which template to execute
+2. **Fixed input variables** - deterministic inputs that don't change between runs
+3. **Expected structural invariants** - what must remain consistent across N runs
 
 ## Scenario File Format
 

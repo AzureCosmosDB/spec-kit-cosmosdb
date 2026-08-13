@@ -31,7 +31,7 @@ When a cross-partition query is unavoidable, implement it with proper pagination
 
 Generate a cross-partition query WITH guards. Follow these constraints:
 
-### Before Writing This Query — Consider Alternatives
+### Before Writing This Query - Consider Alternatives
 
 1. **Can you add a change feed consumer** that materializes this view into a container with the right partition key?
 2. **Can you duplicate the data** into a "read model" container partitioned for this query?

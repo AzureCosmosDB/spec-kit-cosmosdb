@@ -54,7 +54,7 @@ Generate TTL configuration for {{use_case}} with {{retention_period}} retention.
 | Cache | 300 (5 min) | Vary by cache key type |
 | Audit logs | 7776000 (90 days) | `-1` for compliance-flagged entries |
 | Event sourcing | -1 | Set per event type |
-| Temp uploads | 86400 (24 hours) | — |
+| Temp uploads | 86400 (24 hours) | - |
 
 ### Implementation
 
@@ -68,7 +68,7 @@ Generate TTL configuration for {{use_case}} with {{retention_period}} retention.
 1. TTL deletions do NOT consume RU/s (free background cleanup)
 2. TTL deletions do NOT appear in change feed (they are silent)
 3. Monitor with `CosmosDB.TotalDocuments` metric to see count decreasing
-4. Expired items may linger briefly — TTL is best-effort, not instant
+4. Expired items may linger briefly - TTL is best-effort, not instant
 
 ### Output
 

@@ -1,10 +1,10 @@
-# Cosmos Intent SDK — Model Compatibility
+# Cosmos Intent SDK - Model Compatibility
 
 This document tracks which AI models have been tested with the Intent SDK prompt templates and their consistency scores.
 
 ## How We Test
 
-Each prompt is run **N times** (minimum 10) against a model. We measure **contract conformance** — not exact string match, but structural consistency:
+Each prompt is run **N times** (minimum 10) against a model. We measure **contract conformance** - not exact string match, but structural consistency:
 
 - Same file/module names
 - Same function/method names
@@ -16,7 +16,7 @@ Each prompt is run **N times** (minimum 10) against a model. We measure **contra
 
 - **100%**: Every run produces structurally identical output
 - **95%+**: Minor cosmetic differences (comments, whitespace, variable naming) but same architecture
-- **<90%**: Architectural decisions vary between runs — not recommended for production use
+- **<90%**: Architectural decisions vary between runs - not recommended for production use
 
 ---
 
@@ -28,7 +28,7 @@ Each prompt is run **N times** (minimum 10) against a model. We measure **contra
 
 ## Version History
 
-### v0.1.0 — Initial Release
+### v0.1.0 - Initial Release
 
 **Tested against:** `claude-opus-4` via GitHub Copilot
 
@@ -70,12 +70,12 @@ This section will be populated as bench runs are completed.
 
 ---
 
-## Python SDK Fixes (e2e Testing — 2026-07-27)
+## Python SDK Fixes (e2e Testing - 2026-07-27)
 
 The following fixes were applied to all scaffold and component prompts based on e2e testing:
 
 1. **Health check method**: `client.read_account()` → `client.get_database_account()` (all scaffolds)
 2. **aiohttp dependency**: Added `aiohttp>=3.9.0` to all requirements.txt sections (required by async SDK)
 3. **Cross-partition queries**: Async SDK uses `partition_key=None`, not `enable_cross_partition_query=True` (sync-only param). Updated all references.
-4. **Emulator HTTP**: Added note that Linux emulator (vnext) uses HTTP — `connection_verify=False` needed for local dev
+4. **Emulator HTTP**: Added note that Linux emulator (vnext) uses HTTP - `connection_verify=False` needed for local dev
 5. **Pydantic v2**: Verified all prompts use `model_config = ConfigDict(...)` (no legacy `class Config:` found)

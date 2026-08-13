@@ -37,7 +37,7 @@ You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{co
 {2-3 sentence plain-language explanation. No jargon without definition.}
 
 ## Why It Matters
-{What goes wrong if you ignore this. Real consequences — cost, performance, availability.}
+{What goes wrong if you ignore this. Real consequences - cost, performance, availability.}
 
 ## How It Works
 {Technical explanation with diagrams (ASCII) where helpful. Build from simple to complex.}
@@ -51,9 +51,9 @@ You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{co
 {Concrete example showing a common WRONG approach and why it fails}
 
 ## Common Mistakes
-1. {Mistake} — {Why it's wrong} — {What to do instead}
-2. {Mistake} — {Why it's wrong} — {What to do instead}
-3. {Mistake} — {Why it's wrong} — {What to do instead}
+1. {Mistake} - {Why it's wrong} - {What to do instead}
+2. {Mistake} - {Why it's wrong} - {What to do instead}
+3. {Mistake} - {Why it's wrong} - {What to do instead}
 
 ## Decision Guide
 {When to use what. If the concept has options (e.g., consistency levels), provide a decision matrix:}
@@ -64,8 +64,8 @@ You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{co
 
 ## Try It With Intent SDK
 {Map to specific /speckit.cosmosdb.* commands:}
-- `/speckit.cosmosdb.{command}` — {how it relates to this concept}
-- `/speckit.cosmosdb.{command}` — {how it relates to this concept}
+- `/speckit.cosmosdb.{command}` - {how it relates to this concept}
+- `/speckit.cosmosdb.{command}` - {how it relates to this concept}
 ```
 
 ### Concept-Specific Guidance

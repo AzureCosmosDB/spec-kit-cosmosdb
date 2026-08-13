@@ -62,7 +62,7 @@ When a user creates a post:
 | users | `/id` | Users accessed by own ID |
 | posts | `/authorId` | "Get posts by user" is primary; comments/likes co-located via type discriminator |
 | follows | `/followerId` | "Get who I follow" is the primary read (for fan-out source) |
-| feeds | `/userId` | "Get my feed" is the #1 query — each user's timeline is a single partition |
+| feeds | `/userId` | "Get my feed" is the #1 query - each user's timeline is a single partition |
 | notifications | `/recipientUserId` | Notifications always queried per-user |
 
 ```
@@ -71,7 +71,7 @@ When a user creates a post:
 # feed is a single-partition read. Trade-off: write amplification on post creation.
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 ```
 GET    /api/{resource}           → 200 + array
@@ -121,10 +121,10 @@ POST   /api/users/{userId}/notifications/read                    → 200 (mark a
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys
 - ❌ Cross-partition queries without explicit comment
@@ -133,7 +133,7 @@ POST   /api/users/{userId}/notifications/read                    → 200 (mark a
 - ❌ f-string interpolation in Cosmos SQL queries
 - ❌ Loading unbounded feed without pagination
 - ❌ Missing client.close() / dispose on shutdown
-- ❌ Fan-out on read (querying all followed users' posts at read time) — use fan-out on write
+- ❌ Fan-out on read (querying all followed users' posts at read time) - use fan-out on write
 - ❌ Synchronous fan-out in the post-creation request path (must be async)
 - ❌ Maintaining like/comment counts via cross-partition aggregation queries (use denormalized counters)
 
@@ -205,7 +205,7 @@ aiohttp>=3.9.0
 ```
 
 ### NEVER use these
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
 - ❌ `ConnectionMode.Direct`
 
 ---

@@ -54,7 +54,7 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 
 ### Anti-Patterns to REJECT
 
-- ❌ `SELECT *` — always project specific fields
+- ❌ `SELECT *` - always project specific fields
 - ❌ Missing partition key in filter (causes fan-out)
 - ❌ ORDER BY without composite index
 - ❌ Functions in WHERE on non-indexed computed values

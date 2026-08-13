@@ -34,7 +34,7 @@ Generate session state storage for {{framework}}. Follow these constraints:
 ### Container Design
 
 1. **Container name**: `sessions`
-2. **Partition key**: `/sessionId` — each session is its own partition (uniform distribution)
+2. **Partition key**: `/sessionId` - each session is its own partition (uniform distribution)
 3. **TTL**: Container default = `{{ttl_seconds}}` seconds
 4. **Throughput**: Autoscale 400–4000 RU/s (session reads are 1 RU point reads)
 5. **Indexing**: Exclude all paths (`/*` excluded); only `/sessionId` and `/userId` indexed
@@ -65,11 +65,11 @@ Generate session state storage for {{framework}}. Follow these constraints:
 
 1. On EVERY session read, update `lastAccessed` and reset `ttl` to {{ttl_seconds}}
 2. Use Cosmos DB **patch operation** for efficient partial update (cheaper than replace)
-3. Batch the TTL reset — don't block the response on it (fire-and-forget or background task)
+3. Batch the TTL reset - don't block the response on it (fire-and-forget or background task)
 
 ### Security
 
-1. **Session ID**: Cryptographically random — `secrets.token_hex(32)` (Python) / `crypto.randomBytes(32)` (Node)
+1. **Session ID**: Cryptographically random - `secrets.token_hex(32)` (Python) / `crypto.randomBytes(32)` (Node)
 2. **Cookie**: `HttpOnly`, `Secure`, `SameSite=Strict`
 3. **No sensitive data**: Never store passwords or full tokens in session
 4. **Session fixation**: Regenerate session ID on privilege escalation (login)
@@ -101,7 +101,7 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 - ❌ Sequential/predictable session IDs (security vulnerability)
 - ❌ Storing session in a shared partition key (hot partition)
 - ❌ Full document replace for TTL refresh (wasteful; use patch)
-- ❌ No TTL — sessions never expire (resource leak)
+- ❌ No TTL - sessions never expire (resource leak)
 - ❌ Query-based session lookup when ID is known (use point read)
 - ❌ Storing sensitive credentials in session document
 - ❌ Blocking response on TTL refresh write

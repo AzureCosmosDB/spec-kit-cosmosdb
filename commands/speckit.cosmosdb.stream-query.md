@@ -46,7 +46,7 @@ Generate a streaming query. Follow these constraints:
 1. Use `container.query_items()` which returns an async pager
 2. Iterate page-by-page internally, yield items one at a time
 3. Track cumulative RU charge across all pages
-4. Respect `max_items` limit if provided — stop iteration after N items
+4. Respect `max_items` limit if provided - stop iteration after N items
 5. Log total RU and item count when generator is exhausted or stopped
 
 ### Output
@@ -63,7 +63,7 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 
 ### Anti-Patterns to REJECT
 
-- ❌ `list(query_items(...))` — loads everything into memory
+- ❌ `list(query_items(...))` - loads everything into memory
 - ❌ No RU tracking across pages
 - ❌ Cross-partition query without explicit flag and cost warning
 - ❌ Returning a list instead of streaming/yielding

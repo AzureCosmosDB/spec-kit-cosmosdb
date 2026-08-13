@@ -22,7 +22,7 @@ Use cosmos-intent-sdk with the GitHub Copilot coding agent (`@copilot` in issues
 When implementing Cosmos DB containers or data access code:
 
 1. Read `cosmos-intent-sdk/prompts/` for design templates
-2. Follow rules in `cosmos-intent-sdk/rules/` — especially:
+2. Follow rules in `cosmos-intent-sdk/rules/` - especially:
    - partition-*: High cardinality keys, avoid hot partitions
    - model-*: Embed related data, denormalize for reads
    - sdk-*: Use bulk for >10 items, transactional batch for ACID
@@ -98,5 +98,5 @@ src/
 
 - Reference specific rules in issues: "Follow `partition-003` for multi-tenant key selection"
 - Use labels to route different template types: `cosmos-design`, `cosmos-query`, `cosmos-migrate`
-- Copilot respects `.github/copilot-instructions.md` automatically — no special invocation needed
+- Copilot respects `.github/copilot-instructions.md` automatically - no special invocation needed
 - For complex multi-container designs, break into separate issues and link them

@@ -38,7 +38,7 @@ Scaffold a full workflow and task management application (like Jira) that uses A
 | Project | projects | Project metadata, members, settings |
 | Task | tasks | Work items with status, priority, assignee |
 | Comment | tasks | Co-located with task (type discriminator) |
-| StatusHistory | tasks | Co-located with task (type discriminator) — audit log of status changes |
+| StatusHistory | tasks | Co-located with task (type discriminator) - audit log of status changes |
 | Assignee | assignees | User profiles for assignment (lightweight) |
 
 ### Status Transitions (state machine)
@@ -76,7 +76,7 @@ backlog → todo → in_progress → in_review → done
 # Tasks-by-assignee served via denormalized assigneeTasks container.
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 ```
 GET    /api/{resource}           → 200 + array
@@ -123,10 +123,10 @@ GET    /api/projects/{projectId}/activity?from=&to=                → 200 + rec
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys
 - ❌ Cross-partition queries without explicit comment
@@ -222,7 +222,7 @@ def validate_transition(current: str, target: str) -> bool:
 ```
 
 ### NEVER use these
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
 - ❌ `ConnectionMode.Direct`
 
 ---

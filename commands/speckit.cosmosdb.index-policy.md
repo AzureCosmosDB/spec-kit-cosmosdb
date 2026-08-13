@@ -71,7 +71,7 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 
 ### Anti-Patterns to REJECT
 
-- ❌ Default policy (`includedPaths: [{"path": "/*"}]`) — indexes everything, costs RU on every write
+- ❌ Default policy (`includedPaths: [{"path": "/*"}]`) - indexes everything, costs RU on every write
 - ❌ Including paths not used in any query
 - ❌ Missing composite index for multi-field ORDER BY
 - ❌ Indexing large text fields never queried

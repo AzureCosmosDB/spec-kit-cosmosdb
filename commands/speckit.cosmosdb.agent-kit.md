@@ -28,7 +28,7 @@ The following rules must be applied to **all** Cosmos DB code generated in this 
 
 ---
 
-# Cosmos DB Agent Kit — Best Practice Rules
+# Cosmos DB Agent Kit - Best Practice Rules
 
 These rules are enforced automatically by the Cosmos Intent SDK Agent Kit. They apply to all code in this repository that interacts with Azure Cosmos DB.
 
@@ -67,7 +67,7 @@ These rules are enforced automatically by the Cosmos Intent SDK Agent Kit. They 
 - **Always** implement retry with exponential backoff for transient errors (HTTP 429, 449, 503).
 - Respect the `x-ms-retry-after-ms` / `Retry-After` header on 429 responses. Never ignore throttling.
 - Set **request timeouts** appropriate to your SLA (default 60s for point operations, longer for queries).
-- Handle `PreconditionFailed` (412) gracefully — it means your ETag-based optimistic concurrency detected a conflict.
+- Handle `PreconditionFailed` (412) gracefully - it means your ETag-based optimistic concurrency detected a conflict.
 - Distinguish between **transient** (retry) and **permanent** (fail fast) errors. 400/404 are permanent; don't retry them.
 - Log `x-ms-request-charge` (RU cost) for monitoring and capacity planning.
 
@@ -93,13 +93,13 @@ These rules are enforced automatically by the Cosmos Intent SDK Agent Kit. They 
 - **Prefer** Azure Managed Identity / Entra ID RBAC over master keys.
 - Use **resource tokens** or Entra ID for client-side / mobile access with scoped permissions.
 - Enable **Azure Private Link** for network isolation in production.
-- Apply **least-privilege RBAC roles** — use Cosmos DB Data Reader/Writer, not Contributor.
+- Apply **least-privilege RBAC roles** - use Cosmos DB Data Reader/Writer, not Contributor.
 
 ## Cost Optimization
 
 - **Estimate RU cost** before deploying new queries. Use `x-ms-request-charge` to validate.
 - Use **point reads** (1 RU for 1KB) instead of queries (minimum 2.3 RU) when possible.
-- Avoid **fan-out queries** — they multiply RU cost by partition count.
+- Avoid **fan-out queries** - they multiply RU cost by partition count.
 - Use **autoscale throughput** for variable workloads; manual throughput for predictable ones.
 - Consider **serverless** for dev/test and bursty low-traffic workloads.
 - Enable **TTL** to auto-delete expired data instead of paying storage for stale items.

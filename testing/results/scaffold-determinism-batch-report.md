@@ -31,9 +31,9 @@
 ### Data Model Consistency (100%)
 
 All entity fields, types, and discriminators are identical across runs:
-- **Booking**: Provider, Service, TimeSlot, Booking, Customer — all fields match
-- **SaaS**: Tenant, User, Subscription, UsageMetric — all fields match
-- **Workflow**: Project, Task, Comment, StatusHistory, Assignee, AssigneeTask — all fields match
+- **Booking**: Provider, Service, TimeSlot, Booking, Customer - all fields match
+- **SaaS**: Tenant, User, Subscription, UsageMetric - all fields match
+- **Workflow**: Project, Task, Comment, StatusHistory, Assignee, AssigneeTask - all fields match
 
 ### API Path Consistency (100%)
 
@@ -59,7 +59,7 @@ byte-level diff:
 diff -r <scaffold>-run-1 <scaffold>-run-2   # exit 0
 ```
 
-All diffs returned exit code 0 — zero differences between runs. The raw run pairs have
+All diffs returned exit code 0 - zero differences between runs. The raw run pairs have
 since been pruned from the repository; this report is the retained summary of that result.
 
 ## Conclusion
@@ -68,8 +68,8 @@ The prescriptive format from `cosmos.scaffold.md` translates successfully to app
 
 ### Key Design Factors Enabling Determinism
 
-1. **MANDATORY file structure** — no optional files or layout choices
-2. **Explicit partition key tables** — no inference needed
-3. **Fixed API conventions** — endpoint patterns are fully specified
-4. **Data model constraints** — every field name and type prescribed
-5. **Language appendix pattern** — SDK usage is copy-paste, not inferred
+1. **MANDATORY file structure** - no optional files or layout choices
+2. **Explicit partition key tables** - no inference needed
+3. **Fixed API conventions** - endpoint patterns are fully specified
+4. **Data model constraints** - every field name and type prescribed
+5. **Language appendix pattern** - SDK usage is copy-paste, not inferred

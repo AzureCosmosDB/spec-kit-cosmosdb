@@ -45,7 +45,7 @@ Generate a transactional batch. Follow these constraints:
 1. All operations in a batch MUST target the same logical partition
 2. Maximum 100 operations per batch (validate and raise if exceeded)
 3. Maximum 2MB total request size
-4. Operations execute atomically — all succeed or all fail
+4. Operations execute atomically - all succeed or all fail
 5. Use `container.execute_item_batch()` (Python) / `Container.CreateTransactionalBatch()` (C#)
 
 ### Output

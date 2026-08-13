@@ -71,7 +71,7 @@ Scaffold a full warehouse inventory management application that uses Azure Cosmo
 # Cross-partition required for: global product stock across all warehouses.
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 ```
 GET    /api/{resource}           → 200 + array
@@ -104,7 +104,7 @@ GET    /api/products/{productId}/stock                            → 200 + stoc
 ## Data Modeling Constraints
 
 - `StockLevel`: `id` (composite: `{warehouseId}_{productId}`), `warehouseId` (PK), `productId`, `quantity`, `reorderThreshold`, `updatedAt`
-- `Transfer`: `id`, `warehouseId` (PK — source warehouse, or destination for inbound), `type`, `sourceWarehouseId` (nullable), `destinationWarehouseId` (nullable), `productId`, `quantity`, `note`, `createdAt`
+- `Transfer`: `id`, `warehouseId` (PK - source warehouse, or destination for inbound), `type`, `sourceWarehouseId` (nullable), `destinationWarehouseId` (nullable), `productId`, `quantity`, `note`, `createdAt`
 - `Warehouse`: `id`, `name`, `location`, `createdAt`
 - `Product`: `id`, `name`, `sku`, `category`, `createdAt`
 
@@ -112,10 +112,10 @@ GET    /api/products/{productId}/stock                            → 200 + stoc
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys
 - ❌ Cross-partition queries without explicit comment
@@ -195,7 +195,7 @@ aiohttp>=3.9.0
 ```
 
 ### NEVER use these
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
 - ❌ `ConnectionMode.Direct`
 
 ---
@@ -221,7 +221,7 @@ aiohttp>=3.9.0
 └── README.md
 ```
 
-### SDK Patterns — Transactional Batch
+### SDK Patterns - Transactional Batch
 ```csharp
 // Transactional batch for stock adjustment within same warehouse
 var batch = container.CreateTransactionalBatch(new PartitionKey(warehouseId));

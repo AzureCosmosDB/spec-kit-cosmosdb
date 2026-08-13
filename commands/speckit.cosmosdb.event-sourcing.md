@@ -33,7 +33,7 @@ Generate event sourcing for `{{aggregate}}`. Follow these constraints:
 ### Event Store Container
 
 1. **Container name**: `events`
-2. **Partition key**: `/aggregateId` — all events for one aggregate in same partition
+2. **Partition key**: `/aggregateId` - all events for one aggregate in same partition
 3. **Document schema**:
    ```json
    {
@@ -48,7 +48,7 @@ Generate event sourcing for `{{aggregate}}`. Follow these constraints:
    }
    ```
 4. **Ordering**: Events ordered by `version` within aggregate (enforced by application)
-5. **Immutability**: NEVER update or delete events — append only
+5. **Immutability**: NEVER update or delete events - append only
 6. **Indexing**: Include `/aggregateId`, `/aggregateType`, `/version`; exclude `/data/*`
 
 ### Concurrency Control

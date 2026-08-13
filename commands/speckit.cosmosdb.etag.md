@@ -59,7 +59,7 @@ RequestOptions options = { IfMatchEtag = etag };
 try {
   await container.ReplaceItemAsync(item, id, pk, options);
 } catch (CosmosException ex) when (ex.StatusCode == 412) {
-  // Conflict — retry or return to caller
+  // Conflict - retry or return to caller
 }
 ```
 

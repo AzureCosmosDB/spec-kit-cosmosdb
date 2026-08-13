@@ -33,8 +33,8 @@ Generate API pagination for `{{entity}}` in {{framework}}. Follow these constrai
 
 ### Cursor Design
 
-1. **Opaque cursor**: Base64-encode the Cosmos continuation token — consumers MUST NOT parse it
-2. **Encoding**: `base64url(json({ "ct": "<continuation_token>", "v": 1 }))` — versioned for future changes
+1. **Opaque cursor**: Base64-encode the Cosmos continuation token - consumers MUST NOT parse it
+2. **Encoding**: `base64url(json({ "ct": "<continuation_token>", "v": 1 }))` - versioned for future changes
 3. **First page**: No cursor parameter → first page
 4. **Last page**: Response includes `null` cursor → no more pages
 5. **Cursor validation**: Decode and validate structure; return 400 on invalid cursor
@@ -64,10 +64,10 @@ GET /{{entity_plural}}?limit={{default_page_size}}&cursor=<opaque-cursor>
 
 ### Implementation Rules
 
-1. **Never expose raw continuation token** — it contains internal partition state
+1. **Never expose raw continuation token** - it contains internal partition state
 2. **Cursor is single-use**: Each cursor produces the NEXT page only
-3. **No total count**: Cosmos DB doesn't efficiently support `COUNT(*)` — omit `totalItems`
-4. **Stateless**: All pagination state is IN the cursor — no server-side session
+3. **No total count**: Cosmos DB doesn't efficiently support `COUNT(*)` - omit `totalItems`
+4. **Stateless**: All pagination state is IN the cursor - no server-side session
 5. **Stable ordering**: Always include `ORDER BY` to ensure deterministic pagination
 6. **Max page size**: Enforce server-side max (100) regardless of client request
 
@@ -81,7 +81,7 @@ For {{framework}}:
 
 ### Error Handling
 
-1. **Expired cursor**: Cosmos tokens may expire after hours — return 400 "Cursor expired, restart from first page"
+1. **Expired cursor**: Cosmos tokens may expire after hours - return 400 "Cursor expired, restart from first page"
 2. **Invalid cursor**: Malformed base64 or wrong version → 400
 3. **Empty page**: If Cosmos returns 0 items but has continuation → fetch next automatically (don't return empty page to client)
 
@@ -101,7 +101,7 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 ### Anti-Patterns to REJECT
 
 - ❌ Exposing raw Cosmos continuation tokens in API response
-- ❌ Offset-based pagination (`skip/take`) — doesn't work efficiently in Cosmos
+- ❌ Offset-based pagination (`skip/take`) - doesn't work efficiently in Cosmos
 - ❌ Returning `totalCount` (requires expensive full scan)
 - ❌ Returning empty pages to client (confusing UX)
 - ❌ No `ORDER BY` in paginated query (non-deterministic results)

@@ -39,7 +39,7 @@ For each table/collection in {{source_schema}}:
 2. Determine embedding vs referencing:
    - Embed when: data is read together, child entity doesn't exceed 2MB, bounded cardinality
    - Reference when: unbounded growth, independent access patterns, shared entities
-3. Choose partition key based on {{query_patterns}} — the most frequent query filter becomes the partition key candidate
+3. Choose partition key based on {{query_patterns}} - the most frequent query filter becomes the partition key candidate
 4. Design the document schema with:
    - `id` field (unique within partition)
    - Partition key field at root level

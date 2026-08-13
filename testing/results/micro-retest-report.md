@@ -80,7 +80,7 @@
 
 The explicit naming constraints dramatically improved determinism:
 
-1. **Mandatory names** (`MUST be named X`) eliminated all naming variation — previously the biggest source of inconsistency
+1. **Mandatory names** (`MUST be named X`) eliminated all naming variation - previously the biggest source of inconsistency
 2. **Explicit pattern choices** (e.g., "module-level singleton, NOT class-based `__new__`") removed ambiguity about implementation approach
 3. **Specific library constraints** (e.g., "stdlib `logging`, NOT structlog") prevented random library selection
 4. **Anti-patterns listing specific alternatives** (e.g., "NOT `T | None` union syntax") caught edge-case style drift
@@ -93,6 +93,6 @@ Adding explicit naming and structural constraints to micro prompts achieves **pe
 ### Recommendation
 
 Apply the same tightening pattern to remaining micro prompts:
-- `cosmos.upsert.md` — constrain function name, error handling pattern
-- `cosmos.transaction.md` — constrain batch builder pattern
-- `cosmos.pagination.md` — constrain cursor encoding scheme
+- `cosmos.upsert.md` - constrain function name, error handling pattern
+- `cosmos.transaction.md` - constrain batch builder pattern
+- `cosmos.pagination.md` - constrain cursor encoding scheme

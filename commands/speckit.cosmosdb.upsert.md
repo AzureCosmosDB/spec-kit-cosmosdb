@@ -43,7 +43,7 @@ Generate an upsert operation. Follow these constraints:
 
 ### Rules
 
-1. Use `container.upsert_item()` — NOT separate read-then-write
+1. Use `container.upsert_item()` - NOT separate read-then-write
 2. When `etag` is provided, set `if_match_etag=etag` for optimistic concurrency
 3. Handle 412 Precondition Failed → raise a domain-specific `ConflictError`
 4. Always include `partition_key` in the call

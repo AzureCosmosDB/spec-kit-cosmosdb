@@ -35,7 +35,7 @@ Generate a change feed processor. Follow these constraints:
 ### Architecture
 
 1. **Lease container**: Use a dedicated `leases` container (partition key `/id`)
-2. **Processor name**: Must be unique per consumer group — use `{{processor_name}}`
+2. **Processor name**: Must be unique per consumer group - use `{{processor_name}}`
 3. **Start time**: Default to `StartTime.Now()` for new deployments; support `StartTime.Beginning()` for replay
 4. **Batch size**: Default `MaxItemCount = 100`, tune based on processing time
 5. **Instance name**: Use hostname/pod name for horizontal scaling

@@ -19,7 +19,7 @@
 **Overall consistency: ~71%** (5/7 dimensions consistent)
 
 ### Key Finding
-The scaffold match split between `social` and `ecommerce` — both are defensible interpretations. The partition key divergence (`/shelterId` vs `/category`) is a **direct consequence** of the scaffold mismatch, since each scaffold implies different primary access patterns. Language, scale, container list, and file structure were stable.
+The scaffold match split between `social` and `ecommerce` - both are defensible interpretations. The partition key divergence (`/shelterId` vs `/category`) is a **direct consequence** of the scaffold mismatch, since each scaffold implies different primary access patterns. Language, scale, container list, and file structure were stable.
 
 ---
 
@@ -40,7 +40,7 @@ The scaffold match split between `social` and `ecommerce` — both are defensibl
 **Overall consistency: ~43%** (3/7 dimensions consistent)
 
 ### Key Finding
-This is the worst-performing test. The input has **dual scaffold triggers** ("orders" → ecommerce, "inventory" → inventory) with no signal about which is primary. The partition key diverged across ALL THREE runs — `/customerId`, `/productId`, and `/status` — meaning the most architecturally critical decision was completely non-deterministic. Note: `/status` is a particularly bad partition key (low cardinality, hot partition risk), showing that vibe-inferred partition keys can be **actively harmful**.
+This is the worst-performing test. The input has **dual scaffold triggers** ("orders" → ecommerce, "inventory" → inventory) with no signal about which is primary. The partition key diverged across ALL THREE runs - `/customerId`, `/productId`, and `/status` - meaning the most architecturally critical decision was completely non-deterministic. Note: `/status` is a particularly bad partition key (low cardinality, hot partition risk), showing that vibe-inferred partition keys can be **actively harmful**.
 
 ---
 
@@ -60,7 +60,7 @@ This is the worst-performing test. The input has **dual scaffold triggers** ("or
 **Overall consistency: ~83%** (5/6 dimensions consistent)
 
 ### Key Finding
-The vibe prompt's **guardrail worked perfectly** — all 3 runs correctly identified this as too ambiguous and stopped. However, the specific clarifying question varied each time, which could lead users down different paths in subsequent interactions. The safeguard behavior itself was 100% deterministic.
+The vibe prompt's **guardrail worked perfectly** - all 3 runs correctly identified this as too ambiguous and stopped. However, the specific clarifying question varied each time, which could lead users down different paths in subsequent interactions. The safeguard behavior itself was 100% deterministic.
 
 ---
 
@@ -83,9 +83,9 @@ The vibe prompt's **guardrail worked perfectly** — all 3 runs correctly identi
 
 **Key observations:**
 1. Vibe with vague-but-directional input (~71%) falls **between** v1 and v2 explicit inputs
-2. Vibe with ambiguous input (~43%) is **worse than v1** — the scaffold selection ambiguity cascades into partition key chaos
+2. Vibe with ambiguous input (~43%) is **worse than v1** - the scaffold selection ambiguity cascades into partition key chaos
 3. Vibe's guardrail for "too vague" is the most reliable behavior (~83%), but the follow-up question varies
-4. **The partition key is the most volatile dimension** — it's the most architecturally important decision and the least deterministic one
+4. **The partition key is the most volatile dimension** - it's the most architecturally important decision and the least deterministic one
 
 ---
 
@@ -96,7 +96,7 @@ The vibe prompt's **guardrail worked perfectly** — all 3 runs correctly identi
 **No.** `/cosmos.vibe` should be **triage-only**, not a generator.
 
 **Evidence:**
-1. **Partition key non-determinism is disqualifying.** The partition key is the single most consequential Cosmos DB decision (it cannot be changed without a container migration). In Test 2, all 3 runs produced different partition keys — including one (`/status`) that would cause production hot-partition issues. Generating code with a wrong partition key is worse than generating no code at all.
+1. **Partition key non-determinism is disqualifying.** The partition key is the single most consequential Cosmos DB decision (it cannot be changed without a container migration). In Test 2, all 3 runs produced different partition keys - including one (`/status`) that would cause production hot-partition issues. Generating code with a wrong partition key is worse than generating no code at all.
 
 2. **Scaffold ambiguity cascades.** When the scaffold match is uncertain, every downstream decision (queries, partition keys, container structure, model fields) inherits that uncertainty. The vibe prompt has no mechanism to resolve ties between equally-weighted scaffold triggers.
 
@@ -117,6 +117,6 @@ The vibe prompt's **guardrail worked perfectly** — all 3 runs correctly identi
 
 **Action items:**
 1. Modify `/cosmos.vibe` to output a **recommended command** instead of generating code directly
-2. Add a **scaffold confidence score** — if <80% confidence, require user confirmation before proceeding
+2. Add a **scaffold confidence score** - if <80% confidence, require user confirmation before proceeding
 3. Add **partition key validation rules** (reject low-cardinality keys like `/status`, `/type`)
 4. Consider requiring the user to confirm the Intent Analysis plan before generation proceeds (currently it says "Proceeding with generation..." without waiting)

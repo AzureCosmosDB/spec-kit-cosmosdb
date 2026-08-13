@@ -43,7 +43,7 @@ Scaffold a full multi-tenant SaaS platform that uses Azure Cosmos DB as its prim
 ### Tenant Isolation
 
 - **ALL tenant-scoped data lives in a single `tenantData` container** with hierarchical partition key `/tenantId/type`.
-- Every query MUST include `tenantId` in the partition key path — no cross-tenant data leakage.
+- Every query MUST include `tenantId` in the partition key path - no cross-tenant data leakage.
 - Service layer MUST validate that the authenticated tenant matches the requested `tenantId`.
 - `type` discriminator separates Users, Subscriptions, and UsageMetrics within the same partition.
 
@@ -77,7 +77,7 @@ trial → active → past_due → cancelled
 # Cross-partition required for: admin list-all-tenants (opt-in, paginated).
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 ```
 GET    /api/{resource}           → 200 + array
@@ -125,10 +125,10 @@ Rules:
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys
 - ❌ Cross-partition queries without explicit comment
@@ -210,7 +210,7 @@ aiohttp>=3.9.0
 ```
 
 ### NEVER use these
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
 - ❌ `ConnectionMode.Direct`
 
 ---
@@ -240,7 +240,7 @@ aiohttp>=3.9.0
 └── README.md
 ```
 
-### SDK Patterns — Hierarchical Partition Key
+### SDK Patterns - Hierarchical Partition Key
 ```csharp
 // Hierarchical partition key
 var pk = new PartitionKeyBuilder()
@@ -300,7 +300,7 @@ await container.ReadItemAsync<User>(id, pk);
 └── README.md
 ```
 
-### SDK Patterns — Hierarchical Partition Key
+### SDK Patterns - Hierarchical Partition Key
 ```javascript
 // Hierarchical partition key
 const pk = new PartitionKey([tenantId, type]);

@@ -52,7 +52,7 @@ Justify your choice with: "Partition key `/{{chosen_key}}` because: [reason base
    - `updatedAt`: ISO 8601 timestamp
 4. Embedded sub-documents: only for bounded, co-accessed data
 5. Arrays: only for bounded collections (< 100 items typically)
-6. No `null` values — omit the field instead
+6. No `null` values - omit the field instead
 
 ### Output
 

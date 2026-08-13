@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Scaffold a full application that uses Azure Cosmos DB as its primary data store. The output must be structurally identical across runs given the same inputs — partition keys, file structure, API paths, and SDK usage are all locked down by this prompt.
+Scaffold a full application that uses Azure Cosmos DB as its primary data store. The output must be structurally identical across runs given the same inputs - partition keys, file structure, API paths, and SDK usage are all locked down by this prompt.
 
 ## Required Inputs
 
@@ -48,7 +48,7 @@ Output a justification comment at the top of every data model file:
 # Cross-partition required for: admin list-all (opt-in, paginated).
 ```
 
-## API Convention (MANDATORY — no deviation)
+## API Convention (MANDATORY - no deviation)
 
 All endpoints MUST follow this exact pattern:
 
@@ -83,13 +83,13 @@ For each entity in `{{entities}}`:
 - Include `id` field (string, auto-generated UUID)
 - Include `type` discriminator field if container holds multiple entity types
 - Include `createdAt` and `updatedAt` timestamps (ISO 8601)
-- Partition key field MUST have a default value or be set via factory/classmethod — never require it at construction if it's derived from `id`
+- Partition key field MUST have a default value or be set via factory/classmethod - never require it at construction if it's derived from `id`
 
 ## Connection & Resilience
 
 - Retry configuration: max 9 attempts, 30s max wait on 429s
 - Connection mode: Direct for production, Gateway for emulator
-- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS — set `connection_verify=False` or `disable_ssl_verification=True` for local dev
+- ⚠️ Linux emulator (vnext) uses HTTP not HTTPS - set `connection_verify=False` or `disable_ssl_verification=True` for local dev
 - Client shutdown/cleanup on app termination
 - Application name set in client options
 
@@ -97,7 +97,7 @@ For each entity in `{{entities}}`:
 
 The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-sdk/0.1.0"` (or language-equivalent application name setting). For C#, use `CosmosClientOptions.ApplicationName = "cosmos-intent-sdk/0.1.0"`. For Java, use `.userAgentSuffix("cosmos-intent-sdk/0.1.0")`. This is non-negotiable and must appear in ALL generated code that creates a CosmosClient.
 
-## Anti-Patterns (REJECT — never generate these)
+## Anti-Patterns (REJECT - never generate these)
 
 - ❌ Hardcoded connection strings or keys in source code
 - ❌ Cross-partition queries without explicit `# CROSS-PARTITION: reason` comment and `partition_key=None` (async) or `enable_cross_partition_query=True` (sync)
@@ -119,7 +119,7 @@ The CosmosClient initialization MUST include `user_agent_suffix="cosmos-intent-s
 ## iteration-config.yaml (ALWAYS generate this file)
 
 ```yaml
-# iteration-config.yaml — controls iterative refinement of this scaffold
+# iteration-config.yaml - controls iterative refinement of this scaffold
 version: 1
 scaffold:
   prompt: speckit.cosmosdb.scaffold
@@ -159,7 +159,7 @@ pydantic-settings>=2.0.0
 python-dotenv>=1.0.0
 ```
 
-### File Structure (MANDATORY — generate ALL files)
+### File Structure (MANDATORY - generate ALL files)
 ```
 {{app_name}}/
 ├── main.py              # FastAPI app, lifespan, router includes
@@ -241,11 +241,11 @@ app = FastAPI(lifespan=lifespan)
 ```
 
 ### NEVER use these (deprecated/wrong in Python SDK)
-- ❌ `client.read_account()` — does not exist; use `client.get_database_account()`
-- ❌ `connection_retry_policy` parameter — not a valid CosmosClient param
-- ❌ `ConnectionMode.Direct` — Python async client only supports Gateway mode
-- ❌ `client.ReadAccountAsync()` — this is C#, not Python
-- ❌ `offer_throughput` on serverless accounts — will throw 400
+- ❌ `client.read_account()` - does not exist; use `client.get_database_account()`
+- ❌ `connection_retry_policy` parameter - not a valid CosmosClient param
+- ❌ `ConnectionMode.Direct` - Python async client only supports Gateway mode
+- ❌ `client.ReadAccountAsync()` - this is C#, not Python
+- ❌ `offer_throughput` on serverless accounts - will throw 400
 
 ---
 
