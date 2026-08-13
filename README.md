@@ -1,4 +1,4 @@
-# Cosmos DB Intent SDK — Spec Kit Extension
+# Cosmos DB Spec Kit Extension — Spec Kit Extension
 
 Prescriptive prompt templates for Azure Cosmos DB that produce deterministic, best-practice code with any AI coding agent.
 

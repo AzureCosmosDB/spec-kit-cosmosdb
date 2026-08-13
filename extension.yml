@@ -1,7 +1,7 @@
 schema_version: '1.0'
 extension:
   id: cosmosdb
-  name: Cosmos DB Intent SDK
+  name: Cosmos DB Spec Kit Extension
   version: 1.0.0
   description: Prescriptive prompt templates for Azure Cosmos DB that produce deterministic, best-practice code with any AI coding agent
   author: Theo van Kraay
