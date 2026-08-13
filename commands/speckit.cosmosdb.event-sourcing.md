@@ -2,7 +2,13 @@
 description: "Generate an event sourcing implementation with Cosmos DB: append-only events, snapshots, and projections."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.event-sourcing
 

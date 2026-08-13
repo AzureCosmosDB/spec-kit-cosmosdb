@@ -2,7 +2,13 @@
 description: "Generate 429 (TooManyRequests) handling with exponential backoff."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.retry
 

@@ -2,7 +2,13 @@
 description: "Generate a migration plan and code to move from another database to Azure Cosmos DB."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.migrate
 

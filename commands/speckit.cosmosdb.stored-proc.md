@@ -2,7 +2,13 @@
 description: "Create stored procedures for atomic transactional operations within a partition."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.stored-proc
 

@@ -2,7 +2,13 @@
 description: "Generate a point read operation (the cheapest possible Cosmos DB read at 1 RU)."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.point-read
 

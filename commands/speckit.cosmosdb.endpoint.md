@@ -2,7 +2,13 @@
 description: "Generate an API endpoint backed by Cosmos DB with proper error mapping."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.endpoint
 

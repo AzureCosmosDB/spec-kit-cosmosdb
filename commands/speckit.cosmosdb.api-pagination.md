@@ -2,7 +2,13 @@
 description: "Generate API pagination with Cosmos DB continuation tokens exposed as opaque cursors."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.api-pagination
 

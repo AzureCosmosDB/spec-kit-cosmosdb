@@ -2,7 +2,13 @@
 description: "Apply Cosmos DB best-practice rules for the current session"
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.agent-kit
 

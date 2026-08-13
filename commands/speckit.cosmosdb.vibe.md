@@ -2,7 +2,13 @@
 description: "Tell me what you want to build. I'll figure out exactly which command to run."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.vibe
 

@@ -2,7 +2,13 @@
 description: "Scaffold a complete RAG (Retrieval-Augmented Generation) application with Cosmos DB vector search."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.rag
 

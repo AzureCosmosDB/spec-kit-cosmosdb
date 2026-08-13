@@ -2,7 +2,13 @@
 description: "Generate a session/cache storage pattern with Cosmos DB and TTL-based expiration."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.session-state
 

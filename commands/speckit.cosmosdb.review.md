@@ -2,7 +2,13 @@
 description: "Audit your Cosmos DB code against Intent SDK best practices."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.review
 

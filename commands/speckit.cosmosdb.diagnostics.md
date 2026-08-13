@@ -2,7 +2,13 @@
 description: "Add SDK diagnostics logging for troubleshooting latency and errors."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.diagnostics
 

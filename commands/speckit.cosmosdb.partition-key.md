@@ -2,7 +2,13 @@
 description: "Recommend an optimal partition key for a container based on access patterns."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.partition-key
 

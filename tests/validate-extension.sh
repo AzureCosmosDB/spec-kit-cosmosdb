@@ -16,7 +16,7 @@ for field in schema_version "id:" "name:" "version:" "description:"; do
 done
 
 # 3. Every command in extension.yml has a file
-commands=$(grep '^ *- "speckit\.cosmosdb\.' extension.yml | sed 's/.*"\(.*\)"/\1/')
+commands=$(grep '^ *- name: speckit\.cosmosdb\.' extension.yml | sed 's/.*name: //')
 for cmd in $commands; do
   if [ -f "commands/${cmd}.md" ]; then ((PASS++)); else echo "FAIL: missing commands/${cmd}.md"; ((FAIL++)); fi
 done

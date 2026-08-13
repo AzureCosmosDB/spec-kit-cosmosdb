@@ -2,7 +2,13 @@
 description: "Configure multi-region writes, conflict resolution, and preferred regions."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.global-distribution
 

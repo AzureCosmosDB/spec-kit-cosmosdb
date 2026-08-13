@@ -2,7 +2,13 @@
 description: "Configure JSON serialization for correct property naming, enum handling, and custom converters."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.serialization
 

@@ -2,7 +2,13 @@
 description: "Generate an efficient streaming query for large result sets."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.stream-query
 

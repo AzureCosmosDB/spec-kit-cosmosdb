@@ -2,7 +2,13 @@
 description: "Generate a CosmosClient singleton pattern for dependency injection."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.singleton
 

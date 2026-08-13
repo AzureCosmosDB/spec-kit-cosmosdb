@@ -2,7 +2,13 @@
 description: "Generate a custom indexing policy optimized for specific query patterns."
 ---
 
-<!-- User arguments: $ARGUMENTS -->
+## User Input
+
+```text
+$ARGUMENTS
+```
+
+You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.index-policy
 
