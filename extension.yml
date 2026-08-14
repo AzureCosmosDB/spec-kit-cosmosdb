@@ -11,9 +11,6 @@ requires:
   speckit_version: '>=0.1.0'
 provides:
   commands:
-  - name: speckit.cosmosdb.agent-kit
-    file: commands/speckit.cosmosdb.agent-kit.md
-    description: Apply Cosmos DB best-practice rules for the current session
   - name: speckit.cosmosdb.api-pagination
     file: commands/speckit.cosmosdb.api-pagination.md
     description: Generate API pagination with Cosmos DB continuation tokens exposed as opaque cursors.
@@ -176,11 +173,6 @@ hooks:
     optional: true
     prompt: Review generated code against Cosmos DB best practices?
     description: Audit your Cosmos DB code against Spec Kit best practices.
-  after_plan:
-    command: speckit.cosmosdb.agent-kit
-    optional: true
-    prompt: Apply Cosmos DB best-practice rules for this session?
-    description: Apply Cosmos DB best-practice rules for the current session
 tags:
 - azure
 - cosmosdb

@@ -54,7 +54,7 @@ Generate vector search setup for {{use_case}}. Follow these constraints:
   "vectorIndexes": [
     {
       "path": "/embedding",
-      "type": "quantizedFlat"  // or "flat" for < 5000 docs, "diskANN" for > 100K
+      "type": "quantizedFlat"  // choose per rules below
     }
   ]
 }
@@ -62,9 +62,22 @@ Generate vector search setup for {{use_case}}. Follow these constraints:
 
 ### Index Type Selection
 
-- `flat`: < 5,000 vectors, perfect recall, highest RU cost per query
-- `quantizedFlat`: 5,000-100,000 vectors, good recall, moderate cost
-- `diskANN`: > 100,000 vectors, approximate recall, lowest cost at scale
+**Choose based on the number of vectors scanned _per important query_ AFTER partition-key and filter predicates - NOT total container size.**
+
+- `flat`: Exact brute-force, 100% recall. Use for small, focused candidate sets. **Hard limit: 505 dimensions.**
+- `quantizedFlat`: Brute-force over compressed vectors, supports up to 4,096 dims. Good starting point when filters/partition scope leave **≤ 50,000 vectors per search**. Slight accuracy loss from quantization.
+- `diskANN`: Approximate nearest-neighbor, up to 4,096 dims. Best latency/throughput/RU when important queries span **> 50,000 vectors**. Does not guarantee exact/deterministic top-K.
+
+**Activation threshold:** `quantizedFlat` and `diskANN` require **at least 1,000 indexed vectors** before the index is used. Below that, queries fall back to a full scan regardless of index type.
+
+### Embedding Normalization (cosine)
+
+When using `cosine` distance, normalize embeddings to unit length (L2 norm = 1):
+```
+normalized = vector / sqrt(sum(x**2 for x in vector))
+```
+- Cosine measures angle, not magnitude - unnormalized vectors give inconsistent scores.
+- Most models (Azure OpenAI etc.) already return normalized vectors, but normalize mock/test embeddings explicitly.
 
 ### Document Schema
 
@@ -80,6 +93,8 @@ Generate vector search setup for {{use_case}}. Follow these constraints:
 ```
 
 ### Query Pattern
+
+Always use `ORDER BY VectorDistance(...)` (not `WHERE`) and parameterize the query vector (hard-coded arrays cause query-plan cache misses):
 
 ```sql
 SELECT TOP @k c.id, c.title, VectorDistance(c.embedding, @queryVector) AS score
@@ -104,7 +119,11 @@ The CosmosClient initialization MUST include `user_agent_suffix="speckit-cosmosd
 ### Anti-Patterns to REJECT
 
 - ❌ Storing embeddings without vector index (falls back to brute force)
-- ❌ Using `flat` index for > 10K vectors (too expensive)
+- ❌ Choosing index type from total container size instead of per-query vector count after filters
+- ❌ Using `flat` for > 505 dimensions (exceeds service limit)
 - ❌ Cross-partition vector search without justification
 - ❌ Not specifying dimensions in policy (causes runtime errors)
 - ❌ Storing embedding as string instead of float array
+- ❌ Unnormalized embeddings with cosine distance (inconsistent scores)
+- ❌ Hard-coding the query vector instead of parameterizing (query-plan cache misses)
+- ❌ Filtering with `WHERE VectorDistance(...) < x` instead of `ORDER BY VectorDistance(...)`

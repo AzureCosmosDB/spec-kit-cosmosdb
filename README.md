@@ -101,13 +101,13 @@ Call specific commands directly when you know exactly what you need:
 | `speckit.cosmosdb.recommend` | Conversational entry point - describe what you want, get the right command |
 | `speckit.cosmosdb.review` | Review generated code against Cosmos DB best practices |
 | `speckit.cosmosdb.explain` | Explain Cosmos DB concepts in context |
-| `speckit.cosmosdb.agent-kit` | Load best-practice rules for the session |
+
+> **Best-practice rules:** For always-on Cosmos DB coding guardrails, install the [`cosmosdb-agent-kit`](https://github.com/AzureCosmosDB/cosmosdb-agent-kit) skill separately. It loads 100+ best-practice rules into your AI session. This extension focuses on prescriptive *workflows*; the agent kit provides the passive ruleset.
 
 ## Hooks
 
-This extension provides two automatic hooks:
+This extension provides one automatic hook:
 
-- **`after_plan`** → `speckit.cosmosdb.agent-kit`: Optionally loads Cosmos DB best-practice rules into the session so all generated code follows them.
 - **`after_implement`** → `speckit.cosmosdb.review`: Optionally reviews generated code against Cosmos DB best practices.
 
 ## Testing Results

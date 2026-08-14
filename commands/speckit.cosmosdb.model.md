@@ -74,3 +74,74 @@ The CosmosClient initialization MUST include `user_agent_suffix="speckit-cosmosd
 - ❌ Unbounded arrays in documents
 - ❌ Deeply nested partition key paths
 - ❌ Including large blobs in the document (use Azure Blob Storage + reference)
+
+## Advanced: Multi-Entity Aggregate Design
+
+When modeling **more than one related entity** (e.g. User + Orders + OrderItems), do not model each entity in isolation. Apply aggregate-oriented design driven by access patterns.
+
+### Access Pattern Analysis (do this FIRST)
+
+For every access pattern, capture a row. **Every pattern MUST have an RPS estimate** - if unknown, estimate from business context.
+
+| Pattern # | Description | RPS (peak/avg) | Type | Attributes needed | Latency SLO | Consistency |
+|-----------|-------------|----------------|------|-------------------|-------------|-------------|
+| 1 | Get user profile by userId on login | 500 / 200 | Read | userId, name, email | <50ms | Session |
+| 2 | Create user on signup | 50 / 20 | Write | userId, name, email | <100ms | Strong |
+
+Rule: **every read pattern should have a corresponding write pattern (and vice versa)** unless explicitly declined.
+
+### Aggregate Correlation Analysis
+
+For each candidate entity pair, measure how often they are accessed together:
+
+- **Access correlation**: % of queries that need both entities together
+- **Query split**: Entity1 only %, Entity2 only %, both together %
+- **Size**: combined max size (must stay well under 2MB), growth pattern (bounded vs unbounded)
+- **Update patterns**: independent vs related update frequency
+
+### Identifying-Relationship Check
+
+For each parent-child relationship, ask:
+1. **Child independence** - can the child exist without the parent?
+2. **Access** - do you always have the parent_id when querying children?
+3. **Current design** - would separate containers force cross-partition queries for parent→child?
+
+If **No / Yes / Yes** → use an identifying relationship (partition key = parent_id) instead of a separate container with cross-partition queries.
+
+### Consolidation Decision Framework
+
+| Correlation | Size / Growth | Decision |
+|-------------|---------------|----------|
+| >70% + identifying relationship | bounded | **Single container, multi-document** (share partition key) |
+| >70% joint, small & bounded | <100KB combined | **Single document** (embed) - atomic updates, 1-RU point read |
+| 50-70% | analyze coupling (backup, scaling, consistency) | Multi-doc if same ops; separate if divergent |
+| <30% OR unbounded growth OR independent scaling | any | **Separate containers** |
+
+- **Single document** = atomic updates + point read (`ReadItem(id, partitionKey)`, 1 RU), but capped at 2MB
+- **Multi-document container** = related docs share a partition key, retrieved in one query, transactional within the partition, no per-doc size coupling
+- **Separate containers** = clean separation, independent throughput, but cross-partition query cost
+
+### RU Cost Reasoning (validate before finalizing)
+
+Use realistic document sizes, not theoretical 1KB:
+- Point read (1KB): 1 RU | Query (1KB): ~2-5 RU | Write (1KB): ~5 RU | Update (1KB): ~7 RU | Delete: ~5 RU
+- Large docs (>10KB) scale RU proportionally
+- **Cross-partition query overhead**: ~2.5 RU × physical partitions scanned
+- **Physical partitions** ≈ total data size ÷ 50GB
+- Prefer designs that keep hot/high-RPS patterns single-partition
+
+### Massive-Scale Warning
+
+If write volume exceeds ~10k writes/sec or millions of records land in short bursts, before modeling ask about:
+1. **Data binning/chunking** - can individual records be grouped into chunks per document?
+2. **Write reduction** - can writes be batched instead of processed individually?
+3. **Physical partition implications** - how will total data size inflate cross-partition query cost?
+
+### Multi-Entity Deliverable
+
+When 2+ entities are involved, output:
+1. Access pattern table (with RPS)
+2. Aggregate/consolidation decisions with justification per entity pair
+3. Final container design table: `Container | Partition Key | Entities | Throughput | Justification`
+4. Per-container document schemas (as in the single-entity output above)
+5. Hot-partition risk assessment for high-RPS patterns
