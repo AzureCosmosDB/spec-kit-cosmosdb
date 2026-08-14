@@ -10,6 +10,11 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
+## Spec Context (optional)
+
+If the current project has an active Spec Kit specification (e.g. `.specify/specs/<feature>/spec.md`, or a path provided in the user input), **read it first** and use it as the source of intent: entity names, fields, access patterns, scale, and consistency requirements. Prefer values from the spec over generic defaults. If no spec is present, fall back to the inputs below. **Do not modify the spec.**
+
+
 # /speckit.cosmosdb.scaffold-chat
 
 > Generate a complete Azure Cosmos DB real-time chat application with deterministic, production-ready architecture.
