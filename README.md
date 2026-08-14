@@ -9,7 +9,7 @@ This is a [Spec Kit](https://github.com/github/spec-kit) extension. It provides 
 ## Installation
 
 ```bash
-specify extension add cosmosdb --from https://github.com/TheovanKraay/spec-kit-cosmosdb/archive/refs/tags/v0.1.0.zip
+specify extension add cosmosdb --from https://github.com/AzureCosmosDB/spec-kit-cosmosdb/archive/refs/tags/v0.1.0.zip
 ```
 
 ## Two Paths: Guided vs. Explicit Commands

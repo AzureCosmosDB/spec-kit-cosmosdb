@@ -36,4 +36,4 @@ before a stable 1.0.0.
   [`cosmosdb-agent-kit`](https://github.com/AzureCosmosDB/cosmosdb-agent-kit) skill
   separately; this extension focuses on prescriptive workflows.
 
-[0.1.0]: https://github.com/TheovanKraay/spec-kit-cosmosdb/releases/tag/v0.1.0
+[0.1.0]: https://github.com/AzureCosmosDB/spec-kit-cosmosdb/releases/tag/v0.1.0

@@ -5,8 +5,8 @@ extension:
   version: 0.1.0
   description: Prescriptive prompts producing deterministic, best-practice Azure Cosmos DB code with any AI agent
   author: Theo van Kraay
-  repository: https://github.com/TheovanKraay/spec-kit-cosmosdb
-  homepage: https://github.com/TheovanKraay/spec-kit-cosmosdb
+  repository: https://github.com/AzureCosmosDB/spec-kit-cosmosdb
+  homepage: https://github.com/AzureCosmosDB/spec-kit-cosmosdb
   license: MIT
 requires:
   speckit_version: '>=0.1.0'
