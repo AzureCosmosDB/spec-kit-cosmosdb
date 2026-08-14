@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Create a configuration module that supports both the Cosmos DB emulator (local dev) and production Azure endpoint.
+Create a configuration module that supports both the Azure Cosmos DB emulator (local dev) and production Azure endpoint.
 
 ## Required Inputs
 

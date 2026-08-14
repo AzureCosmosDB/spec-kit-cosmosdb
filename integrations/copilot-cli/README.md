@@ -2,18 +2,18 @@
 
 ## Overview
 
-Use speckit-cosmosdb with `gh copilot suggest` and `gh copilot explain` to get Cosmos DB guidance directly in your terminal.
+Use speckit-cosmosdb with `gh copilot suggest` and `gh copilot explain` to get Azure Cosmos DB guidance directly in your terminal.
 
 ## Basic Usage
 
 ```bash
 # Ask for container design guidance
-gh copilot suggest "Design a Cosmos DB container for user profiles \
+gh copilot suggest "Design a Azure Cosmos DB container for user profiles \
   with lookups by userId and email, following speckit-cosmosdb rules: \
   choose high-cardinality partition key, embed related data, use Session consistency"
 
 # Get query optimization
-gh copilot explain "Why is this Cosmos DB query using cross-partition fan-out: \
+gh copilot explain "Why is this Azure Cosmos DB query using cross-partition fan-out: \
   SELECT * FROM c WHERE c.status = 'active' ORDER BY c.createdAt DESC"
 ```
 
@@ -24,7 +24,7 @@ Create a shell function that injects speckit-cosmosdb context:
 ```bash
 # ~/.bashrc or ~/.zshrc
 cosmos-design() {
-  local context="You are a Cosmos DB architect. Follow these rules:
+  local context="You are a Azure Cosmos DB architect. Follow these rules:
 - Choose partition keys with high cardinality present in most query WHERE clauses
 - Prefer denormalization; embed child entities accessed with parent
 - Use change feed for cross-container materialized views
@@ -32,13 +32,13 @@ cosmos-design() {
 - Include composite indexes for multi-field ORDER BY
 - Estimate RU cost for primary operations
 
-Design a Cosmos DB container for: $*"
+Design a Azure Cosmos DB container for: $*"
 
   gh copilot suggest "$context"
 }
 
 cosmos-query() {
-  local context="You are a Cosmos DB query expert. Follow these rules:
+  local context="You are a Azure Cosmos DB query expert. Follow these rules:
 - Avoid cross-partition queries; filter on partition key
 - Use projections to reduce RU cost
 - Prefer point reads (ReadItem) over queries when possible

@@ -1,5 +1,5 @@
 ---
-description: "Generate vector search configuration and query code for Cosmos DB."
+description: "Generate vector search configuration and query code for Azure Cosmos DB."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.vector
 
-> Generate vector search configuration and query code for Cosmos DB.
+> Generate vector search configuration and query code for Azure Cosmos DB.
 
 ## Intent
 
-Set up vector search in Cosmos DB with proper embedding storage, vector indexing policy, and similarity search queries.
+Set up vector search in Azure Cosmos DB with proper embedding storage, vector indexing policy, and similarity search queries.
 
 ## Required Inputs
 

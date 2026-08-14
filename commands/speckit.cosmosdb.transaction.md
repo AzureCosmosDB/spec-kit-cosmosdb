@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Implement atomic multi-operation transactions using Cosmos DB transactional batch, guaranteed within one logical partition.
+Implement atomic multi-operation transactions using Azure Cosmos DB transactional batch, guaranteed within one logical partition.
 
 ## Required Inputs
 

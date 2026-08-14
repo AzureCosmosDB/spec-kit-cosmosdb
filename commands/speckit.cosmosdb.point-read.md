@@ -1,5 +1,5 @@
 ---
-description: "Generate a point read operation (the cheapest possible Cosmos DB read at 1 RU)."
+description: "Generate a point read operation (the cheapest possible Azure Cosmos DB read at 1 RU)."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.point-read
 
-> Generate a point read operation (the cheapest possible Cosmos DB read at 1 RU).
+> Generate a point read operation (the cheapest possible Azure Cosmos DB read at 1 RU).
 
 ## Intent
 

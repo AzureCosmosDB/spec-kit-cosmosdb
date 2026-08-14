@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Implement memory-efficient iteration over large Cosmos DB query results using async generators/iterators without loading all results into memory.
+Implement memory-efficient iteration over large Azure Cosmos DB query results using async generators/iterators without loading all results into memory.
 
 ## Required Inputs
 

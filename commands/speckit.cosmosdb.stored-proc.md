@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Write server-side stored procedures for Cosmos DB that execute atomic multi-document operations within a single logical partition, with proper error handling and bounded execution.
+Write server-side stored procedures for Azure Cosmos DB that execute atomic multi-document operations within a single logical partition, with proper error handling and bounded execution.
 
 ## Required Inputs
 

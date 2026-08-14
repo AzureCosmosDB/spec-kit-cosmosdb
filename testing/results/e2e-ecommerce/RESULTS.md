@@ -3,7 +3,7 @@
 **Date:** 2026-07-27  
 **Scaffold:** `cosmos.scaffold-ecommerce.md`  
 **Language:** Python / FastAPI  
-**Target:** Cosmos DB Emulator at `http://localhost:8081`  
+**Target:** Azure Cosmos DB Emulator at `http://localhost:8081`  
 **Scale input:** "50K customers, 500K orders, 10K products"
 
 ## Test Results: 19/19 PASS ✅

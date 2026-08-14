@@ -1,4 +1,4 @@
-# Cosmos DB - Spec Kit Extension
+# Azure Cosmos DB - Spec Kit Extension
 
 Prescriptive prompt templates for Azure Cosmos DB that produce deterministic, best-practice code with any AI coding agent.
 
@@ -35,8 +35,8 @@ Call specific commands directly when you know exactly what you need:
 | Command | Description |
 |---------|-------------|
 | `speckit.cosmosdb.singleton` | Generate a CosmosClient singleton pattern for dependency injection |
-| `speckit.cosmosdb.retry` | Generate retry logic with exponential backoff for Cosmos DB |
-| `speckit.cosmosdb.connection` | Generate Cosmos DB connection configuration |
+| `speckit.cosmosdb.retry` | Generate retry logic with exponential backoff for Azure Cosmos DB |
+| `speckit.cosmosdb.connection` | Generate Azure Cosmos DB connection configuration |
 | `speckit.cosmosdb.point-read` | Generate an efficient point read operation |
 | `speckit.cosmosdb.upsert` | Generate an upsert operation with conflict handling |
 | `speckit.cosmosdb.patch` | Generate a partial document update (patch) operation |
@@ -56,9 +56,9 @@ Call specific commands directly when you know exactly what you need:
 
 | Command | Description |
 |---------|-------------|
-| `speckit.cosmosdb.model` | Generate a Cosmos DB document model with partition key strategy |
-| `speckit.cosmosdb.repository` | Generate a repository pattern for Cosmos DB |
-| `speckit.cosmosdb.query` | Generate optimized Cosmos DB queries |
+| `speckit.cosmosdb.model` | Generate a Azure Cosmos DB document model with partition key strategy |
+| `speckit.cosmosdb.repository` | Generate a repository pattern for Azure Cosmos DB |
+| `speckit.cosmosdb.query` | Generate optimized Azure Cosmos DB queries |
 | `speckit.cosmosdb.container` | Generate container creation with indexing and partition strategy |
 | `speckit.cosmosdb.changefeed` | Generate a change feed consumer |
 | `speckit.cosmosdb.changefeed-processor` | Generate a change feed processor with leases |
@@ -68,19 +68,19 @@ Call specific commands directly when you know exactly what you need:
 | `speckit.cosmosdb.hierarchical-pk` | Generate hierarchical partition key patterns |
 | `speckit.cosmosdb.multi-tenant` | Generate multi-tenant isolation patterns |
 | `speckit.cosmosdb.global-distribution` | Generate multi-region configuration |
-| `speckit.cosmosdb.endpoint` | Generate API endpoints backed by Cosmos DB |
-| `speckit.cosmosdb.api-pagination` | Generate API-level pagination over Cosmos DB |
+| `speckit.cosmosdb.endpoint` | Generate API endpoints backed by Azure Cosmos DB |
+| `speckit.cosmosdb.api-pagination` | Generate API-level pagination over Azure Cosmos DB |
 | `speckit.cosmosdb.stored-proc` | Generate stored procedures |
-| `speckit.cosmosdb.vector` | Generate vector search with Cosmos DB |
-| `speckit.cosmosdb.cqrs` | Generate CQRS pattern with Cosmos DB |
-| `speckit.cosmosdb.event-sourcing` | Generate event sourcing with Cosmos DB |
+| `speckit.cosmosdb.vector` | Generate vector search with Azure Cosmos DB |
+| `speckit.cosmosdb.cqrs` | Generate CQRS pattern with Azure Cosmos DB |
+| `speckit.cosmosdb.event-sourcing` | Generate event sourcing with Azure Cosmos DB |
 | `speckit.cosmosdb.session-state` | Generate session state management |
 
 ### Scaffold Commands (full application generation)
 
 | Command | Description |
 |---------|-------------|
-| `speckit.cosmosdb.scaffold` | Generate a complete Cosmos DB application |
+| `speckit.cosmosdb.scaffold` | Generate a complete Azure Cosmos DB application |
 | `speckit.cosmosdb.scaffold-chat` | Scaffold a real-time chat application |
 | `speckit.cosmosdb.scaffold-ecommerce` | Scaffold an e-commerce application |
 | `speckit.cosmosdb.scaffold-iot` | Scaffold an IoT data platform |
@@ -99,16 +99,16 @@ Call specific commands directly when you know exactly what you need:
 | Command | Description |
 |---------|-------------|
 | `speckit.cosmosdb.recommend` | Conversational entry point - describe what you want, get the right command |
-| `speckit.cosmosdb.review` | Review generated code against Cosmos DB best practices |
-| `speckit.cosmosdb.explain` | Explain Cosmos DB concepts in context |
+| `speckit.cosmosdb.review` | Review generated code against Azure Cosmos DB best practices |
+| `speckit.cosmosdb.explain` | Explain Azure Cosmos DB concepts in context |
 
-> **Best-practice rules:** For always-on Cosmos DB coding guardrails, install the [`cosmosdb-agent-kit`](https://github.com/AzureCosmosDB/cosmosdb-agent-kit) skill separately. It loads 100+ best-practice rules into your AI session. This extension focuses on prescriptive *workflows*; the agent kit provides the passive ruleset.
+> **Best-practice rules:** For always-on Azure Cosmos DB coding guardrails, install the [`cosmosdb-agent-kit`](https://github.com/AzureCosmosDB/cosmosdb-agent-kit) skill separately. It loads 100+ best-practice rules into your AI session. This extension focuses on prescriptive *workflows*; the agent kit provides the passive ruleset.
 
 ## Hooks
 
 This extension provides one automatic hook:
 
-- **`after_implement`** → `speckit.cosmosdb.review`: Optionally reviews generated code against Cosmos DB best practices.
+- **`after_implement`** → `speckit.cosmosdb.review`: Optionally reviews generated code against Azure Cosmos DB best practices.
 
 ## Testing Results
 

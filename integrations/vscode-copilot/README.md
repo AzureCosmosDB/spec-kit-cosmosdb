@@ -9,9 +9,9 @@ Use speckit-cosmosdb prompt templates as VS Code Copilot Chat participants or vi
 Add a `.github/copilot-instructions.md` to your repository:
 
 ```markdown
-## Cosmos DB Design
+## Azure Cosmos DB Design
 
-When asked to design Cosmos DB containers, data models, or queries, follow these rules:
+When asked to design Azure Cosmos DB containers, data models, or queries, follow these rules:
 
 - Always specify a partition key with high cardinality
 - Prefer denormalization over joins for read-heavy workloads
@@ -43,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     // Stream the rendered prompt as context to Copilot
-    stream.markdown('Designing Cosmos DB container...\n\n');
+    stream.markdown('Designing Azure Cosmos DB container...\n\n');
 
     const response = await request.model.sendRequest([
       vscode.LanguageModelChatMessage.User(rendered)
@@ -91,10 +91,10 @@ mode: agent
 tools: []
 ---
 
-# Design Cosmos DB Container
+# Design Azure Cosmos DB Container
 
 Given the following entity description and access patterns, design an optimal
-Cosmos DB container following best practices.
+Azure Cosmos DB container following best practices.
 
 ## Rules
 - Partition key must have high cardinality and appear in most query filters
@@ -109,4 +109,4 @@ ${input:entity_description}
 ${input:access_patterns}
 ```
 
-Then invoke via: `@workspace /prompt Design Cosmos DB Container`
+Then invoke via: `@workspace /prompt Design Azure Cosmos DB Container`

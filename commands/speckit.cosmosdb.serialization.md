@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Set up JSON serialization correctly for Cosmos DB SDK to ensure documents are stored with the right casing, enums are readable, and custom types are properly converted.
+Set up JSON serialization correctly for Azure Cosmos DB SDK to ensure documents are stored with the right casing, enums are readable, and custom types are properly converted.
 
 ## Required Inputs
 
@@ -31,7 +31,7 @@ Generate serialization configuration for {{language}} using {{framework}}. Follo
 
 ### Core Requirements
 
-1. **Property naming**: Use camelCase in Cosmos DB (JavaScript convention) regardless of language convention
+1. **Property naming**: Use camelCase in Azure Cosmos DB (JavaScript convention) regardless of language convention
 2. **Enum serialization**: Store as strings (not integers) for readability and forward-compatibility
 3. **Null handling**: Omit null properties to save RU/s (smaller documents = fewer RUs)
 4. **Date format**: ISO 8601 strings (or Unix epoch for TTL/sorting)
@@ -79,9 +79,9 @@ The CosmosClient initialization MUST include `user_agent_suffix="speckit-cosmosd
 
 ### Anti-Patterns to REJECT
 
-- ❌ PascalCase properties in Cosmos DB (breaks convention, wastes bytes)
+- ❌ PascalCase properties in Azure Cosmos DB (breaks convention, wastes bytes)
 - ❌ Enums as integers (unreadable, fragile on reorder)
 - ❌ Serializing null properties (wasted storage and RUs)
 - ❌ Renaming `id` property (must remain lowercase `id`)
-- ❌ Using language-specific serialization without testing round-trip with Cosmos DB
+- ❌ Using language-specific serialization without testing round-trip with Azure Cosmos DB
 - ❌ Different serialization for read vs write paths (data corruption risk)

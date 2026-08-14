@@ -1,5 +1,5 @@
 ---
-description: "Generate API pagination with Cosmos DB continuation tokens exposed as opaque cursors."
+description: "Generate API pagination with Azure Cosmos DB continuation tokens exposed as opaque cursors."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.api-pagination
 
-> Generate API pagination with Cosmos DB continuation tokens exposed as opaque cursors.
+> Generate API pagination with Azure Cosmos DB continuation tokens exposed as opaque cursors.
 
 ## Intent
 
-Implement cursor-based API pagination that wraps Cosmos DB's continuation tokens in opaque, URL-safe cursors, providing a clean pagination API without exposing internal database state to consumers.
+Implement cursor-based API pagination that wraps Azure Cosmos DB's continuation tokens in opaque, URL-safe cursors, providing a clean pagination API without exposing internal database state to consumers.
 
 ## Required Inputs
 
@@ -66,7 +66,7 @@ GET /{{entity_plural}}?limit={{default_page_size}}&cursor=<opaque-cursor>
 
 1. **Never expose raw continuation token** - it contains internal partition state
 2. **Cursor is single-use**: Each cursor produces the NEXT page only
-3. **No total count**: Cosmos DB doesn't efficiently support `COUNT(*)` - omit `totalItems`
+3. **No total count**: Azure Cosmos DB doesn't efficiently support `COUNT(*)` - omit `totalItems`
 4. **Stateless**: All pagination state is IN the cursor - no server-side session
 5. **Stable ordering**: Always include `ORDER BY` to ensure deterministic pagination
 6. **Max page size**: Enforce server-side max (100) regardless of client request

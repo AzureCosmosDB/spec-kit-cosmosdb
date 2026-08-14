@@ -1,5 +1,5 @@
 ---
-description: "Generate a CQRS pattern with Cosmos DB: write model + read views materialized via change feed."
+description: "Generate a CQRS pattern with Azure Cosmos DB: write model + read views materialized via change feed."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.cqrs
 
-> Generate a CQRS pattern with Cosmos DB: write model + read views materialized via change feed.
+> Generate a CQRS pattern with Azure Cosmos DB: write model + read views materialized via change feed.
 
 ## Intent
 

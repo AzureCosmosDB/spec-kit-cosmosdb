@@ -1,5 +1,5 @@
 ---
-description: "Scaffold a complete RAG (Retrieval-Augmented Generation) application with Cosmos DB vector search."
+description: "Scaffold a complete RAG (Retrieval-Augmented Generation) application with Azure Cosmos DB vector search."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.rag
 
-> Scaffold a complete RAG (Retrieval-Augmented Generation) application with Cosmos DB vector search.
+> Scaffold a complete RAG (Retrieval-Augmented Generation) application with Azure Cosmos DB vector search.
 
 ## Intent
 
-Generate a full RAG application structure using Cosmos DB as the vector store, including embedding generation, vector indexing, hybrid search (vector + filter), and chat history storage.
+Generate a full RAG application structure using Azure Cosmos DB as the vector store, including embedding generation, vector indexing, hybrid search (vector + filter), and chat history storage.
 
 ## Required Inputs
 
@@ -29,16 +29,16 @@ Generate a full RAG application structure using Cosmos DB as the vector store, i
 
 ## Prescriptive Prompt
 
-Scaffold a RAG application for {{use_case}} using {{language}}, {{embedding_model}} embeddings, and {{llm_provider}} for generation, with Cosmos DB as the vector store. Follow these constraints:
+Scaffold a RAG application for {{use_case}} using {{language}}, {{embedding_model}} embeddings, and {{llm_provider}} for generation, with Azure Cosmos DB as the vector store. Follow these constraints:
 
 ### Architecture Overview
 
 ```
-Documents → Chunking → Embedding → Cosmos DB (vector index)
+Documents → Chunking → Embedding → Azure Cosmos DB (vector index)
                                          ↓
 User Query → Embed Query → Vector Search → Top-K docs → LLM → Response
                                          ↓
-                              Chat History (same Cosmos DB account)
+                              Chat History (same Azure Cosmos DB account)
 ```
 
 ### Container Design
@@ -79,7 +79,7 @@ User Query → Embed Query → Vector Search → Top-K docs → LLM → Response
 
 1. **Chunking**: Split documents into 500-1000 token chunks with 100-token overlap
 2. **Embedding**: Call {{embedding_model}} to generate vector for each chunk
-3. **Upsert**: Store chunk with embedding in Cosmos DB
+3. **Upsert**: Store chunk with embedding in Azure Cosmos DB
 4. **Metadata**: Preserve source, page number, section title for citation
 
 ### Search Implementation
@@ -121,11 +121,11 @@ ORDER BY VectorDistance(c.embedding, @queryVector)
 
 ```
 src/
-├── config/           # Cosmos DB + LLM connection config
+├── config/           # Azure Cosmos DB + LLM connection config
 ├── ingestion/        # Document chunking + embedding pipeline
 │   ├── chunker       # Text splitting logic
 │   ├── embedder      # Embedding API client
-│   └── loader        # Cosmos DB upsert
+│   └── loader        # Azure Cosmos DB upsert
 ├── search/           # Vector search + hybrid search
 ├── generation/       # LLM prompt assembly + call
 ├── chat/             # Chat history CRUD

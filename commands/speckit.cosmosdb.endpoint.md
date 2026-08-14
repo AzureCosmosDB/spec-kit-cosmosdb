@@ -1,5 +1,5 @@
 ---
-description: "Generate an API endpoint backed by Cosmos DB with proper error mapping."
+description: "Generate an API endpoint backed by Azure Cosmos DB with proper error mapping."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.endpoint
 
-> Generate an API endpoint backed by Cosmos DB with proper error mapping.
+> Generate an API endpoint backed by Azure Cosmos DB with proper error mapping.
 
 ## Intent
 
-Create an HTTP endpoint (REST or GraphQL) that uses a Cosmos DB repository, with proper status code mapping, validation, and error responses.
+Create an HTTP endpoint (REST or GraphQL) that uses a Azure Cosmos DB repository, with proper status code mapping, validation, and error responses.
 
 ## Required Inputs
 

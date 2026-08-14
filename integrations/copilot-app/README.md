@@ -2,11 +2,11 @@
 
 ## Overview
 
-Use speckit-cosmosdb with the GitHub Copilot coding agent (`@copilot` in issues/PRs) for issue-driven Cosmos DB design and implementation.
+Use speckit-cosmosdb with the GitHub Copilot coding agent (`@copilot` in issues/PRs) for issue-driven Azure Cosmos DB design and implementation.
 
 ## How It Works
 
-1. Open a GitHub issue describing the Cosmos DB work needed
+1. Open a GitHub issue describing the Azure Cosmos DB work needed
 2. Assign or mention `@copilot` 
 3. Copilot reads `.github/copilot-instructions.md` for speckit-cosmosdb context
 4. Copilot creates a PR with container designs, SDK code, and infrastructure
@@ -17,9 +17,9 @@ Use speckit-cosmosdb with the GitHub Copilot coding agent (`@copilot` in issues/
 
 `.github/copilot-instructions.md`:
 ```markdown
-## Cosmos DB Development
+## Azure Cosmos DB Development
 
-When implementing Cosmos DB containers or data access code:
+When implementing Azure Cosmos DB containers or data access code:
 
 1. Read `speckit-cosmosdb/prompts/` for design templates
 2. Follow rules in `speckit-cosmosdb/rules/` - especially:
@@ -37,7 +37,7 @@ When implementing Cosmos DB containers or data access code:
 `.github/ISSUE_TEMPLATE/cosmos-container.md`:
 ```markdown
 ---
-name: Cosmos DB Container Design
+name: Azure Cosmos DB Container Design
 about: Request a new container design from Copilot
 labels: cosmos-db, copilot
 assignees: copilot

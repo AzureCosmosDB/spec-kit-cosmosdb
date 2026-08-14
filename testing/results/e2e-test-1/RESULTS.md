@@ -1,7 +1,7 @@
 # E2E Test Results - cosmos.scaffold.md
 
 **Date:** 2026-07-26  
-**Emulator:** Cosmos DB vnext emulator (HTTP mode, localhost:8081)  
+**Emulator:** Azure Cosmos DB vnext emulator (HTTP mode, localhost:8081)  
 **SDK:** azure-cosmos 4.9.0 (Python)  
 **Framework:** FastAPI + uvicorn
 
@@ -23,7 +23,7 @@
 | `/users/{id}/tasks/{id}` | PATCH | ✅ PASS |
 | `/users/{id}/tasks/{id}` | DELETE | ✅ PASS (204) |
 
-All CRUD operations verified against live Cosmos DB emulator.
+All CRUD operations verified against live Azure Cosmos DB emulator.
 
 ## Bugs Found (required fixes before app would start)
 
@@ -42,7 +42,7 @@ All CRUD operations verified against live Cosmos DB emulator.
 - **Fix:** Upgraded to `azure-cosmos==4.9.0`.
 - **Prompt gap:** The prompt should specify minimum SDK versions or note emulator compatibility.
 
-## Cosmos DB Errors
+## Azure Cosmos DB Errors
 
 - **400 "Invalid path or method"** - double-slash issue with older SDK + vnext emulator (Bug 3)
 - No RU/throttling errors, no partition key errors, no other Cosmos-specific issues.

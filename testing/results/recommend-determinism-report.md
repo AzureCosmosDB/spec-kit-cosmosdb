@@ -96,7 +96,7 @@ The recommend prompt's **guardrail worked perfectly** - all 3 runs correctly ide
 **No.** `/speckit.cosmosdb.recommend` should be **triage-only**, not a generator.
 
 **Evidence:**
-1. **Partition key non-determinism is disqualifying.** The partition key is the single most consequential Cosmos DB decision (it cannot be changed without a container migration). In Test 2, all 3 runs produced different partition keys - including one (`/status`) that would cause production hot-partition issues. Generating code with a wrong partition key is worse than generating no code at all.
+1. **Partition key non-determinism is disqualifying.** The partition key is the single most consequential Azure Cosmos DB decision (it cannot be changed without a container migration). In Test 2, all 3 runs produced different partition keys - including one (`/status`) that would cause production hot-partition issues. Generating code with a wrong partition key is worse than generating no code at all.
 
 2. **Scaffold ambiguity cascades.** When the scaffold match is uncertain, every downstream decision (queries, partition keys, container structure, model fields) inherits that uncertainty. The recommend prompt has no mechanism to resolve ties between equally-weighted scaffold triggers.
 

@@ -1,4 +1,4 @@
-# Copilot Instructions for Cosmos DB Spec Kit
+# Copilot Instructions for Azure Cosmos DB Spec Kit
 
 When working with Azure Cosmos DB in this repository, use the prescriptive prompt templates from `prompts/` to generate code. These templates encode best practices and produce deterministic, high-quality output.
 

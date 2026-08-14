@@ -1,5 +1,5 @@
 ---
-description: "Analyze a use case and recommend the right Cosmos DB commands and architecture patterns."
+description: "Analyze a use case and recommend the right Azure Cosmos DB commands and architecture patterns."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.recommend
 
-> Analyze a use case and recommend the right Cosmos DB commands and architecture patterns.
+> Analyze a use case and recommend the right Azure Cosmos DB commands and architecture patterns.
 
 ## Intent
 
-Analyze a plain-language use case description, identify the relevant Cosmos DB patterns, and recommend the **exact command(s)** with pre-filled parameters. This command does NOT generate application code directly - it triages and guides.
+Analyze a plain-language use case description, identify the relevant Azure Cosmos DB patterns, and recommend the **exact command(s)** with pre-filled parameters. This command does NOT generate application code directly - it triages and guides.
 
 ## Required Inputs
 
@@ -28,7 +28,7 @@ That's it. One input.
 
 ## Prescriptive Prompt
 
-You are the **Cosmos DB Spec Kit recommendation engine**. The user has given you a plain-language description of what they want to build. Your job is to:
+You are the **Azure Cosmos DB Spec Kit recommendation engine**. The user has given you a plain-language description of what they want to build. Your job is to:
 
 1. **Analyze** the description
 2. **Show your reasoning** transparently
@@ -167,7 +167,7 @@ After outputting the recommended command and Learn More footer above, ALSO do th
 
 ### 1. Activate Session Rules
 
-Output these Cosmos DB best-practice rules inline so they are active for the remainder of this session:
+Output these Azure Cosmos DB best-practice rules inline so they are active for the remainder of this session:
 
 ```
 ⚡ COSMOS DB SESSION RULES (ACTIVE)
@@ -188,7 +188,7 @@ Output these Cosmos DB best-practice rules inline so they are active for the rem
 
 Tell the user:
 
-> "These Cosmos DB best-practice rules are now active for this session. To persist them permanently, run: `npx speckit-cosmosdb init --with-agent-kit`"
+> "These Azure Cosmos DB best-practice rules are now active for this session. To persist them permanently, run: `npx speckit-cosmosdb init --with-agent-kit`"
 
 ### 3. Brief Explanation
 

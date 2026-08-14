@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Create a change feed processor that reacts to document changes in a Cosmos DB container, with proper lease management, error handling, and scaling.
+Create a change feed processor that reacts to document changes in a Azure Cosmos DB container, with proper lease management, error handling, and scaling.
 
 ## Required Inputs
 

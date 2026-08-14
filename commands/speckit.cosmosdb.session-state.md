@@ -1,5 +1,5 @@
 ---
-description: "Generate a session/cache storage pattern with Cosmos DB and TTL-based expiration."
+description: "Generate a session/cache storage pattern with Azure Cosmos DB and TTL-based expiration."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.session-state
 
-> Generate a session/cache storage pattern with Cosmos DB and TTL-based expiration.
+> Generate a session/cache storage pattern with Azure Cosmos DB and TTL-based expiration.
 
 ## Intent
 
-Implement web application session state management backed by Cosmos DB, with automatic expiration via TTL, fast point reads for session retrieval, and proper security for session tokens.
+Implement web application session state management backed by Azure Cosmos DB, with automatic expiration via TTL, fast point reads for session retrieval, and proper security for session tokens.
 
 ## Required Inputs
 
@@ -64,7 +64,7 @@ Generate session state storage for {{framework}}. Follow these constraints:
 ### Sliding Expiration
 
 1. On EVERY session read, update `lastAccessed` and reset `ttl` to {{ttl_seconds}}
-2. Use Cosmos DB **patch operation** for efficient partial update (cheaper than replace)
+2. Use Azure Cosmos DB **patch operation** for efficient partial update (cheaper than replace)
 3. Batch the TTL reset - don't block the response on it (fire-and-forget or background task)
 
 ### Security

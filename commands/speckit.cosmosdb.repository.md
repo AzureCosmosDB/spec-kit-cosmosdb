@@ -1,5 +1,5 @@
 ---
-description: "Generate a data access layer (repository) for a Cosmos DB container."
+description: "Generate a data access layer (repository) for a Azure Cosmos DB container."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.repository
 
-> Generate a data access layer (repository) for a Cosmos DB container.
+> Generate a data access layer (repository) for a Azure Cosmos DB container.
 
 ## Intent
 
-Create a repository class/module that encapsulates all Cosmos DB operations for a specific entity, with proper error handling, retry logic, and query patterns.
+Create a repository class/module that encapsulates all Azure Cosmos DB operations for a specific entity, with proper error handling, retry logic, and query patterns.
 
 ## Required Inputs
 

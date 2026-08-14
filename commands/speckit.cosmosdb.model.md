@@ -1,5 +1,5 @@
 ---
-description: "Generate a Cosmos DB document model with intentional partition key strategy."
+description: "Generate a Azure Cosmos DB document model with intentional partition key strategy."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.model
 
-> Generate a Cosmos DB document model with intentional partition key strategy.
+> Generate a Azure Cosmos DB document model with intentional partition key strategy.
 
 ## Intent
 
-Create a data model (document schema) for a Cosmos DB container with proper partition key selection, indexing hints, and SDK integration.
+Create a data model (document schema) for a Azure Cosmos DB container with proper partition key selection, indexing hints, and SDK integration.
 
 ## Required Inputs
 
@@ -30,7 +30,7 @@ Create a data model (document schema) for a Cosmos DB container with proper part
 
 ## Prescriptive Prompt
 
-Generate a Cosmos DB document model for {{entity_name}}. Follow these constraints:
+Generate a Azure Cosmos DB document model for {{entity_name}}. Follow these constraints:
 
 ### Partition Key Selection
 

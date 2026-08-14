@@ -1,5 +1,5 @@
 ---
-description: "Generate continuation-token-based pagination for Cosmos DB queries."
+description: "Generate continuation-token-based pagination for Azure Cosmos DB queries."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.pagination
 
-> Generate continuation-token-based pagination for Cosmos DB queries.
+> Generate continuation-token-based pagination for Azure Cosmos DB queries.
 
 ## Intent
 

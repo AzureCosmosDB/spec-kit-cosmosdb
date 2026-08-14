@@ -1,7 +1,7 @@
 # E2E Chat Scaffold Test Results
 
 **Date:** 2026-07-27T17:36 UTC  
-**Emulator:** Cosmos DB Linux emulator at http://localhost:8081  
+**Emulator:** Azure Cosmos DB Linux emulator at http://localhost:8081  
 **Framework:** Python/FastAPI + azure-cosmos (async)
 
 ## Summary: ✅ ALL TESTS PASSED

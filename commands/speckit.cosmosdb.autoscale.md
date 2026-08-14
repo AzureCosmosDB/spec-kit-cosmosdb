@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Set up autoscale provisioned throughput on Cosmos DB containers, choosing between autoscale and manual provisioning, calculating max RU/s, and optimizing cost.
+Set up autoscale provisioned throughput on Azure Cosmos DB containers, choosing between autoscale and manual provisioning, calculating max RU/s, and optimizing cost.
 
 ## Required Inputs
 

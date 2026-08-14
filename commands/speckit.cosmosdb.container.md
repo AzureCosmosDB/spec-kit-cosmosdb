@@ -1,5 +1,5 @@
 ---
-description: "Generate Cosmos DB container configuration with throughput, indexing, and partition strategy."
+description: "Generate Azure Cosmos DB container configuration with throughput, indexing, and partition strategy."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.container
 
-> Generate Cosmos DB container configuration with throughput, indexing, and partition strategy.
+> Generate Azure Cosmos DB container configuration with throughput, indexing, and partition strategy.
 
 ## Intent
 

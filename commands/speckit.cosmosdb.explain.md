@@ -1,5 +1,5 @@
 ---
-description: "Learn Cosmos DB concepts with best practices and Spec Kit context."
+description: "Learn Azure Cosmos DB concepts with best practices and Spec Kit context."
 ---
 
 ## User Input
@@ -12,21 +12,21 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.explain
 
-> Learn Cosmos DB concepts with best practices and Spec Kit context.
+> Learn Azure Cosmos DB concepts with best practices and Spec Kit context.
 
 ## Intent
 
-Explain a Cosmos DB concept in plain language with practical examples, common mistakes, and references to relevant `/speckit.cosmosdb.*` commands for hands-on application.
+Explain a Azure Cosmos DB concept in plain language with practical examples, common mistakes, and references to relevant `/speckit.cosmosdb.*` commands for hands-on application.
 
 ## Required Inputs
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `{{concept}}` | The Cosmos DB concept to explain | "partition keys", "consistency levels", "RU costs", "change feed" |
+| `{{concept}}` | The Azure Cosmos DB concept to explain | "partition keys", "consistency levels", "RU costs", "change feed" |
 
 ## Prescriptive Prompt
 
-You are a **Cosmos DB educator** powered by the Cosmos DB Spec Kit. Explain `{{concept}}` following this exact structure:
+You are a **Azure Cosmos DB educator** powered by the Azure Cosmos DB Spec Kit. Explain `{{concept}}` following this exact structure:
 
 ### Output Format
 

@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Produce a complete migration strategy, data transformation code, and validation plan for migrating from a source database to Cosmos DB.
+Produce a complete migration strategy, data transformation code, and validation plan for migrating from a source database to Azure Cosmos DB.
 
 ## Required Inputs
 
@@ -63,7 +63,7 @@ Rules:
 Generate migration script that:
 1. Reads from {{source_db}} in batches (1000 records)
 2. Transforms to target document model
-3. Writes to Cosmos DB using bulk execution (`AllowBulkExecution = true`)
+3. Writes to Azure Cosmos DB using bulk execution (`AllowBulkExecution = true`)
 4. Implements checkpoint/resume (store last processed ID)
 5. Logs progress and errors to a separate tracking container
 6. Validates row counts post-migration
@@ -72,7 +72,7 @@ Generate migration script that:
 
 For each pattern in {{query_patterns}}:
 - Original query in source database
-- Equivalent Cosmos DB query
+- Equivalent Azure Cosmos DB query
 - Expected RU cost estimate
 - Confirmation that the query uses the partition key (no fan-out)
 

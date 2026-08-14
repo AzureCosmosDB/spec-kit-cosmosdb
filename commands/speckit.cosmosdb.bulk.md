@@ -1,5 +1,5 @@
 ---
-description: "Generate bulk operation code for high-throughput writes to Cosmos DB."
+description: "Generate bulk operation code for high-throughput writes to Azure Cosmos DB."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.bulk
 
-> Generate bulk operation code for high-throughput writes to Cosmos DB.
+> Generate bulk operation code for high-throughput writes to Azure Cosmos DB.
 
 ## Intent
 

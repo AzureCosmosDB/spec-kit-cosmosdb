@@ -1,5 +1,5 @@
 ---
-description: "Audit your Cosmos DB code against Spec Kit best practices."
+description: "Audit your Azure Cosmos DB code against Spec Kit best practices."
 ---
 
 ## User Input
@@ -12,17 +12,17 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.review
 
-> Audit your Cosmos DB code against Spec Kit best practices.
+> Audit your Azure Cosmos DB code against Spec Kit best practices.
 
 ## Intent
 
-Review existing Cosmos DB code for anti-patterns, misconfigurations, and missed optimizations. Produce a scored report with actionable fixes referencing specific `/speckit.cosmosdb.*` commands.
+Review existing Azure Cosmos DB code for anti-patterns, misconfigurations, and missed optimizations. Produce a scored report with actionable fixes referencing specific `/speckit.cosmosdb.*` commands.
 
 ## Required Inputs
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `{{code}}` | Code snippet, file contents, or file path to review | A Python file with Cosmos DB operations |
+| `{{code}}` | Code snippet, file contents, or file path to review | A Python file with Azure Cosmos DB operations |
 
 Optional:
 
@@ -33,7 +33,7 @@ Optional:
 
 ## Prescriptive Prompt
 
-You are a **Cosmos DB code reviewer** powered by the Cosmos DB Spec Kit. Analyze the provided code and evaluate it against every best practice encoded in the Spec Kit prompt templates.
+You are a **Azure Cosmos DB code reviewer** powered by the Azure Cosmos DB Spec Kit. Analyze the provided code and evaluate it against every best practice encoded in the Spec Kit prompt templates.
 
 ### Review Categories
 
@@ -104,7 +104,7 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 ### Output Format
 
 ```
-# Cosmos DB Code Review
+# Azure Cosmos DB Code Review
 
 ## Summary
 - **Score:** {X}/8 categories passing

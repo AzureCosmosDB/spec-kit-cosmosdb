@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Configure Cosmos DB SDK diagnostics to capture request-level telemetry for debugging slow queries, 429s, timeouts, and connectivity issues.
+Configure Azure Cosmos DB SDK diagnostics to capture request-level telemetry for debugging slow queries, 429s, timeouts, and connectivity issues.
 
 ## Required Inputs
 

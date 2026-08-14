@@ -44,7 +44,7 @@ Design hierarchical partition keys for {{entities}} with access patterns: {{acce
    - Level 1: Broadest grouping (e.g., `tenantId`)
    - Level 2: Mid-level grouping (e.g., `userId` or `category`)
    - Level 3: Narrowest grouping (e.g., `date` or `sessionId`)
-2. **Maximum 3 levels** (Cosmos DB limit)
+2. **Maximum 3 levels** (Azure Cosmos DB limit)
 3. **First level determines physical partitioning** - ensures even data distribution
 4. **Queries benefit from prefix matching** - providing levels 1+2 targets fewer partitions than level 1 alone
 

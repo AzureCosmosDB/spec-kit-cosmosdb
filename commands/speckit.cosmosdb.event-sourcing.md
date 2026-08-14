@@ -1,5 +1,5 @@
 ---
-description: "Generate an event sourcing implementation with Cosmos DB: append-only events, snapshots, and projections."
+description: "Generate an event sourcing implementation with Azure Cosmos DB: append-only events, snapshots, and projections."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.event-sourcing
 
-> Generate an event sourcing implementation with Cosmos DB: append-only events, snapshots, and projections.
+> Generate an event sourcing implementation with Azure Cosmos DB: append-only events, snapshots, and projections.
 
 ## Intent
 
-Implement event sourcing where state changes are stored as an immutable sequence of events in Cosmos DB, with snapshot optimization and read projections materialized via change feed.
+Implement event sourcing where state changes are stored as an immutable sequence of events in Azure Cosmos DB, with snapshot optimization and read projections materialized via change feed.
 
 ## Required Inputs
 

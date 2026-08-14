@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Set up Cosmos DB global distribution with multi-region replication, write region selection, conflict resolution policies, and SDK preferred-region configuration.
+Set up Azure Cosmos DB global distribution with multi-region replication, write region selection, conflict resolution policies, and SDK preferred-region configuration.
 
 ## Required Inputs
 

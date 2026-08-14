@@ -1,5 +1,5 @@
 ---
-description: "Generate an optimized Cosmos DB SQL query with RU estimation."
+description: "Generate an optimized Azure Cosmos DB SQL query with RU estimation."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.query
 
-> Generate an optimized Cosmos DB SQL query with RU estimation.
+> Generate an optimized Azure Cosmos DB SQL query with RU estimation.
 
 ## Intent
 
-Write a Cosmos DB SQL query that is partition-aware, uses proper indexing, and minimizes RU consumption.
+Write a Azure Cosmos DB SQL query that is partition-aware, uses proper indexing, and minimizes RU consumption.
 
 ## Required Inputs
 
@@ -29,7 +29,7 @@ Write a Cosmos DB SQL query that is partition-aware, uses proper indexing, and m
 
 ## Prescriptive Prompt
 
-Generate a Cosmos DB SQL query for: {{intent}}
+Generate a Azure Cosmos DB SQL query for: {{intent}}
 
 ### Constraints
 

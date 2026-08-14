@@ -2,7 +2,7 @@
 
 ## Overview
 
-The speckit-cosmosdb references **111 best-practice rules** organized across **12 categories**, sourced from the [cosmosdb-agent-kit](https://github.com/AzureCosmosDB/cosmosdb-agent-kit). These rules encode domain expertise that constrains AI-generated output to produce architecturally sound Cosmos DB solutions.
+The speckit-cosmosdb references **111 best-practice rules** organized across **12 categories**, sourced from the [cosmosdb-agent-kit](https://github.com/AzureCosmosDB/cosmosdb-agent-kit). These rules encode domain expertise that constrains AI-generated output to produce architecturally sound Azure Cosmos DB solutions.
 
 ## Rule Categories & Prefixes
 

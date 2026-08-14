@@ -2,7 +2,7 @@
 
 **Date**: 2026-07-26  
 **Prompt**: `prompts/component/cosmos.repository.md`  
-**Target**: Cosmos DB Emulator (localhost:8081)  
+**Target**: Azure Cosmos DB Emulator (localhost:8081)  
 **Language**: Python (azure-cosmos 4.9+)
 
 ## Results

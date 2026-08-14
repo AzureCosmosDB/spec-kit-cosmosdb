@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Set up TTL policies on Cosmos DB containers and items for automatic cleanup of session data, caches, audit logs, and other time-bounded data.
+Set up TTL policies on Azure Cosmos DB containers and items for automatic cleanup of session data, caches, audit logs, and other time-bounded data.
 
 ## Required Inputs
 

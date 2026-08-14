@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Implement proper retry logic for Cosmos DB rate-limited requests, either via SDK configuration or custom retry policy.
+Implement proper retry logic for Azure Cosmos DB rate-limited requests, either via SDK configuration or custom retry policy.
 
 ## Required Inputs
 
@@ -42,7 +42,7 @@ Generate 429 retry handling. Follow these constraints:
 
 ### SDK-Level (Preferred)
 
-The Cosmos DB SDK handles 429s automatically when configured:
+The Azure Cosmos DB SDK handles 429s automatically when configured:
 
 ```
 MaxRetryAttemptsOnRateLimitedRequests = 9

@@ -1,4 +1,4 @@
-# Cosmos DB Spec Kit - Model Compatibility
+# Azure Cosmos DB Spec Kit - Model Compatibility
 
 This document tracks which AI models have been tested with the Spec Kit prompt templates and their consistency scores.
 

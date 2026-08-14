@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Use Cosmos DB patch API to update specific fields without reading the full document first.
+Use Azure Cosmos DB patch API to update specific fields without reading the full document first.
 
 ## Required Inputs
 

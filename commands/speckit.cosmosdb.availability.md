@@ -1,5 +1,5 @@
 ---
-description: "Configure availability strategy and circuit breaker for resilient Cosmos DB access."
+description: "Configure availability strategy and circuit breaker for resilient Azure Cosmos DB access."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.availability
 
-> Configure availability strategy and circuit breaker for resilient Cosmos DB access.
+> Configure availability strategy and circuit breaker for resilient Azure Cosmos DB access.
 
 ## Intent
 
@@ -62,7 +62,7 @@ Generate availability configuration for {{language}} with regions {{regions}} an
 
 1. SDK client configuration with availability settings
 2. Circuit breaker setup (SDK-native or custom)
-3. Health check endpoint that validates Cosmos DB connectivity
+3. Health check endpoint that validates Azure Cosmos DB connectivity
 4. Failover testing helper (simulate region outage)
 
 ### User-Agent Tracking (MANDATORY)

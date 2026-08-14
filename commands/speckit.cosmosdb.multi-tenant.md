@@ -1,5 +1,5 @@
 ---
-description: "Generate multi-tenant data isolation patterns for Cosmos DB."
+description: "Generate multi-tenant data isolation patterns for Azure Cosmos DB."
 ---
 
 ## User Input
@@ -12,11 +12,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.multi-tenant
 
-> Generate multi-tenant data isolation patterns for Cosmos DB.
+> Generate multi-tenant data isolation patterns for Azure Cosmos DB.
 
 ## Intent
 
-Design and implement a multi-tenant data architecture in Cosmos DB, choosing the right isolation strategy based on tenant count, compliance requirements, and cost constraints.
+Design and implement a multi-tenant data architecture in Azure Cosmos DB, choosing the right isolation strategy based on tenant count, compliance requirements, and cost constraints.
 
 ## Required Inputs
 
