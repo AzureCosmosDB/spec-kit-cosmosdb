@@ -3,7 +3,7 @@ extension:
   id: cosmosdb
   name: Azure Cosmos DB
   version: 0.1.0
-  description: Prescriptive prompts producing deterministic, best-practice Azure Cosmos DB code with any AI agent
+  description: Best-practice Azure Cosmos DB code generation and review for any AI coding agent
   author: Theo van Kraay
   repository: https://github.com/AzureCosmosDB/spec-kit-cosmosdb
   homepage: https://github.com/AzureCosmosDB/spec-kit-cosmosdb
