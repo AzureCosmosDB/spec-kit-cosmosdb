@@ -1,6 +1,6 @@
-# Cosmos Intent SDK - Model Compatibility
+# Cosmos DB Spec Kit - Model Compatibility
 
-This document tracks which AI models have been tested with the Intent SDK prompt templates and their consistency scores.
+This document tracks which AI models have been tested with the Spec Kit prompt templates and their consistency scores.
 
 ## How We Test
 

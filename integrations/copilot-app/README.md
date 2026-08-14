@@ -2,13 +2,13 @@
 
 ## Overview
 
-Use cosmos-intent-sdk with the GitHub Copilot coding agent (`@copilot` in issues/PRs) for issue-driven Cosmos DB design and implementation.
+Use speckit-cosmosdb with the GitHub Copilot coding agent (`@copilot` in issues/PRs) for issue-driven Cosmos DB design and implementation.
 
 ## How It Works
 
 1. Open a GitHub issue describing the Cosmos DB work needed
 2. Assign or mention `@copilot` 
-3. Copilot reads `.github/copilot-instructions.md` for cosmos-intent-sdk context
+3. Copilot reads `.github/copilot-instructions.md` for speckit-cosmosdb context
 4. Copilot creates a PR with container designs, SDK code, and infrastructure
 
 ## Setup
@@ -21,8 +21,8 @@ Use cosmos-intent-sdk with the GitHub Copilot coding agent (`@copilot` in issues
 
 When implementing Cosmos DB containers or data access code:
 
-1. Read `cosmos-intent-sdk/prompts/` for design templates
-2. Follow rules in `cosmos-intent-sdk/rules/` - especially:
+1. Read `speckit-cosmosdb/prompts/` for design templates
+2. Follow rules in `speckit-cosmosdb/rules/` - especially:
    - partition-*: High cardinality keys, avoid hot partitions
    - model-*: Embed related data, denormalize for reads
    - sdk-*: Use bulk for >10 items, transactional batch for ACID
@@ -76,7 +76,7 @@ assignees: copilot
 >
 > **Constraints:** 500K orders/month, Session consistency, single region
 >
-> @copilot please implement this following our cosmos-intent-sdk templates
+> @copilot please implement this following our speckit-cosmosdb templates
 
 ### 4. What Copilot Produces
 

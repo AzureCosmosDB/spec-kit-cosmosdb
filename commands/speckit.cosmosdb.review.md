@@ -1,5 +1,5 @@
 ---
-description: "Audit your Cosmos DB code against Intent SDK best practices."
+description: "Audit your Cosmos DB code against Spec Kit best practices."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.review
 
-> Audit your Cosmos DB code against Intent SDK best practices.
+> Audit your Cosmos DB code against Spec Kit best practices.
 
 ## Intent
 
@@ -33,7 +33,7 @@ Optional:
 
 ## Prescriptive Prompt
 
-You are a **Cosmos DB code reviewer** powered by the Cosmos Intent SDK. Analyze the provided code and evaluate it against every best practice encoded in the Intent SDK prompt templates.
+You are a **Cosmos DB code reviewer** powered by the Cosmos DB Spec Kit. Analyze the provided code and evaluate it against every best practice encoded in the Spec Kit prompt templates.
 
 ### Review Categories
 
@@ -43,7 +43,7 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 - [ ] CosmosClient is a **singleton** (not created per-request)
 - [ ] Client is properly disposed/closed on shutdown
 - [ ] Connection mode is set (Direct for production, Gateway for emulator)
-- [ ] User-agent suffix is set (`cosmos-intent-sdk/0.1.0` or custom)
+- [ ] User-agent suffix is set (`speckit-cosmosdb/0.1.0` or custom)
 
 **Fix command:** `/speckit.cosmosdb.singleton`
 

@@ -1,5 +1,5 @@
 ---
-description: "Tell me what you want to build. I'll figure out exactly which command to run."
+description: "Analyze a use case and recommend the right Cosmos DB commands and architecture patterns."
 ---
 
 ## User Input
@@ -10,13 +10,13 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
-# /speckit.cosmosdb.vibe
+# /speckit.cosmosdb.recommend
 
-> Tell me what you want to build. I'll figure out exactly which command to run.
+> Analyze a use case and recommend the right Cosmos DB commands and architecture patterns.
 
 ## Intent
 
-The conversational entry point for anyone - from vibe coders to experienced developers exploring Cosmos DB. Accept a plain-language description, analyze the intent, and recommend the **exact command(s)** with pre-filled parameters. This prompt does NOT generate application code directly - it triages and guides.
+Analyze a plain-language use case description, identify the relevant Cosmos DB patterns, and recommend the **exact command(s)** with pre-filled parameters. This command does NOT generate application code directly - it triages and guides.
 
 ## Required Inputs
 
@@ -28,7 +28,7 @@ That's it. One input.
 
 ## Prescriptive Prompt
 
-You are the **Cosmos Intent SDK triage engine**. The user has given you a plain-language description of what they want to build. Your job is to:
+You are the **Cosmos DB Spec Kit recommendation engine**. The user has given you a plain-language description of what they want to build. Your job is to:
 
 1. **Analyze** the description
 2. **Show your reasoning** transparently
@@ -157,7 +157,7 @@ After the recommended command, include this footer (customized to the matched sc
 - `/speckit.cosmosdb.repository` - Generate data access layer for a specific entity
 - `/speckit.cosmosdb.singleton` - Just the client setup
 
-You used `/speckit.cosmosdb.vibe` - the guided entry point.
+You used `/speckit.cosmosdb.recommend` - the guided entry point.
 These commands give you fine-grained control over every architectural decision.
 ```
 
@@ -188,13 +188,13 @@ Output these Cosmos DB best-practice rules inline so they are active for the rem
 
 Tell the user:
 
-> "These Cosmos DB best-practice rules are now active for this session. To persist them permanently, run: `npx cosmos-intent-sdk init --with-agent-kit`"
+> "These Cosmos DB best-practice rules are now active for this session. To persist them permanently, run: `npx speckit-cosmosdb init --with-agent-kit`"
 
 ### 3. Brief Explanation
 
 Explain:
 
-> "Agent Kit provides ongoing protection as you develop - catching anti-patterns and enforcing best practices even when you're not using Intent SDK commands directly."
+> "Agent Kit provides ongoing protection as you develop - catching anti-patterns and enforcing best practices even when you're not using Spec Kit commands directly."
 
 ## Anti-Patterns to REJECT
 

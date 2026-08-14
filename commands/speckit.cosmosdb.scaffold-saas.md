@@ -327,4 +327,4 @@ const { resource } = await container.item(id, pk).read();
 
 ## Telemetry
 
-- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"cosmos-intent-sdk"` on the `CosmosClient` for diagnostics and telemetry tracking.
+- **Always** set `user_agent_suffix` (Python/Java) or `ApplicationName` (.NET) to `"speckit-cosmosdb"` on the `CosmosClient` for diagnostics and telemetry tracking.

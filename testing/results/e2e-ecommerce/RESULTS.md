@@ -49,7 +49,7 @@
 
 4. **Error handling for duplicate creates**: The prompt mentions error mapping (409→409) but doesn't explicitly call out `CosmosResourceExistsError` → 409 in the create paths. Should add this to the error handling requirement.
 
-5. **`user_agent` vs `user_agent_suffix`**: The prompt says `user_agent_suffix="cosmos-intent-sdk/0.1.0"` but the Python async client uses `user_agent="cosmos-intent-sdk/0.1.0"` as a constructor kwarg. Verify and align.
+5. **`user_agent` vs `user_agent_suffix`**: The prompt says `user_agent_suffix="speckit-cosmosdb/0.1.0"` but the Python async client uses `user_agent="speckit-cosmosdb/0.1.0"` as a constructor kwarg. Verify and align.
 
 ## Architecture Validation
 

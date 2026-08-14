@@ -1,5 +1,5 @@
 ---
-description: "Learn Cosmos DB concepts with best practices and Intent SDK context."
+description: "Learn Cosmos DB concepts with best practices and Spec Kit context."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.explain
 
-> Learn Cosmos DB concepts with best practices and Intent SDK context.
+> Learn Cosmos DB concepts with best practices and Spec Kit context.
 
 ## Intent
 
@@ -26,7 +26,7 @@ Explain a Cosmos DB concept in plain language with practical examples, common mi
 
 ## Prescriptive Prompt
 
-You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{concept}}` following this exact structure:
+You are a **Cosmos DB educator** powered by the Cosmos DB Spec Kit. Explain `{{concept}}` following this exact structure:
 
 ### Output Format
 
@@ -62,7 +62,7 @@ You are a **Cosmos DB educator** powered by the Cosmos Intent SDK. Explain `{{co
 |----------------|-----------|-----------|
 | {scenario} | {option} | {what you give up} |
 
-## Try It With Intent SDK
+## Try It With Spec Kit
 {Map to specific /speckit.cosmosdb.* commands:}
 - `/speckit.cosmosdb.{command}` - {how it relates to this concept}
 - `/speckit.cosmosdb.{command}` - {how it relates to this concept}

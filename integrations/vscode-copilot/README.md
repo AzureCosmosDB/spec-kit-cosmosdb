@@ -2,7 +2,7 @@
 
 ## Overview
 
-Use cosmos-intent-sdk prompt templates as VS Code Copilot Chat participants or via `.github/copilot-instructions.md`.
+Use speckit-cosmosdb prompt templates as VS Code Copilot Chat participants or via `.github/copilot-instructions.md`.
 
 ## Option 1: Copilot Instructions (Zero Code)
 
@@ -20,7 +20,7 @@ When asked to design Cosmos DB containers, data models, or queries, follow these
 - Default to Session consistency unless requirements demand otherwise
 - Recommend composite indexes for multi-field ORDER BY
 
-Reference the cosmos-intent-sdk prompt structure:
+Reference the speckit-cosmosdb prompt structure:
 1. Describe the entity and access patterns
 2. Output: partition key, schema, indexes, SDK code sample, RU estimate
 ```
@@ -32,7 +32,7 @@ Build a VS Code extension that registers a `@cosmos` chat participant:
 ```typescript
 // extension.ts
 import * as vscode from 'vscode';
-import { loadTemplate, renderPrompt } from 'cosmos-intent-sdk';
+import { loadTemplate, renderPrompt } from 'speckit-cosmosdb';
 
 export function activate(context: vscode.ExtensionContext) {
   const participant = vscode.chat.createChatParticipant('cosmos', async (request, context, stream, token) => {

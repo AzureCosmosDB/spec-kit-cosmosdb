@@ -61,7 +61,7 @@ provides:
     description: 'Generate an event sourcing implementation with Cosmos DB: append-only events, snapshots, and projections.'
   - name: speckit.cosmosdb.explain
     file: commands/speckit.cosmosdb.explain.md
-    description: Learn Cosmos DB concepts with best practices and Intent SDK context.
+    description: Learn Cosmos DB concepts with best practices and Spec Kit context.
   - name: speckit.cosmosdb.global-distribution
     file: commands/speckit.cosmosdb.global-distribution.md
     description: Configure multi-region writes, conflict resolution, and preferred regions.
@@ -106,7 +106,7 @@ provides:
     description: Generate 429 (TooManyRequests) handling with exponential backoff.
   - name: speckit.cosmosdb.review
     file: commands/speckit.cosmosdb.review.md
-    description: Audit your Cosmos DB code against Intent SDK best practices.
+    description: Audit your Cosmos DB code against Spec Kit best practices.
   - name: speckit.cosmosdb.scaffold
     file: commands/speckit.cosmosdb.scaffold.md
     description: Generate a complete Azure Cosmos DB application with deterministic, production-ready architecture.
@@ -167,15 +167,15 @@ provides:
   - name: speckit.cosmosdb.vector
     file: commands/speckit.cosmosdb.vector.md
     description: Generate vector search configuration and query code for Cosmos DB.
-  - name: speckit.cosmosdb.vibe
-    file: commands/speckit.cosmosdb.vibe.md
+  - name: speckit.cosmosdb.recommend
+    file: commands/speckit.cosmosdb.recommend.md
     description: Tell me what you want to build. I'll figure out exactly which command to run.
 hooks:
   after_implement:
     command: speckit.cosmosdb.review
     optional: true
     prompt: Review generated code against Cosmos DB best practices?
-    description: Audit your Cosmos DB code against Intent SDK best practices.
+    description: Audit your Cosmos DB code against Spec Kit best practices.
   after_plan:
     command: speckit.cosmosdb.agent-kit
     optional: true
@@ -186,4 +186,4 @@ tags:
 - cosmosdb
 - database
 - nosql
-- vibe-coding
+- recommend-coding

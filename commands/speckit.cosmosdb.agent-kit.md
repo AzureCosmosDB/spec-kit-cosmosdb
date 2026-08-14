@@ -30,7 +30,7 @@ The following rules must be applied to **all** Cosmos DB code generated in this 
 
 # Cosmos DB Agent Kit - Best Practice Rules
 
-These rules are enforced automatically by the Cosmos Intent SDK Agent Kit. They apply to all code in this repository that interacts with Azure Cosmos DB.
+These rules are enforced automatically by the Cosmos DB Spec Kit Agent Kit. They apply to all code in this repository that interacts with Azure Cosmos DB.
 
 ## Client Management
 

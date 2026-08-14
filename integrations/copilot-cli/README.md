@@ -2,14 +2,14 @@
 
 ## Overview
 
-Use cosmos-intent-sdk with `gh copilot suggest` and `gh copilot explain` to get Cosmos DB guidance directly in your terminal.
+Use speckit-cosmosdb with `gh copilot suggest` and `gh copilot explain` to get Cosmos DB guidance directly in your terminal.
 
 ## Basic Usage
 
 ```bash
 # Ask for container design guidance
 gh copilot suggest "Design a Cosmos DB container for user profiles \
-  with lookups by userId and email, following cosmos-intent-sdk rules: \
+  with lookups by userId and email, following speckit-cosmosdb rules: \
   choose high-cardinality partition key, embed related data, use Session consistency"
 
 # Get query optimization
@@ -19,7 +19,7 @@ gh copilot explain "Why is this Cosmos DB query using cross-partition fan-out: \
 
 ## Shell Wrapper
 
-Create a shell function that injects cosmos-intent-sdk context:
+Create a shell function that injects speckit-cosmosdb context:
 
 ```bash
 # ~/.bashrc or ~/.zshrc

@@ -10,13 +10,13 @@ This is a [Spec Kit](https://github.com/spec-kit/spec-kit) extension. It provide
 specify extension add cosmosdb --from https://github.com/TheovanKraay/spec-kit-cosmosdb/archive/refs/tags/v1.0.0.zip
 ```
 
-## Two Paths: Vibe Coding vs. Explicit Commands
+## Two Paths: Guided vs. Explicit Commands
 
-### 🎨 Vibe Path
+### 🎨 Guided Path
 Describe what you want in plain language - the SDK figures out the right commands:
 
 ```
-/speckit.cosmosdb.vibe "I want to build a real-time chat app with message history"
+/speckit.cosmosdb.recommend "I want to build a real-time chat app with message history"
 ```
 
 ### 🔧 Explicit Path
@@ -98,7 +98,7 @@ Call specific commands directly when you know exactly what you need:
 
 | Command | Description |
 |---------|-------------|
-| `speckit.cosmosdb.vibe` | Conversational entry point - describe what you want, get the right command |
+| `speckit.cosmosdb.recommend` | Conversational entry point - describe what you want, get the right command |
 | `speckit.cosmosdb.review` | Review generated code against Cosmos DB best practices |
 | `speckit.cosmosdb.explain` | Explain Cosmos DB concepts in context |
 | `speckit.cosmosdb.agent-kit` | Load best-practice rules for the session |
