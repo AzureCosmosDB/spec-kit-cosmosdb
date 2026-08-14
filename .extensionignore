@@ -1,0 +1,7 @@
+tests/
+testing/
+.github/
+.vscode/
+package.json
+COMPATIBILITY.md
+*.sh

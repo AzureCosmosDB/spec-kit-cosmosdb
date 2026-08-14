@@ -1,0 +1,182 @@
+schema_version: '1.0'
+extension:
+  id: cosmosdb
+  name: Azure Cosmos DB Spec Kit Extension
+  version: 0.1.0
+  description: Prescriptive prompts producing deterministic, best-practice Azure Cosmos DB code with any AI agent
+  author: Theo van Kraay
+  repository: https://github.com/AzureCosmosDB/spec-kit-cosmosdb
+  homepage: https://github.com/AzureCosmosDB/spec-kit-cosmosdb
+  license: MIT
+requires:
+  speckit_version: '>=0.1.0'
+provides:
+  commands:
+  - name: speckit.cosmosdb.api-pagination
+    file: commands/speckit.cosmosdb.api-pagination.md
+    description: Generate API pagination with Azure Cosmos DB continuation tokens exposed as opaque cursors.
+  - name: speckit.cosmosdb.autoscale
+    file: commands/speckit.cosmosdb.autoscale.md
+    description: Configure autoscale throughput for variable workloads.
+  - name: speckit.cosmosdb.availability
+    file: commands/speckit.cosmosdb.availability.md
+    description: Configure availability strategy and circuit breaker for resilient Azure Cosmos DB access.
+  - name: speckit.cosmosdb.bulk
+    file: commands/speckit.cosmosdb.bulk.md
+    description: Generate bulk operation code for high-throughput writes to Azure Cosmos DB.
+  - name: speckit.cosmosdb.changefeed
+    file: commands/speckit.cosmosdb.changefeed.md
+    description: Generate a change feed processor for event-driven processing.
+  - name: speckit.cosmosdb.changefeed-processor
+    file: commands/speckit.cosmosdb.changefeed-processor.md
+    description: Generate a complete change feed processor with lease management, error handling, and checkpointing.
+  - name: speckit.cosmosdb.conditional-create
+    file: commands/speckit.cosmosdb.conditional-create.md
+    description: Generate a conditional create that rejects duplicates using ifNoneMatch ETag.
+  - name: speckit.cosmosdb.connection
+    file: commands/speckit.cosmosdb.connection.md
+    description: Generate connection configuration for emulator and production environments.
+  - name: speckit.cosmosdb.container
+    file: commands/speckit.cosmosdb.container.md
+    description: Generate Azure Cosmos DB container configuration with throughput, indexing, and partition strategy.
+  - name: speckit.cosmosdb.cqrs
+    file: commands/speckit.cosmosdb.cqrs.md
+    description: 'Generate a CQRS pattern with Azure Cosmos DB: write model + read views materialized via change feed.'
+  - name: speckit.cosmosdb.cross-partition
+    file: commands/speckit.cosmosdb.cross-partition.md
+    description: Generate a cross-partition query with explicit cost awareness and guards.
+  - name: speckit.cosmosdb.diagnostics
+    file: commands/speckit.cosmosdb.diagnostics.md
+    description: Add SDK diagnostics logging for troubleshooting latency and errors.
+  - name: speckit.cosmosdb.endpoint
+    file: commands/speckit.cosmosdb.endpoint.md
+    description: Generate an API endpoint backed by Azure Cosmos DB with proper error mapping.
+  - name: speckit.cosmosdb.etag
+    file: commands/speckit.cosmosdb.etag.md
+    description: Generate optimistic concurrency control using ETags.
+  - name: speckit.cosmosdb.event-sourcing
+    file: commands/speckit.cosmosdb.event-sourcing.md
+    description: 'Generate an event sourcing implementation with Azure Cosmos DB: append-only events, snapshots, and projections.'
+  - name: speckit.cosmosdb.explain
+    file: commands/speckit.cosmosdb.explain.md
+    description: Learn Azure Cosmos DB concepts with best practices and Spec Kit context.
+  - name: speckit.cosmosdb.global-distribution
+    file: commands/speckit.cosmosdb.global-distribution.md
+    description: Configure multi-region writes, conflict resolution, and preferred regions.
+  - name: speckit.cosmosdb.hierarchical-pk
+    file: commands/speckit.cosmosdb.hierarchical-pk.md
+    description: Design hierarchical (sub-partitioned) partition keys for multi-tenant and high-cardinality scenarios.
+  - name: speckit.cosmosdb.index-policy
+    file: commands/speckit.cosmosdb.index-policy.md
+    description: Generate a custom indexing policy optimized for specific query patterns.
+  - name: speckit.cosmosdb.migrate
+    file: commands/speckit.cosmosdb.migrate.md
+    description: Generate a migration plan and code to move from another database to Azure Cosmos DB.
+  - name: speckit.cosmosdb.model
+    file: commands/speckit.cosmosdb.model.md
+    description: Generate a Azure Cosmos DB document model with intentional partition key strategy.
+  - name: speckit.cosmosdb.multi-tenant
+    file: commands/speckit.cosmosdb.multi-tenant.md
+    description: Generate multi-tenant data isolation patterns for Azure Cosmos DB.
+  - name: speckit.cosmosdb.pagination
+    file: commands/speckit.cosmosdb.pagination.md
+    description: Generate continuation-token-based pagination for Azure Cosmos DB queries.
+  - name: speckit.cosmosdb.partition-key
+    file: commands/speckit.cosmosdb.partition-key.md
+    description: Recommend an optimal partition key for a container based on access patterns.
+  - name: speckit.cosmosdb.patch
+    file: commands/speckit.cosmosdb.patch.md
+    description: Generate atomic patch operations for partial document updates.
+  - name: speckit.cosmosdb.point-read
+    file: commands/speckit.cosmosdb.point-read.md
+    description: Generate a point read operation (the cheapest possible Azure Cosmos DB read at 1 RU).
+  - name: speckit.cosmosdb.query
+    file: commands/speckit.cosmosdb.query.md
+    description: Generate an optimized Azure Cosmos DB SQL query with RU estimation.
+  - name: speckit.cosmosdb.rag
+    file: commands/speckit.cosmosdb.rag.md
+    description: Scaffold a complete RAG (Retrieval-Augmented Generation) application with Azure Cosmos DB vector search.
+  - name: speckit.cosmosdb.repository
+    file: commands/speckit.cosmosdb.repository.md
+    description: Generate a data access layer (repository) for a Azure Cosmos DB container.
+  - name: speckit.cosmosdb.retry
+    file: commands/speckit.cosmosdb.retry.md
+    description: Generate 429 (TooManyRequests) handling with exponential backoff.
+  - name: speckit.cosmosdb.review
+    file: commands/speckit.cosmosdb.review.md
+    description: Audit your Azure Cosmos DB code against Spec Kit best practices.
+  - name: speckit.cosmosdb.scaffold
+    file: commands/speckit.cosmosdb.scaffold.md
+    description: Generate a complete Azure Cosmos DB application with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-analytics
+    file: commands/speckit.cosmosdb.scaffold-analytics.md
+    description: Generate a complete Azure Cosmos DB event analytics pipeline with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-booking
+    file: commands/speckit.cosmosdb.scaffold-booking.md
+    description: Generate a complete Azure Cosmos DB appointment/reservation system with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-chat
+    file: commands/speckit.cosmosdb.scaffold-chat.md
+    description: Generate a complete Azure Cosmos DB real-time chat application with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-cms
+    file: commands/speckit.cosmosdb.scaffold-cms.md
+    description: Generate a complete Azure Cosmos DB content management system with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-ecommerce
+    file: commands/speckit.cosmosdb.scaffold-ecommerce.md
+    description: Generate a complete Azure Cosmos DB e-commerce order API with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-inventory
+    file: commands/speckit.cosmosdb.scaffold-inventory.md
+    description: Generate a complete Azure Cosmos DB warehouse inventory management application with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-iot
+    file: commands/speckit.cosmosdb.scaffold-iot.md
+    description: Generate a complete Azure Cosmos DB IoT device telemetry application with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-saas
+    file: commands/speckit.cosmosdb.scaffold-saas.md
+    description: Generate a complete Azure Cosmos DB multi-tenant SaaS platform with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-social
+    file: commands/speckit.cosmosdb.scaffold-social.md
+    description: Generate a complete Azure Cosmos DB social feed/timeline application with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.scaffold-workflow
+    file: commands/speckit.cosmosdb.scaffold-workflow.md
+    description: Generate a complete Azure Cosmos DB workflow/task management application with deterministic, production-ready architecture.
+  - name: speckit.cosmosdb.serialization
+    file: commands/speckit.cosmosdb.serialization.md
+    description: Configure JSON serialization for correct property naming, enum handling, and custom converters.
+  - name: speckit.cosmosdb.session-state
+    file: commands/speckit.cosmosdb.session-state.md
+    description: Generate a session/cache storage pattern with Azure Cosmos DB and TTL-based expiration.
+  - name: speckit.cosmosdb.singleton
+    file: commands/speckit.cosmosdb.singleton.md
+    description: Generate a CosmosClient singleton pattern for dependency injection.
+  - name: speckit.cosmosdb.stored-proc
+    file: commands/speckit.cosmosdb.stored-proc.md
+    description: Create stored procedures for atomic transactional operations within a partition.
+  - name: speckit.cosmosdb.stream-query
+    file: commands/speckit.cosmosdb.stream-query.md
+    description: Generate an efficient streaming query for large result sets.
+  - name: speckit.cosmosdb.transaction
+    file: commands/speckit.cosmosdb.transaction.md
+    description: Generate a transactional batch operation within a single partition.
+  - name: speckit.cosmosdb.ttl
+    file: commands/speckit.cosmosdb.ttl.md
+    description: Configure Time-to-Live policies for automatic data expiration.
+  - name: speckit.cosmosdb.upsert
+    file: commands/speckit.cosmosdb.upsert.md
+    description: Generate an upsert operation with conflict handling.
+  - name: speckit.cosmosdb.vector
+    file: commands/speckit.cosmosdb.vector.md
+    description: Generate vector search configuration and query code for Azure Cosmos DB.
+  - name: speckit.cosmosdb.recommend
+    file: commands/speckit.cosmosdb.recommend.md
+    description: Tell me what you want to build. I'll figure out exactly which command to run.
+hooks:
+  after_implement:
+    command: speckit.cosmosdb.review
+    optional: true
+    prompt: Review generated code against Azure Cosmos DB best practices?
+    description: Audit your Azure Cosmos DB code against Spec Kit best practices.
+tags:
+- azure
+- cosmosdb
+- database
+- nosql
+- recommend-coding
