@@ -2,10 +2,11 @@ schema_version: '1.0'
 extension:
   id: cosmosdb
   name: Azure Cosmos DB Spec Kit Extension
-  version: 1.0.0
-  description: Prescriptive prompt templates for Azure Cosmos DB that produce deterministic, best-practice code with any AI coding agent
+  version: 0.1.0
+  description: Prescriptive prompts producing deterministic, best-practice Azure Cosmos DB code with any AI agent
   author: Theo van Kraay
   repository: https://github.com/TheovanKraay/spec-kit-cosmosdb
+  homepage: https://github.com/TheovanKraay/spec-kit-cosmosdb
   license: MIT
 requires:
   speckit_version: '>=0.1.0'

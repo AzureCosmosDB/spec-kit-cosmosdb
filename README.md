@@ -1,13 +1,15 @@
 # Azure Cosmos DB - Spec Kit Extension
 
+> ⚠️ **Preview release (v0.1.0).** This extension is in active development. Commands, prompts, and behavior may change between versions. Feedback and issues are very welcome.
+
 Prescriptive prompt templates for Azure Cosmos DB that produce deterministic, best-practice code with any AI coding agent.
 
-This is a [Spec Kit](https://github.com/spec-kit/spec-kit) extension. It provides 53 commands covering micro patterns, component patterns, full scaffolds, and meta tools for Azure Cosmos DB development.
+This is a [Spec Kit](https://github.com/github/spec-kit) extension. It provides 52 commands covering micro patterns, component patterns, full scaffolds, and meta tools for Azure Cosmos DB development.
 
 ## Installation
 
 ```bash
-specify extension add cosmosdb --from https://github.com/TheovanKraay/spec-kit-cosmosdb/archive/refs/tags/v1.0.0.zip
+specify extension add cosmosdb --from https://github.com/TheovanKraay/spec-kit-cosmosdb/archive/refs/tags/v0.1.0.zip
 ```
 
 ## Two Paths: Guided vs. Explicit Commands
