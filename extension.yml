@@ -168,7 +168,15 @@ provides:
   - name: speckit.cosmosdb.recommend
     file: commands/speckit.cosmosdb.recommend.md
     description: Tell me what you want to build. I'll figure out exactly which command to run.
+  - name: speckit.cosmosdb.advise
+    file: commands/speckit.cosmosdb.advise.md
+    description: Analyze the active spec/tasks and recommend only the relevant Azure Cosmos DB commands to run during implementation.
 hooks:
+  before_implement:
+    command: speckit.cosmosdb.advise
+    optional: true
+    prompt: Identify the relevant Azure Cosmos DB commands for this feature before implementing?
+    description: Analyze the active spec/tasks and recommend only the relevant Azure Cosmos DB commands to run during implementation.
   after_implement:
     command: speckit.cosmosdb.review
     optional: true
