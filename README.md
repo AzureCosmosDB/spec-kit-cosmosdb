@@ -30,6 +30,66 @@ Call specific commands directly when you know exactly what you need:
 /speckit.cosmosdb.changefeed
 ```
 
+## Typical Workflow: Building a Cosmos DB App with Spec Kit
+
+This extension's commands sit **alongside** the standard Spec Kit loop (`/speckit.specify` → `/speckit.plan` → `/speckit.tasks` → `/speckit.implement`). They are **explicitly invoked** to inject prescriptive, best-practice Azure Cosmos DB code at the points where the data layer matters — plus one **automatic review hook** after implementation.
+
+> **Important:** `/speckit.implement` does **not** call these commands automatically. The base `implement` step generates generic code from `tasks.md`. You invoke the `speckit.cosmosdb.*` commands yourself (during planning and implementation) to get *prescriptive* Cosmos code instead of generic output. The one exception is `review`, which fires automatically via the `after_implement` hook.
+
+Here is a typical end-to-end flow for building an app whose data layer runs on Azure Cosmos DB:
+
+```bash
+# 1. SPECIFY — describe the feature (standard Spec Kit)
+/speckit.specify "An e-commerce service that stores orders and lets customers
+                  look up their order history quickly"
+
+# 2. (optional) RECOMMEND — let the extension suggest a Cosmos design from the spec
+/speckit.cosmosdb.recommend
+#   → reads the active spec, proposes partition-key strategy, access patterns,
+#     and which cosmosdb commands to use. Advisory only.
+
+# 3. PLAN — produce the implementation plan (standard Spec Kit)
+/speckit.plan
+
+# 4. Design the data layer with prescriptive Cosmos commands.
+#    With spec-context awareness, these read the active spec for intent
+#    (entities, access patterns, scale) — no need to re-type everything.
+/speckit.cosmosdb.model            # document model + partition key strategy
+/speckit.cosmosdb.partition-key    # validate/derive the partition key choice
+/speckit.cosmosdb.container        # container with indexing + PK
+/speckit.cosmosdb.repository       # repository pattern over the model
+
+# 5. TASKS — break the plan into tasks (standard Spec Kit)
+/speckit.tasks
+
+# 6. IMPLEMENT — generate code (standard Spec Kit).
+#    Invoke the specific Cosmos commands for each access pattern your
+#    tasks require, to get best-practice implementations:
+/speckit.implement
+/speckit.cosmosdb.point-read       # 1-RU reads by id + partition key
+/speckit.cosmosdb.query            # optimized, parameterized queries
+/speckit.cosmosdb.pagination       # continuation-token pagination
+/speckit.cosmosdb.upsert           # conflict-aware writes
+/speckit.cosmosdb.retry            # exponential-backoff retry logic
+
+# 7. REVIEW — fires AUTOMATICALLY after /speckit.implement via the
+#    after_implement hook (or run it explicitly any time):
+/speckit.cosmosdb.review           # audits generated code vs. Cosmos best practices
+```
+
+**Shortcut for whole-app skeletons:** if you're starting a well-known app shape, the `scaffold-*` commands generate a complete best-practice starting point in one step (e.g. `/speckit.cosmosdb.scaffold-ecommerce`, `scaffold-chat`, `scaffold-saas`), which you then refine through the normal loop.
+
+### Where each command type fits the flow
+
+| Spec Kit phase | Cosmos commands you'd typically use | Invocation |
+|----------------|-------------------------------------|------------|
+| `specify` | *(none — describe intent in plain language)* | — |
+| after `specify` | `recommend` | explicit (advisory) |
+| `plan` | `model`, `partition-key`, `container`, `repository`, `index-policy` | explicit |
+| `tasks` | *(none)* | — |
+| `implement` | `point-read`, `query`, `pagination`, `upsert`, `patch`, `transaction`, `changefeed`, `vector`, etc. | explicit |
+| after `implement` | `review` | **automatic (hook)** |
+
 ## Available Commands
 
 ### Micro Patterns (single-concern, composable)
