@@ -32,7 +32,7 @@ Call specific commands directly when you know exactly what you need:
 
 ## Typical Workflow: Building a Cosmos DB App with Spec Kit
 
-This extension's commands sit **alongside** the standard Spec Kit loop (`/speckit.specify` → `/speckit.plan` → `/speckit.tasks` → `/speckit.implement`). They are **explicitly invoked** to inject prescriptive, best-practice Azure Cosmos DB code at the points where the data layer matters — plus one **automatic review hook** after implementation.
+This extension's commands sit **alongside** the standard Spec Kit loop (`/speckit.specify` → `/speckit.plan` → `/speckit.tasks` → `/speckit.implement`). They inject prescriptive, best-practice Azure Cosmos DB code at the points where the data layer matters — with two **automatic hooks**: `before_implement` (recommends the relevant commands) and `after_implement` (reviews the result).
 
 > **How automation works:** when you run `/speckit.implement`, the **`before_implement` hook auto-fires `speckit.cosmosdb.advise`**, which reads your spec/tasks and recommends *only the relevant* Cosmos commands (a shortlist, not all 49). You then invoke those recommended `speckit.cosmosdb.*` commands to get prescriptive best-practice code — the base `/implement` still generates generic code on its own, so invoking the recommended commands is what upgrades the data layer to best-practice. After implementation, the **`after_implement` hook** auto-fires `review`.
 
