@@ -27,7 +27,15 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Advanced needs (change feed, vector/RAG, multi-tenant, TTL, global distribution, autoscale)
    - Cross-cutting concerns (client singleton, retry, diagnostics, index policy)
 
-3. **Recommend ONLY the relevant commands** from the catalog below — typically 3–8, never all of them. For each, give a one-line reason tied to the spec. Present as an ordered checklist the developer (or agent) can run during `/speckit.implement`.
+3. **Recommend ONLY the commands the feature actually requires** — a focused shortlist **sized to the feature**: 3–5 for a simple single-entity feature, up to ~10 for a genuinely multi-pattern one, but **never more than the access patterns require**. For each, give a one-line reason naming the specific spec element it serves. Present as an ordered checklist the developer (or agent) can run during `/speckit.implement`.
+
+### Selection discipline (MANDATORY — apply before you finalize the list)
+
+- **Necessity test:** include a command ONLY if you can name the exact access pattern, entity, or requirement in the spec that needs it. If you cannot, DROP it — never recommend a command "just in case."
+- **Resolve overlaps — pick ONE, not both:** `changefeed-processor` **or** `changefeed`; `pagination` **or** `api-pagination`; `transaction` **or** `stored-proc` for single-partition atomicity; and a `scaffold-*` command **or** its constituent granular commands — never a scaffold *plus* the pieces it already includes.
+- **Do not pad with generic cross-cutting commands** (`singleton`, `connection`, `retry`, `diagnostics`, `serialization`) unless the spec's stated scale, resilience, or serialization needs specifically call for them.
+- **Right-size, don't pad:** remove any command you cannot tie to a specific requirement. Most features need ~4–8 commands; only genuinely multi-pattern features (multiple entities, change feed, multi-tenant, etc.) need more. The goal is the SMALLEST list that fully covers the feature's access patterns.
+- **But keep the genuinely-required ones:** trimming removes padding and duplicates — it must NOT drop commands the spec's core access patterns depend on (e.g. `model`/`partition-key` for the data design, and the primary read/write/query/transaction patterns the feature actually uses).
 
 4. **Do not inline or execute** those commands here. Just recommend them. The developer runs the relevant `/speckit.cosmosdb.*` commands explicitly; each loads its own prescriptive guidance only when invoked. This keeps context lean.
 
