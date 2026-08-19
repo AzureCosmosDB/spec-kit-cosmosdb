@@ -6,6 +6,8 @@ Prescriptive prompt templates for Azure Cosmos DB that produce deterministic, be
 
 This is a [Spec Kit](https://github.com/github/spec-kit) extension. It provides 53 commands covering micro patterns, component patterns, full scaffolds, and meta tools for Azure Cosmos DB development.
 
+> ℹ️ **How guidance is delivered (please read).** This extension delivers its best-practices through **on-demand commands and hooks** — i.e. guidance reaches the model when a command is invoked (by you or an agent that chooses to run it). This works well for **interactive / guided** use. In **fully autonomous, hands-off** runs, an agent that is handed a task and writes code directly may never invoke the commands, so the extension can have little or no effect. To apply Azure Cosmos DB best-practices automatically on *every* request, add a compact rule block to your agent's always-on file (e.g. `.github/copilot-instructions.md`) — a validated starter block is maintained in [`.github/copilot-instructions.md`](.github/copilot-instructions.md). A first-class "always-on instructions" capability for Spec Kit extensions is proposed upstream in [github/spec-kit#4200](https://github.com/github/spec-kit/issues/4200).
+
 ## Installation
 
 ```bash
