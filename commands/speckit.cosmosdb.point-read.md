@@ -62,17 +62,56 @@ Generate a point read. Follow these constraints:
 
 ### Implementation
 
+Return `None`/`null` on 404 in EVERY language — never throw for not-found — and always pass the partition key.
+
+**Python** (azure-cosmos):
+```python
+from azure.cosmos.exceptions import CosmosResourceNotFoundError
+
+def get_{{entity}}_by_id(container, id: str, partition_key: str) -> Optional[dict]:
+    try:
+        item = container.read_item(item=id, partition_key=partition_key)
+        logging.info("point read RU=%s", container.client_connection.last_response_headers.get("x-ms-request-charge"))
+        return item
+    except CosmosResourceNotFoundError:
+        return None  # 404 -> None, never raise for not-found
 ```
+
+**TypeScript** (@azure/cosmos):
+```typescript
+async function get{{Entity}}ById(container: Container, id: string, partitionKey: string): Promise<{{Entity}} | null> {
+  try {
+    const { resource, requestCharge } = await container.item(id, partitionKey).read<{{Entity}}>();
+    console.log(`point read RU=${requestCharge}`);
+    return resource ?? null;
+  } catch (err: any) {
+    if (err.code === 404) return null; // 404 -> null, never throw for not-found
+    throw err;
+  }
+}
+```
+
+**C#** (Microsoft.Azure.Cosmos):
+```csharp
 try {
   ItemResponse<T> response = await container.ReadItemAsync<T>(
-    id: "{{id_source}}",
-    partitionKey: new PartitionKey("{{partition_key_source}}")
-  );
-  T document = response.Resource;
-  double ruCharge = response.RequestCharge; // Should be ~1 RU
+    id: id, partitionKey: new PartitionKey(partitionKey));
+  double ruCharge = response.RequestCharge; // ~1 RU
+  return response.Resource;
 } catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound) {
-  // Document doesn't exist
-  return null;
+  return default; // 404 -> null, never throw for not-found
+}
+```
+
+**Java** (azure-cosmos):
+```java
+try {
+  CosmosItemResponse<T> resp = container.readItem(id, new PartitionKey(partitionKey), T.class);
+  logger.info("point read RU={}", resp.getRequestCharge());
+  return Optional.of(resp.getItem());
+} catch (CosmosException e) {
+  if (e.getStatusCode() == 404) return Optional.empty(); // 404 -> empty, never throw
+  throw e;
 }
 ```
 

@@ -1,102 +1,70 @@
 # GitHub Copilot Coding Agent Integration
 
-## Overview
+Use the Azure Cosmos DB Spec Kit extension with the GitHub Copilot coding agent
+(`@copilot` in issues/PRs) for issue-driven Azure Cosmos DB work.
 
-Use speckit-cosmosdb with the GitHub Copilot coding agent (`@copilot` in issues/PRs) for issue-driven Azure Cosmos DB design and implementation.
+## How it works
 
-## How It Works
+The coding agent runs autonomously from an issue, so it does not interactively invoke
+slash commands. The reliable way to reach it is the always-on file it loads at session
+start: `.github/copilot-instructions.md`. Add your Azure Cosmos DB best-practice rules
+there and the agent applies them across the whole task.
 
-1. Open a GitHub issue describing the Azure Cosmos DB work needed
-2. Assign or mention `@copilot` 
-3. Copilot reads `.github/copilot-instructions.md` for speckit-cosmosdb context
-4. Copilot creates a PR with container designs, SDK code, and infrastructure
+> **Why not the extension's commands directly?** The extension delivers guidance through
+> Spec Kit **commands and hooks**, which are invoked on demand. An autonomous coding agent
+> typically writes code without invoking them, so for `@copilot` the durable channel is
+> always-on instructions.
 
 ## Setup
 
-### 1. Add Copilot Instructions
+1. (Optional, for local Spec Kit workflows) initialize Spec Kit and add the extension so
+   the `/speckit.cosmosdb.*` commands and hooks are available when you drive it
+   interactively:
 
-`.github/copilot-instructions.md`:
-```markdown
-## Azure Cosmos DB Development
+   ```bash
+   specify init --integration copilot
+   specify extension add cosmosdb --from https://github.com/AzureCosmosDB/spec-kit-cosmosdb/archive/refs/tags/v0.1.0.zip
+   ```
 
-When implementing Azure Cosmos DB containers or data access code:
+2. Add Azure Cosmos DB rules to `.github/copilot-instructions.md` so the coding agent
+   applies them automatically. A compact, validated starter rule block is maintained in
+   this repository at
+   [`.github/copilot-instructions.md`](../../.github/copilot-instructions.md) — copy the
+   Azure Cosmos DB rules into your own project's file. Example:
 
-1. Read `speckit-cosmosdb/prompts/` for design templates
-2. Follow rules in `speckit-cosmosdb/rules/` - especially:
-   - partition-*: High cardinality keys, avoid hot partitions
-   - model-*: Embed related data, denormalize for reads
-   - sdk-*: Use bulk for >10 items, transactional batch for ACID
-   - query-*: Always filter on partition key, project only needed fields
-3. Generate both the container schema (JSON) and the C#/TypeScript SDK code
-4. Include indexing policy in ARM/Bicep template
-5. Add estimated RU costs as code comments
-```
+   ```markdown
+   ## Azure Cosmos DB
 
-### 2. Create Issue Templates
+   - Choose a high-cardinality partition key present in most query filters.
+   - Use point reads (id + partition key) when possible; return null/None on 404.
+   - Parameterize queries, keep them partition-scoped, and project specific fields — never SELECT *.
+   - Handle 429 (TooManyRequests) with exponential backoff; use ETag optimistic concurrency.
+   - Match the indexing policy to the query patterns; don't ship default indexing to production.
+   ```
 
-`.github/ISSUE_TEMPLATE/cosmos-container.md`:
-```markdown
----
-name: Azure Cosmos DB Container Design
-about: Request a new container design from Copilot
-labels: cosmos-db, copilot
-assignees: copilot
----
-
-## Entity Description
-<!-- What data does this container store? -->
-
-## Access Patterns
-<!-- How will the data be queried? List operations. -->
-- 
-
-## Constraints
-- Expected volume: <!-- e.g., 1M documents, 10K writes/sec -->
-- Consistency requirement: <!-- Session / Strong / Eventual -->
-- Multi-region: <!-- yes/no, which regions -->
-
-## Expected Output
-- [ ] Container schema (JSON)
-- [ ] Partition key recommendation with justification
-- [ ] Indexing policy
-- [ ] SDK code (C# or TypeScript)
-- [ ] Bicep/ARM deployment template
-- [ ] RU cost estimates
-```
-
-### 3. Example Issue
+## Example issue
 
 > **Title:** Design container for order management
 >
-> **Entity:** E-commerce orders with line items, shipping address, payment status  
-> **Access Patterns:**
+> **Entity:** E-commerce orders with line items, shipping address, payment status
+> **Access patterns:**
 > - Get order by orderId (point read)
 > - List orders by customerId sorted by date
-> - Get orders by status for fulfillment dashboard
+> - Get orders by status for the fulfillment dashboard
 >
 > **Constraints:** 500K orders/month, Session consistency, single region
 >
-> @copilot please implement this following our speckit-cosmosdb templates
-
-### 4. What Copilot Produces
-
-Copilot will create a PR with:
-```
-src/
-├── cosmos/
-│   ├── containers/orders.json        # Container definition
-│   ├── models/Order.cs               # Data model
-│   ├── repositories/OrderRepository.cs  # SDK access code
-│   └── indexing/orders-policy.json   # Indexing policy
-├── infra/
-│   └── cosmos-orders.bicep           # Deployment template
-└── docs/
-    └── orders-design-decision.md     # Partition key justification
-```
+> @copilot please implement this following the Azure Cosmos DB rules in our copilot-instructions.
 
 ## Tips
 
-- Reference specific rules in issues: "Follow `partition-003` for multi-tenant key selection"
-- Use labels to route different template types: `cosmos-design`, `cosmos-query`, `cosmos-migrate`
-- Copilot respects `.github/copilot-instructions.md` automatically - no special invocation needed
-- For complex multi-container designs, break into separate issues and link them
+- Copilot respects `.github/copilot-instructions.md` automatically — no special invocation
+  needed.
+- For a larger passive ruleset (100+ rules), install the
+  [`cosmosdb-agent-kit`](https://github.com/AzureCosmosDB/cosmosdb-agent-kit) skill.
+- For complex multi-container designs, break the work into separate issues and link them.
+
+## Compatibility
+
+See [COMPATIBILITY.md](../../COMPATIBILITY.md) for supported languages, frameworks, and
+AI coding agents.
