@@ -12,7 +12,7 @@ before a stable 1.0.0.
 
 ### Added
 
-- 52 prescriptive commands for Azure Cosmos DB spanning micro patterns, component
+- 53 prescriptive commands for Azure Cosmos DB spanning micro patterns, component
   patterns, full application scaffolds, and meta tools (recommend, review, explain).
 - Multi-entity aggregate design guidance in `speckit.cosmosdb.model`: access-pattern
   RPS analysis, identifying-relationship checks, consolidation decision framework,
@@ -22,8 +22,9 @@ before a stable 1.0.0.
   1,000-vector index activation threshold, embedding normalization, and parameterized
   `ORDER BY VectorDistance(...)` queries.
 - `after_implement` hook that optionally runs `speckit.cosmosdb.review`.
-- Mandatory `user_agent_suffix` / application-name tagging in all generated
-  `CosmosClient` initialization code.
+- Guidance to tag `user_agent_suffix` / application name in generated
+  `CosmosClient` initialization code (instructed across the command set; agent
+  adherence may vary — see #9).
 
 ### Changed
 
