@@ -1,0 +1,23 @@
+schema_version: "1.0"
+
+preset:
+  id: "cosmosdb-rules"
+  name: "Azure Cosmos DB Always-On Rules"
+  version: "0.1.0"
+  description: "Always-on Azure Cosmos DB best-practice rules. When this preset is enabled and the opt-in agent-context extension is installed, the rules are composed into the coding agent's context file (for example .github/copilot-instructions.md) so they apply to the agent's work, including outside a Spec Kit workflow."
+  author: "Azure Cosmos DB"
+
+requires:
+  # Requires a Spec Kit that supports preset provides.instructions (github/spec-kit#4389).
+  # Bump this to the release that ships that feature once it is published.
+  speckit_version: ">=0.1.0"
+
+provides:
+  instructions:
+    - file: "instructions/cosmosdb-best-practices.md"
+      description: "Always-on Azure Cosmos DB best practices"
+
+tags:
+  - "azure"
+  - "cosmosdb"
+  - "agent-context"

@@ -183,7 +183,7 @@ Here is a typical end-to-end flow for building an app whose data layer runs on A
 | `speckit.cosmosdb.review` | Review generated code against Azure Cosmos DB best practices |
 | `speckit.cosmosdb.explain` | Explain Azure Cosmos DB concepts in context |
 
-> **Best-practice rules:** For always-on Azure Cosmos DB coding guardrails, install the [`cosmosdb-agent-kit`](https://github.com/AzureCosmosDB/cosmosdb-agent-kit) skill separately. It loads 100+ best-practice rules into your AI session. This extension focuses on prescriptive *workflows*; the agent kit provides the passive ruleset.
+> **Always-on best-practice rules (opt-in):** This repo ships a Spec Kit preset, [`cosmosdb-rules`](cosmosdb-rules/README.md), that composes the compact Azure Cosmos DB rule set into your coding agent's always-on context file (e.g. `.github/copilot-instructions.md`) through the opt-in [`agent-context`](https://github.com/github/spec-kit/tree/main/extensions/agent-context) extension. Nothing is written unless you install `agent-context` and enable the preset. See [`cosmosdb-rules/README.md`](cosmosdb-rules/README.md) for the exact opt-in install steps. (A larger 100+ rule set is also available as the separate [`cosmosdb-agent-kit`](https://github.com/AzureCosmosDB/cosmosdb-agent-kit) skill.)
 
 ## Hooks
 

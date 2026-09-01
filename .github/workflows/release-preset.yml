@@ -1,0 +1,33 @@
+name: Publish preset release asset
+
+# Attaches a preset-rooted zip (preset.yml at the archive root) to each GitHub
+# release so users can install the always-on rules with:
+#   specify preset add cosmosdb-rules --from <release-asset-url>
+# The repo source archive can't be used for this because the preset lives in a
+# nested cosmosdb-rules/ directory; `preset add --from` only resolves preset.yml
+# at the archive root (or a single top-level folder).
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  publish-preset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Package the cosmosdb-rules preset (preset.yml at archive root)
+        run: |
+          cd cosmosdb-rules
+          zip -r "../cosmosdb-rules-${{ github.event.release.tag_name }}.zip" . -x '.DS_Store'
+
+      - name: Attach preset zip to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh release upload "${{ github.event.release.tag_name }}"
+          "cosmosdb-rules-${{ github.event.release.tag_name }}.zip" --clobber
