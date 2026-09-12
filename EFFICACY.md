@@ -48,6 +48,13 @@ This is why the extension ships a compact always-on best-practice file (`.github
 
 The prompt-level results come from a scripted harness (generate → score against fixed best-practice checks → aggregate) run across models, languages, and complexity levels; the delivery finding comes from the same harness plus the at-scale application-execution benchmark. The best-practice checks and the always-on rule block are versioned alongside the extension.
 
+## In-workflow (SDD-flow) testing
+
+A separate round tests the harder question — whether the guidance helps when injected into the
+autonomous `specify → plan → tasks → implement` ceremony and the resulting app is built and graded
+end to end — and reports the delivery gap it surfaced and the fix. See
+[`testing/results/sdd-flow-efficacy.md`](testing/results/sdd-flow-efficacy.md).
+
 ---
 
 *Summary:* the extension produces measurably better Azure Cosmos DB code, and **how** the guidance is delivered is as important as the guidance itself — which is why the extension pairs on-demand commands with an always-on best-practice rule set.
