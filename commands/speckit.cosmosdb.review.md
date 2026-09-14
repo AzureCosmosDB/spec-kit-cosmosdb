@@ -1,5 +1,5 @@
 ---
-description: "Audit your Azure Cosmos DB code against Spec Kit best practices."
+description: "Audit your Azure Cosmos DB code against Spec Kit best practices AND apply the fixes for any Fail/Warn found."
 ---
 
 ## User Input
@@ -16,7 +16,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Intent
 
-Review existing Azure Cosmos DB code for anti-patterns, misconfigurations, and missed optimizations. Produce a scored report with actionable fixes referencing specific `/speckit.cosmosdb.*` commands.
+Review existing Azure Cosmos DB code for anti-patterns, misconfigurations, and missed optimizations, then **apply the fixes**. Produce a scored report, and for every ❌ Fail and ⚠️ Warn, edit the code to correct it (do not just report it) — re-checking until the critical issues are resolved. This runs automatically after `/speckit.implement`, so the code it audits is the code you just generated: fix it in place rather than leaving the work to the developer.
 
 ## Required Inputs
 
@@ -159,3 +159,12 @@ Evaluate each category as **✅ Pass**, **⚠️ Warn**, or **❌ Fail**:
 - ❌ No partition key in point reads
 - ❌ Unbounded `ReadAll` without pagination
 - ❌ Missing `user_agent_suffix` / `ApplicationName` on CosmosClient
+
+## After the review: apply the fixes
+
+Do not stop at the report. For **every ❌ Fail and ⚠️ Warn**, edit the code to fix it:
+
+1. Make the concrete change in the relevant file(s) — apply the "after" code, not just describe it. Pull the full pattern from the named `/speckit.cosmosdb.*` command when you need more than the one-line fix.
+2. Re-check the fixed code against the same categories; repeat until there are **no ❌ Fail** remaining (address ⚠️ Warn where practical).
+3. Keep changes minimal and behavior-preserving — correct the Cosmos DB usage without rewriting unrelated logic.
+4. End with a short list of the edits you applied and any Warn you intentionally left, with a one-line reason.

@@ -5,6 +5,23 @@ All notable changes to the Azure Cosmos DB Spec Kit Extension are documented her
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **`speckit.cosmosdb.advise` now inlines guidance instead of only recommending commands.**
+  The `before_implement` advisor selects the relevant Azure Cosmos DB patterns and inlines
+  their compact best-practice rules (from a new rule digest) directly into its output, so
+  `/speckit.implement` applies them without a second command invocation. It still names the
+  full `/speckit.cosmosdb.*` command for deeper guidance. This closes a delivery gap where
+  an autonomous agent rarely invoked the recommended commands, so the guidance seldom
+  reached the generated code.
+- **Both hooks are now non-optional.** `before_implement` (advise) and `after_implement`
+  (review) run as part of the flow rather than being skippable, so best-practice guidance
+  and the review consistently fire.
+- **`speckit.cosmosdb.review` now applies fixes, not just an audit.** After scoring, it edits
+  the code to correct every Fail/Warn and re-checks until the critical issues are resolved.
+
 ## [0.1.0] - 2026-08-14
 
 Initial **preview** release. APIs, command names, and prompt behavior may change

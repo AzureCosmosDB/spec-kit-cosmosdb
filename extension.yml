@@ -174,13 +174,13 @@ provides:
 hooks:
   before_implement:
     command: speckit.cosmosdb.advise
-    optional: true
-    prompt: Identify the relevant Azure Cosmos DB commands for this feature before implementing?
+    optional: false
+    prompt: Apply Azure Cosmos DB best practices for this feature before implementing?
     description: Analyze the active spec/tasks and recommend only the relevant Azure Cosmos DB commands to run during implementation.
   after_implement:
     command: speckit.cosmosdb.review
-    optional: true
-    prompt: Review generated code against Azure Cosmos DB best practices?
+    optional: false
+    prompt: Review the generated code against Azure Cosmos DB best practices and apply the fixes?
     description: Audit your Azure Cosmos DB code against Spec Kit best practices.
 tags:
 - azure

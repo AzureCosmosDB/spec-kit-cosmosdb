@@ -1,5 +1,5 @@
 ---
-description: "Analyze the active spec/tasks and recommend the relevant Azure Cosmos DB commands to run during implementation (auto-fires before /implement)."
+description: "Analyze the active spec/tasks, select the relevant Azure Cosmos DB patterns, and inline their compact best-practice rules so implementation applies them directly (auto-fires before /implement)."
 ---
 
 ## User Input
@@ -12,7 +12,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 # /speckit.cosmosdb.advise
 
-> Lightweight router that inspects the active Spec Kit feature and recommends **only the relevant** Azure Cosmos DB commands for the work about to be implemented. This is the `before_implement` advisor: it does **not** generate code and does **not** load every command — it points you at the few that matter.
+> Inspects the active Spec Kit feature, selects **only the relevant** Azure Cosmos DB patterns, and **inlines their compact best-practice rules** so `/speckit.implement` applies them directly. This is the `before_implement` advisor: it delivers the non-negotiable rules for the few patterns that matter (and names the full `/speckit.cosmosdb.*` command for deeper guidance), rather than only pointing at commands the agent may never invoke.
 
 ## What to do
 
@@ -37,21 +37,47 @@ You **MUST** consider the user input before proceeding (if not empty).
 - **Right-size, don't pad:** remove any command you cannot tie to a specific requirement. Most features need ~4–8 commands; only genuinely multi-pattern features (multiple entities, change feed, multi-tenant, etc.) need more. The goal is the SMALLEST list that fully covers the feature's access patterns.
 - **But keep the genuinely-required ones:** trimming removes padding and duplicates — it must NOT drop commands the spec's core access patterns depend on (e.g. `model`/`partition-key` for the data design, and the primary read/write/query/transaction patterns the feature actually uses).
 
-4. **Do not inline or execute** those commands here. Just recommend them. The developer runs the relevant `/speckit.cosmosdb.*` commands explicitly; each loads its own prescriptive guidance only when invoked. This keeps context lean.
+4. **Inline the compact best-practice rules for each selected pattern.** For every pattern you select, copy its bullet block from the **Best-practice rule digest** below directly into your output, so the implementation applies the rules without needing a second command invocation. Still name the full `/speckit.cosmosdb.*` command so the developer can load deeper guidance on demand. Inline ONLY the digests for the patterns this feature needs — the selected shortlist, never the whole digest.
 
 ## Output format
 
 ```
-## Recommended Azure Cosmos DB commands for this feature
+## Azure Cosmos DB best practices for this feature (apply during /implement)
 
-Based on <spec/plan/tasks or your description>, run these during implementation:
+Based on <spec/plan/tasks or your description>, apply these rules while implementing:
 
-1. /speckit.cosmosdb.<name>  — <why, tied to the spec>
-2. /speckit.cosmosdb.<name>  — <why>
-...
+### <pattern> — /speckit.cosmosdb.<name>  (why, tied to the spec)
+- <rule 1 from the digest>
+- <rule 2 from the digest>
 
-(Skipped the rest of the catalog — not relevant to this feature.)
+### <pattern> — /speckit.cosmosdb.<name>  (why)
+- <rules...>
+
+(Selected only the patterns this feature needs. Run the named command for the full guidance on any pattern.)
 ```
+
+## Best-practice rule digest (inline the entries for the patterns you select)
+
+Copy the bullet block for each selected pattern into your output. These are the
+non-negotiable rules each `/speckit.cosmosdb.*` command enforces; inlining them puts the
+guidance in front of the implementer directly instead of behind a command they may never run.
+
+- **model / partition-key** — Choose the partition key from the access patterns, not the data shape: the field most reads filter by, high-cardinality, evenly distributed. Do not default to `/id`. Document the choice and the queries it serves. Give documents `id`, `type`, `createdAt`, `updatedAt`; avoid unbounded arrays and deep nesting.
+- **point-read** — For a known `id` + partition key, use a point read (`read_item(id, partition_key)`), never a query. It is the cheapest read (~1 RU). Never `SELECT ... WHERE id = ...` for a single known item.
+- **query** — Always parameterize (no string concatenation). Include the partition key in the `WHERE` clause whenever it is known; treat cross-partition queries as intentional and justify them. Avoid `SELECT *`; project only needed fields; set a max item count and paginate.
+- **etag (optimistic concurrency)** — For read-modify-write and any concurrent update, capture `_etag` on read and write with `if_match=etag`. On `412` (precondition failed) re-read and retry. This is how you prevent lost updates and overselling under concurrency.
+- **transaction / stored-proc** — For multi-item atomicity within a SINGLE partition (e.g. decrement capacity + create a booking), use a transactional batch (or a stored procedure) so the invariant holds atomically. Do not implement cross-item invariants with separate non-atomic writes.
+- **conditional-create** — To reject duplicates, create with `if_none_match="*"` and handle `409 Conflict` as "already exists" rather than crashing.
+- **retry (429)** — Catch throttling (`429`), honor the `Retry-After` / `x-ms-retry-after-ms` hint, and back off exponentially. Configure the client's retry options rather than failing on the first throttle.
+- **404 as null** — Catch not-found (`CosmosResourceNotFoundError` / `404`) and return null/None; never let a missing item surface as an unhandled exception.
+- **singleton / connection** — Create ONE `CosmosClient` for the application lifetime (never per request). Authenticate keyless with `DefaultAzureCredential` (endpoint from environment, no keys in code). Set an application name / user-agent suffix. Separate emulator vs production config.
+- **pagination** — Page with continuation tokens exposed as opaque cursors; never load an entire container into memory.
+- **hierarchical-pk** — For multi-tenant or high-cardinality data, use hierarchical (sub-partitioned) keys (e.g. tenantId then entityId) so a tenant's data co-locates and queries stay single-partition.
+- **index-policy** — Do not ship the default index-everything policy for write-heavy or large-document workloads: include only queried paths, exclude the rest.
+- **ttl** — For transient/expiring data (sessions, telemetry windows), configure TTL so Cosmos expires it automatically instead of manual cleanup.
+- **changefeed / changefeed-processor** — For event-driven projections/materialized views, consume the change feed with a lease container, checkpointing, and error handling; make processing idempotent.
+- **bulk** — For high-throughput ingestion, enable bulk mode and batch writes rather than serial point writes.
+- **vector** — For RAG/similarity, configure a vector index and use `VectorDistance` in the query; store embeddings on the document.
 
 ## Command Catalog (index only — load full command on invocation)
 
