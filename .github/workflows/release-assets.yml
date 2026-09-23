@@ -1,0 +1,80 @@
+name: Publish extension download
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag to package (for example v0.2.0)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-assets-${{ github.event.release.tag_name || inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install manifest parser
+        run: python -m pip install PyYAML==6.0.2
+      - name: Package tagged source
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.-]+)?$ ]] || { echo "Invalid release tag"; exit 1; }
+          mkdir -p dist
+          git -c core.autocrlf=false -c core.eol=lf archive --format=zip --prefix=spec-kit-cosmosdb/ \
+            --output="dist/cosmosdb-${RELEASE_TAG}.zip" "refs/tags/${RELEASE_TAG}"
+      - name: Validate package
+        id: validate
+        shell: python
+        run: |
+          import os
+          import zipfile
+          from pathlib import PurePosixPath
+          import yaml
+
+          tag = os.environ["RELEASE_TAG"]
+          with zipfile.ZipFile(f"dist/cosmosdb-{tag}.zip") as archive:
+              assert archive.testzip() is None, "Corrupt archive"
+              manifest = yaml.safe_load(archive.read("spec-kit-cosmosdb/extension.yml"))
+              assert manifest["extension"]["id"] == "cosmosdb", "Unexpected extension"
+              assert str(manifest["extension"]["version"]) == tag[1:], "Tag/version mismatch"
+              commands = manifest["provides"]["commands"]
+              assert commands, "No commands declared"
+              for command in commands:
+                  path = PurePosixPath(command["file"])
+                  assert not path.is_absolute() and ".." not in path.parts, "Invalid command path"
+                  assert archive.read(f"spec-kit-cosmosdb/{path}"), f"Missing command: {path}"
+              print(f"Validated {tag}: {len(commands)} command files")
+      - name: Upload without replacing existing assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          asset="cosmosdb-${RELEASE_TAG}.zip"
+          assets=$(gh release view "$RELEASE_TAG" --json assets --jq '.assets[].name')
+          if grep -Fxq "$asset" <<< "$assets"; then
+            echo "Asset already exists; preserving its download counter."
+          else
+            gh release upload "$RELEASE_TAG" "dist/$asset"
+          fi

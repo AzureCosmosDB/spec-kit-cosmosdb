@@ -22,8 +22,10 @@ Then install this extension from inside that project (below).
 ## Installation
 
 ```bash
-specify extension add cosmosdb --from https://github.com/AzureCosmosDB/spec-kit-cosmosdb/archive/refs/tags/v0.2.0.zip
+specify extension add cosmosdb --from https://github.com/AzureCosmosDB/spec-kit-cosmosdb/releases/download/v0.2.0/cosmosdb-v0.2.0.zip
 ```
+
+This package uses GitHub's release-asset download counter. It does not add client-side telemetry. See [Download tracking](DOWNLOADS.md) for counts, limitations, and release instructions.
 
 ## Two Paths: Guided vs. Explicit Commands
 
